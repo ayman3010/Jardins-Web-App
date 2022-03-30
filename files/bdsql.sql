@@ -15,8 +15,6 @@ CREATE TABLE IF NOT EXISTS JARDINDB.Jardin (
     PRIMARY KEY (jardinId)
 );
 
-
-
 CREATE TABLE IF NOT EXISTS JARDINDB.Parcelle(
     cordonnesX   NUMERIC(4,0)    NOT NULL,
     cordonnesY   NUMERIC(4,0)    NOT NULL,
@@ -24,7 +22,7 @@ CREATE TABLE IF NOT EXISTS JARDINDB.Parcelle(
     largeur      NUMERIC(8,3)    NOT NULL,
 	jardinId     VARCHAR(10)     NOT NULL,
     FOREIGN KEY(jardinId) REFERENCES JARDINDB.Jardin(jardinId),
-	PRIMARY KEY (jardinId, cordonnesX, cordonnesY),
+	PRIMARY KEY (jardinId, cordonnesX, cordonnesY)
 );
 
 CREATE TABLE IF NOT EXISTS JARDINDB.Rang(
@@ -36,48 +34,74 @@ CREATE TABLE IF NOT EXISTS JARDINDB.Rang(
     cordonnesY   NUMERIC(4,0)     NOT NULL,
 	jardinId     VARCHAR(10)      NOT NULL,
     FOREIGN KEY(jardinId, cordonnesX, cordonnesY) REFERENCES JARDINDB.Parcelle(jardinId, cordonnesX, cordonnesY),
-	PRIMARY KEY (jardinId, cordonnesX, cordonnesY,numero),
+	PRIMARY KEY (jardinId, cordonnesX, cordonnesY,numero)
 );
 
 
-
 CREATE TABLE IF NOT EXISTS JARDINDB.Plante(
+	planteId       Numeric(6,0)    NOT NULL,
     nomLatin       VARCHAR(60)     NOT NULL,
     nom            NUMERIC(9,6)    NOT NULL,
     categorie      NUMERIC(9,6)    NOT NULL,
     typePlante     BIT             NOT NULL,
-	sousType       NUMERIC(4,0)   ,
+	sousType       NUMERIC(4,0),
 	jardinId       VARCHAR(10)     NOT NULL,
-    FOREIGN KEY(jardinId) REFERENCES JARDINDB.Parcelle(jardinId),
-	PRIMARY KEY (nomLatin),
+    FOREIGN KEY(jardinId) REFERENCES JARDINDB.Jardin(jardinId),
+	PRIMARY KEY (planteId)
 );
 
-CREATE TABLE IF NOT EXISTS JARDINDB.PlanteJardin(
+CREATE TABLE IF NOT EXISTS JARDINDB.CombinaisonPlante(
+    effet       VARCHAR(60)     NOT NULL,
+    plante1Id   Numeric(6,0)    NOT NULL,
+    plante2Id   Numeric(6,0)    NOT NULL,
+	jardinId    VARCHAR(10)     NOT NULL,
+	PRIMARY KEY (plante1Id, plante2Id),
+	FOREIGN KEY(plante1ID) REFERENCES JARDINDB.Plante(planteID),
+	FOREIGN KEY(plante1ID) REFERENCES JARDINDB.Plante(planteID)
 );
 
 
-CREATE TABLE IF NOT EXISTS HOTELDB.Guest(
-    guestNb VARCHAR(10) NOT NULL,
-    nas     VARCHAR(10) UNIQUE NOT NULL,
-    name    VARCHAR(20) NOT NULL,
-    gender  genderType  DEFAULT 'M',
-    city    VARCHAR(50) NOT NULL,
-    PRIMARY KEY (guestNb)
+CREATE TABLE IF NOT EXISTS JARDINDB.Menace(
+    nomMenace       VARCHAR(30)     NOT NULL,
+    description    VARCHAR(120)   NOT NULL,
+	planteId       Numeric(6,0)   NOT NULL,
+    FOREIGN KEY(planteId) REFERENCES JARDINDB.Plante(planteId),
+	PRIMARY KEY (nomMenace)
 );
 
-CREATE TABLE IF NOT EXISTS HOTELDB.Booking(
-    hotelNb     VARCHAR(10)     NOT NULL,
-    roomNb      VARCHAR(10)     NOT NULL,
-    guestNb     VARCHAR(10)     NOT NULL,
-    dateFrom    DATE            NOT NULL,
-    dateTo      DATE            NULL,
-    PRIMARY KEY (hotelNb, guestNb, roomNb, dateFrom),
-    FOREIGN KEY (guestNb) REFERENCES HOTELDB.Guest(guestNb)
-    ON DELETE SET NULL ON UPDATE CASCADE,
-    FOREIGN KEY (hotelNb, roomNb) REFERENCES HOTELDB.Room (hotelNb, roomNb)
-    ON DELETE NO ACTION ON UPDATE CASCADE,
-    CONSTRAINT date CHECK (dateTo >= dateFrom),
-    CONSTRAINT dateFrom CHECK (dateFrom >= current_date)
+CREATE TABLE IF NOT EXISTS JARDINDB.Solution(
+    solution       VARCHAR(120)   ,
+    nomMenace       VARCHAR(30)     NOT NULL,
+    FOREIGN KEY(nomMenace) REFERENCES JARDINDB.Menace(nomMenace),
+	PRIMARY KEY (solution, nomMenace)
+);
+CREATE TABLE IF NOT EXISTS JARDINDB.Semencier(
+    semencierID       VARCHAR(60)    NOT NULL,
+    nom               VARCHAR(30)    NOT NULL,
+    siteWeb           VARCHAR(60)    ,
+	PRIMARY KEY (semencierID)
+);
+CREATE TABLE IF NOT EXISTS JARDINDB.Variete(
+    nomVariete                 VARCHAR(60)     NOT NULL,
+    anneeMiseMarche      NUMERIC(4,0)    NOT NULL,
+    descriptionSemis     VARCHAR(120)    NOT NULL,
+	plantation           VARCHAR(60)     NOT NULL,
+    entretien            VARCHAR(30)     NOT NULL,
+    recolte              VARCHAR(60)     NOT NULL,
+	periodeMisePlace     VARCHAR(60)     NOT NULL,
+    periodeRecolte       VARCHAR(30)     NOT NULL,
+    commentaire          VARCHAR(60)     NOT NULL,
+    typeSol              VARCHAR(60)     NOT NULL,
+	PRIMARY KEY (nomVariete)
 );
 
-ALTER TABLE HOTELDB.Guest ALTER gender DROP DEFAULT;
+
+CREATE TABLE IF NOT EXISTS JARDINDB.productionVariete(
+    semencierID       VARCHAR(60)    NOT NULL,
+    nomVariete        VARCHAR(30)    NOT NULL,
+    estBiologique     BIT   ,
+	FOREIGN KEY(semencierId) REFERENCES JARDINDB.Semencier(semencierId),
+    FOREIGN KEY(nomVariete) REFERENCES JARDINDB.Variete(nomVariete),
+	PRIMARY KEY (SemencierID, nomVariete)
+);
+
