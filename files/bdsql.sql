@@ -1,4 +1,4 @@
-SET search_path = Jardins;
+SET search_path = jardins;
 
 DROP SCHEMA IF EXISTS JARDINDB CASCADE;
 CREATE SCHEMA JARDINDB;
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS JARDINDB.Rang(
 
 
 CREATE TABLE IF NOT EXISTS JARDINDB.Plante(
-	planteId       Numeric(6,0)    NOT NULL,
+	planteId       VARCHAR(10)    NOT NULL,
     nomLatin       VARCHAR(60)     NOT NULL,
     nom            NUMERIC(9,6)    NOT NULL,
     categorie      NUMERIC(9,6)    NOT NULL,
@@ -52,8 +52,8 @@ CREATE TABLE IF NOT EXISTS JARDINDB.Plante(
 
 CREATE TABLE IF NOT EXISTS JARDINDB.CombinaisonPlante(
     effet       VARCHAR(60)     NOT NULL,
-    plante1Id   Numeric(6,0)    NOT NULL,
-    plante2Id   Numeric(6,0)    NOT NULL,
+    plante1Id   VARCHAR(10)    NOT NULL,
+    plante2Id   VARCHAR(10)    NOT NULL,
 	jardinId    VARCHAR(10)     NOT NULL,
 	PRIMARY KEY (plante1Id, plante2Id),
 	FOREIGN KEY(plante1ID) REFERENCES JARDINDB.Plante(planteID),
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS JARDINDB.CombinaisonPlante(
 CREATE TABLE IF NOT EXISTS JARDINDB.Menace(
     nomMenace       VARCHAR(30)     NOT NULL,
     description    VARCHAR(120)   NOT NULL,
-	planteId       Numeric(6,0)   NOT NULL,
+	planteId       VARCHAR(10)   NOT NULL,
     FOREIGN KEY(planteId) REFERENCES JARDINDB.Plante(planteId),
 	PRIMARY KEY (nomMenace)
 );
