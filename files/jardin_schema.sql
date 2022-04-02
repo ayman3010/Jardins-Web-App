@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS JARDINDB.CombinaisonPlante(
     InfoPlante2   VARCHAR(30)    NOT NULL,
 	FOREIGN KEY(InfoPlante1) REFERENCES JARDINDB.PlanteInfo(nomLatin),
 	FOREIGN KEY(InfoPlante2) REFERENCES JARDINDB.PlanteInfo(nomLatin),
-    PRIMARY KEY (InfoPlante1, InfoPlante2)
+    PRIMARY KEY (InfoPlante1, InfoPlante2,effet)
 );
 
 
