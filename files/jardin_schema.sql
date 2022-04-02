@@ -1,4 +1,4 @@
-SET search_path = jardins;
+SET search_path = jardindb;
 
 DROP SCHEMA IF EXISTS JARDINDB CASCADE;
 CREATE SCHEMA JARDINDB;
@@ -19,24 +19,23 @@ CREATE TABLE IF NOT EXISTS JARDINDB.Jardin (
     PRIMARY KEY (jardinId)
 );
 
-CREATE TABLE IF NOT EXISTS JARDINDB.Parcelcle(
+CREATE TABLE IF NOT EXISTS JARDINDB.Parcelle(
 	coordonnees   COORDONNEES    NOT NULL,
     dimensions     DIMENSIONS    NOT NULL,
 	jardinId     VARCHAR(10)     NOT NULL,
-    FOREIGN KEY(jardinId) REFERENCES JARDINDB.Jardin(jardinId)  ON DELETE RESTRICT ON UPDATE CASCADE,
-	PRIMARY KEY (jardinId, coordonneesX, coordonneesY) 
+    FOREIGN KEY(jardinId) REFERENCES JARDINDB.Jardin(jardinId) ON DELETE RESTRICT ON UPDATE CASCADE,
+	PRIMARY KEY (jardinId, coordonnees) 
 );
 
 CREATE TABLE IF NOT EXISTS JARDINDB.Rang(
-    numero       NUMERIC(4,0)          NOT NULL,
-    cordonnesGeo       COORDONNEES_GEOGRAPHIQUE NOT NULL,
-    estJachere     Boolean              NOT NULL,
-    periodeJachere NUMERIC(3, 0),
-	coordonneesX   NUMERIC(4,0)     NOT NULL,
-    coordonneesY   NUMERIC(4,0)     NOT NULL,
-	jardinId     VARCHAR(10)      NOT NULL,
-    FOREIGN KEY(jardinId, coordonneesX, coordonneesY) REFERENCES JARDINDB.Parcelle(jardinId, coordonneesX, coordonneesY),
-	PRIMARY KEY (jardinId, coordonneesX, coordonneesY,numero)
+    numero         NUMERIC(4,0)             NOT NULL,
+    cordonnesGeo   COORDONNEES_GEOGRAPHIQUE NOT NULL,
+    estJachere     Boolean                  NOT NULL,
+    periodeJachere NUMERIC(3, 0),          
+	coordonnees    COORDONNEES              NOT NULL,
+	jardinId       VARCHAR(10)              NOT NULL,
+    FOREIGN KEY(jardinId, coordonnees) REFERENCES JARDINDB.Parcelle(jardinId, coordonnees) ON DELETE RESTRICT ON UPDATE CASCADE,
+	PRIMARY KEY (jardinId, coordonnees,numero)
 );
 
 CREATE TABLE IF NOT EXISTS JARDINDB.PlanteInfo(
@@ -59,7 +58,7 @@ CREATE TABLE IF NOT EXISTS JARDINDB.Variete(
     periodeRecolte       VARCHAR(30)     NOT NULL,
     commentaire          VARCHAR(60)     NOT NULL,
     typeSol              VARCHAR(60)     NOT NULL,
-    estBiologique        Boolean             NOT NULL,
+    estBiologique        Boolean         NOT NULL,
 	PRIMARY KEY (nomVariete)
 );
 
@@ -69,9 +68,9 @@ CREATE TABLE IF NOT EXISTS JARDINDB.Plante(
     nomLatin       VARCHAR(30)     NOT NULL,
 	jardinId       VARCHAR(10),
     nomVariete           VARCHAR(60)     NOT NULL,
-    FOREIGN KEY(nomLatin) REFERENCES JARDINDB.PlanteInfo(nomLatin),
-    FOREIGN KEY(jardinId) REFERENCES JARDINDB.Jardin(jardinId),
-    FOREIGN KEY(nomVariete) REFERENCES JARDINDB.Variete(nomVariete),
+    FOREIGN KEY(nomLatin) REFERENCES JARDINDB.PlanteInfo(nomLatin) ON DELETE RESTRICT ON UPDATE CASCADE,
+    FOREIGN KEY(jardinId) REFERENCES JARDINDB.Jardin(jardinId) ON DELETE SET NULL ,
+    FOREIGN KEY(nomVariete) REFERENCES JARDINDB.Variete(nomVariete) ON DELETE RESTRICT ON UPDATE CASCADE,
 	PRIMARY KEY (planteId)
 );
 
@@ -96,15 +95,15 @@ CREATE TABLE IF NOT EXISTS JARDINDB.Menace(
 CREATE TABLE IF NOT EXISTS JARDINDB.MenacePlante(
     nomLatin       VARCHAR(30)     NOT NULL,
     nomMenace       VARCHAR(30)     NOT NULL,
-    FOREIGN KEY(nomLatin) REFERENCES JARDINDB.PlanteInfo(nomLatin),
-    FOREIGN KEY(nomMenace) REFERENCES JARDINDB.Menace(nomMenace),
+    FOREIGN KEY(nomLatin) REFERENCES JARDINDB.PlanteInfo(nomLatin) ON DELETE RESTRICT ON UPDATE CASCADE,
+    FOREIGN KEY(nomMenace) REFERENCES JARDINDB.Menace(nomMenace) ON DELETE RESTRICT ON UPDATE CASCADE,
     PRIMARY KEY(nomLatin, nomMenace)
 );
 
 CREATE TABLE IF NOT EXISTS JARDINDB.Solution(
     solution       VARCHAR(120),
     nomMenace       VARCHAR(30)     NOT NULL,
-    FOREIGN KEY(nomMenace) REFERENCES JARDINDB.Menace(nomMenace),
+    FOREIGN KEY(nomMenace) REFERENCES JARDINDB.Menace(nomMenace) ON DELETE RESTRICT ON UPDATE CASCADE,
 	PRIMARY KEY (solution, nomMenace)
 );
 
@@ -120,19 +119,19 @@ CREATE TABLE IF NOT EXISTS JARDINDB.Semencier(
 CREATE TABLE IF NOT EXISTS JARDINDB.ProductionVariete(
     semencierID       VARCHAR(10)    NOT NULL,
     nomVariete        VARCHAR(30)    NOT NULL,
-	FOREIGN KEY(semencierID) REFERENCES JARDINDB.Semencier(semencierID),
-    FOREIGN KEY(nomVariete) REFERENCES JARDINDB.Variete(nomVariete),
+	FOREIGN KEY(semencierID) REFERENCES JARDINDB.Semencier(semencierID) ON DELETE SET NULL ON UPDATE CASCADE,
+    FOREIGN KEY(nomVariete) REFERENCES JARDINDB.Variete(nomVariete)ON DELETE SET NULL ON UPDATE CASCADE,
 	PRIMARY KEY (SemencierID, nomVariete)
 );
-
+--- TO_DO should we keep the not nulls given that association is 0 .. * , 0 .. *
 CREATE TABLE IF NOT EXISTS JARDINDB.RangVariete(
-    numero       NUMERIC(4,0)     NOT NULL,
-    coordonneesX   NUMERIC(4,0)     NOT NULL,
-    coordonneesY   NUMERIC(4,0)     NOT NULL,
-	jardinId     VARCHAR(10)      NOT NULL,
-    nomVariete           VARCHAR(60)     NOT NULL,
-    FOREIGN KEY(jardinId, coordonneesX, coordonneesY, numero) REFERENCES JARDINDB.Rang(jardinId, coordonneesX, coordonneesY, numero),
+    numero         NUMERIC(4,0)     NOT NULL,
+	coordonnees    COORDONNEES      NOT NULL,
+	jardinId       VARCHAR(10)      NOT NULL,
+    nomVariete     VARCHAR(60)      NOT NULL,
+	typeMiseEnplace VARCHAR(60),
+    FOREIGN KEY(jardinId, coordonnees, numero) REFERENCES JARDINDB.Rang(jardinId,coordonnees, numero),
     FOREIGN KEY(nomVariete) REFERENCES JARDINDB.Variete(nomVariete),
-    PRIMARY KEY(jardinId, coordonneesX, coordonneesY, numero, nomVariete)
+    PRIMARY KEY(jardinId, coordonnees, numero, nomVariete)
 )
 
