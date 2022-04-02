@@ -7,9 +7,9 @@ CREATE TABLE IF NOT EXISTS JARDINDB.Jardin (
     jardinId     VARCHAR(10)    NOT NULL,
     nom          VARCHAR(20)    NOT NULL,
     surface      NUMERIC(6,2)   NOT NULL,
-	estPotager   BIT            NOT NULL,
-	estOrnement  BIT            NOT NULL,
-	estVerger    BIT            NOT NULL,
+	estPotager   Boolean            NOT NULL,
+	estOrnement  Boolean            NOT NULL,
+	estVerger    Boolean            NOT NULL,
 	typeSol   VARCHAR(30),
 	hauteurMax NUMERIC(6,2),
     PRIMARY KEY (jardinId)
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS JARDINDB.Rang(
     numero       NUMERIC(4,0)     NOT NULL,
     latitude     NUMERIC(9,6)     NOT NULL,
     longitude    NUMERIC(9,6)     NOT NULL,
-    estJachere   BIT              NOT NULL,
+    estJachere   Boolean              NOT NULL,
     periodeJachere NUMERIC(3, 0),
 	coordonneesX   NUMERIC(4,0)     NOT NULL,
     coordonneesY   NUMERIC(4,0)     NOT NULL,
@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS JARDINDB.Variete(
     periodeRecolte       VARCHAR(30)     NOT NULL,
     commentaire          VARCHAR(60)     NOT NULL,
     typeSol              VARCHAR(60)     NOT NULL,
-    estBiologique        BIT             NOT NULL,
+    estBiologique        Boolean             NOT NULL,
 	PRIMARY KEY (nomVariete)
 );
 
