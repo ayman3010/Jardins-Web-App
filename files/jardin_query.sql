@@ -44,8 +44,9 @@ WHERE EXISTS(
 	    WHERE R.numero = RV.numero AND R.JardinId = RV.jardinId AND R.coordonnees = RV.coordonnees 
 		AND (RV.nomVariete = 'boskoop' OR RV.nomVariete = 'cythea' ) ));
 -- 5) (2 points) Lister les détails des parcelles qui ont la variété de plante A mais pas la variété de plante B
+
+
 -- 6) (2 points) Lister tous les rangs d’un jardin donné avec leurs variétés de plantes s’ils sont cultivés. Dans le cas contraire, affichez null.
-	
 SELECT R.numero,R.JardinId ,R.coordonnees,R.estJachere,R.periodeJachere, RV.nomVariete
 FROM Rang R LEFT JOIN RangVariete RV
 ON R.numero = RV.numero AND R.JardinId = RV.jardinId AND R.coordonnees = RV.coordonnees 
@@ -53,6 +54,9 @@ WHERE R.jardinId = 'JD01'
 ORDER BY numero, coordonnees;
 
 -- 7) (2 points) Quel est le nombre de jardins uniquement avec des semences biologiques ?
+
+
+
 -- 8) (2 points) Lister tous les jardins qui ont au moins un rang en jachère
 SELECT DISTINCT JardinId, nom,surface
 FROM JARDIN J JOIN PARCELLE P using (JardinId)
@@ -60,6 +64,8 @@ WHERE EXISTS (SELECT * from rang R
 			 WHERE P.jardinId = R.jardinId AND P.coordonnees = R.coordonnees AND R.estJachere = true )
 ORDER BY JardinId;
 -- 9) (2 points) Quelles sont les menaces auxquelles sont sensibles les plantes fougères ?
+
+
 -- 10) (2 points) Quelles sont les plantes de la variété tuberosum ?
 SELECT *
 FROM plante P 
