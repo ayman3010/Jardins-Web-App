@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS JARDINDB.PlanteInfo(
     nomLatin       VARCHAR(30)     NOT NULL,
     nom            VARCHAR(30)    NOT NULL,
     categorie      VARCHAR(30)    NOT NULL,
-    typePlante     VARCHAR(20)     NOT NULL,
+    typePlante     VARCHAR(30)     NOT NULL,
 	sousType       VARCHAR(40),
     PRIMARY KEY(nomLatin)
 );
