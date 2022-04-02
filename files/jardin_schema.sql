@@ -27,11 +27,13 @@ CREATE TABLE IF NOT EXISTS JARDINDB.Parcelle(
 	PRIMARY KEY (jardinId, coordonnees) 
 );
 
+-- TODO - we probably don't need "estJachere" since period jachere already
+---tells us if it on "jachere" depending on if it's a null value 
 CREATE TABLE IF NOT EXISTS JARDINDB.Rang(
     numero         NUMERIC(4,0)             NOT NULL,
     cordonnesGeo   COORDONNEES_GEOGRAPHIQUE NOT NULL,
     estJachere     Boolean                  NOT NULL,
-    periodeJachere NUMERIC(3, 0),          
+    periodeJachere NUMERIC(3, 0)            CONSTRAINT max_periode_jachere CHECK (periodeJachere < 1),          
 	coordonnees    COORDONNEES              NOT NULL,
 	jardinId       VARCHAR(10)              NOT NULL,
     FOREIGN KEY(jardinId, coordonnees) REFERENCES JARDINDB.Parcelle(jardinId, coordonnees) ON DELETE RESTRICT ON UPDATE CASCADE,
