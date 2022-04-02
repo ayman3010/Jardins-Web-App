@@ -153,40 +153,40 @@ VALUES (2, (110.234323, 643.123432), false, (0, 0), 'JD02');
 INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
 VALUES (0, (185.234323, 325.123432), false,  (1, 0), 'JD02');
 
--- INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
--- VALUES (1, (156.234323, 454.123432), 0,  (1, 0), 'JD02');
--- INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
--- VALUES (2, (110.234323, 343.123432), 0, (1, 0), 'JD02');
--- INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
--- VALUES (3, (134.234323, 345.123432), 0, (1, 0), 'JD02');
--- INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
--- VALUES (4, (115.234323, 345.123432), 0,  (1, 0), 'JD02');
--- INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
--- VALUES (5, (110.234323, 657.123432), 0,  (1, 0), 'JD02');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
+VALUES (1, (156.234323, 454.123432), false,  (1, 0), 'JD02');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
+VALUES (2, (110.234323, 343.123432), false, (1, 0), 'JD02');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
+VALUES (3, (134.234323, 345.123432), false, (1, 0), 'JD02');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
+VALUES (4, (115.234323, 345.123432), false,  (1, 0), 'JD02');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
+VALUES (5, (110.234323, 657.123432), false,  (1, 0), 'JD02');
 -- -- Parcelle 3
--- INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
--- VALUES (0, 115.234323, 334.123432, 0,  0, 1, 'JD02');
--- INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
--- VALUES (1, 134.234323, 454.123432, 0,  0, 1, 'JD02');
--- INSERT INTO JARDINDB.Rang (numero, latitude, longitude, estJachere,  coordonneesX, coordonneesY, jardinId)
--- VALUES (2, 645.234323, 435.123432, 0,  0, 1, 'JD02');
--- INSERT INTO JARDINDB.Rang (numero, latitude, longitude, estJachere,  coordonneesX, coordonneesY, jardinId)
--- VALUES (3, 876.234323, 456.123432, 0,  0, 1, 'JD02');
--- INSERT INTO JARDINDB.Rang (numero, latitude, longitude, estJachere,  coordonneesX, coordonneesY, jardinId)
--- VALUES (4, 326.234323, 454.123432, 0,  0, 1, 'JD02');
--- INSERT INTO JARDINDB.Rang (numero, latitude, longitude, estJachere,  coordonneesX, coordonneesY, jardinId)
--- VALUES (5, 567.234323, 234.123432, 0,  0, 1, 'JD02');
--- INSERT INTO JARDINDB.Rang (numero, latitude, longitude, estJachere,  coordonneesX, coordonneesY, jardinId)
--- VALUES (6, 345.234323, 342.123432, 0,  0, 1, 'JD02');
--- INSERT INTO JARDINDB.Rang (numero, latitude, longitude, estJachere,  coordonneesX, coordonneesY, jardinId)
--- VALUES (7, 156.234323, 645.123432, 0,  0, 1, 'JD02');
--- INSERT INTO JARDINDB.Rang (numero, latitude, longitude, estJachere,  coordonneesX, coordonneesY, jardinId)
--- VALUES (8, 176.234323, 453.123432, 0,  0, 1, 'JD02');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
+VALUES (0, (115.234323, 334.123432), false,  (0, 1), 'JD02');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
+VALUES (1, (134.234323, 454.123432), false,  (0, 1), 'JD02');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
+VALUES (2, (645.234323, 435.123432), false,  (0, 1) , 'JD02');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
+VALUES (3, (876.234323, 456.123432), false,  (0, 1), 'JD02');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
+VALUES (4, (326.234323, 454.123432), false,  (0, 1), 'JD02');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
+VALUES (5, (567.234323, 234.123432), false, ( 0, 1), 'JD02');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
+VALUES (6, (345.234323, 342.123432), false,  (0, 1), 'JD02');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
+VALUES (7, (156.234323, 645.123432), false,  (0, 1), 'JD02');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
+VALUES (8, (176.234323, 453.123432), false,  (0, 1), 'JD02');
 -- -- Parcelle 4 (2)
--- INSERT INTO JARDINDB.Rang (numero, latitude, longitude, estJachere,  coordonneesX, coordonneesY, jardinId)
--- VALUES (0, 233.234323, 654.123432, 0,  1, 1, 'JD02');
--- INSERT INTO JARDINDB.Rang (numero, latitude, longitude, estJachere,  coordonneesX, coordonneesY, jardinId)
--- VALUES (1, 643.234323, 234.123432, 0,  1, 1, 'JD02');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
+VALUES (0, (233.234323, 654.123432), false, (1, 1), 'JD02');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
+VALUES (1, (643.234323, 234.123432), false,  (1, 1), 'JD02');
 -- Jardin des neiges 
 -- Parcelle 1 
 INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
@@ -208,28 +208,28 @@ VALUES (3, (654.234323, 644.123432), true, 321, (2, 0), 'JD03');
 INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, periodeJachere, coordonnees, jardinId)
 VALUES (4, (534.234323, 233.123432), false, 123, (2, 0), 'JD03');
 -- -- Parcelle 4 
--- INSERT INTO JARDINDB.Rang (numero, latitude, longitude, estJachere,  coordonneesX, coordonneesY, jardinId)
--- VALUES (0, 567.234323, 567.123432, 0,  0, 1, 'JD03');
--- INSERT INTO JARDINDB.Rang (numero, latitude, longitude, estJachere,  coordonneesX, coordonneesY, jardinId)
--- VALUES (1, 765.234323, 363.123432, 0,  0, 1, 'JD03');
--- INSERT INTO JARDINDB.Rang (numero, latitude, longitude, estJachere,  coordonneesX, coordonneesY, jardinId)
--- VALUES (2, 465.234323, 756.123432, 0,  0, 1, 'JD03');
--- -- Parcelle 5
--- INSERT INTO JARDINDB.Rang (numero, latitude, longitude, estJachere,  coordonneesX, coordonneesY, jardinId)
--- VALUES (0, 354.234323, 543.123432, 0,  1, 1, 'JD03');
--- INSERT INTO JARDINDB.Rang (numero, latitude, longitude, estJachere, periodeJachere, coordonneesX, coordonneesY, jardinId)
--- VALUES (1, 586.234323, 132.123432, 1, 332, 1, 1, 'JD03');
--- INSERT INTO JARDINDB.Rang (numero, latitude, longitude, estJachere,  coordonneesX, coordonneesY, jardinId)
--- VALUES (2, 685.234323, 432.123432, 0,  1, 1, 'JD03');
--- INSERT INTO JARDINDB.Rang (numero, latitude, longitude, estJachere, periodeJachere, coordonneesX, coordonneesY, jardinId)
--- VALUES (3, 765.234323, 164.123432, 1, 123, 1, 1, 'JD03');
--- -- Parcelle 6 
--- INSERT INTO JARDINDB.Rang (numero, latitude, longitude, estJachere,  coordonneesX, coordonneesY, jardinId)
--- VALUES (0, 567.234323, 103.123432, 0,  2, 1, 'JD03');
--- INSERT INTO JARDINDB.Rang (numero, latitude, longitude, estJachere, periodeJachere, coordonneesX, coordonneesY, jardinId)
--- VALUES (1, 464.234323, 520.123432, 1, 364, 2, 1, 'JD03');
--- INSERT INTO JARDINDB.Rang (numero, latitude, longitude, estJachere,  coordonneesX, coordonneesY, jardinId)
--- VALUES (2, 678.234323, 230.123432, 0,  2, 1, 'JD03');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
+VALUES (0, (567.234323, 567.123432), false,  (0, 1), 'JD03');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
+VALUES (1, (765.234323, 363.123432), false,  (0, 1), 'JD03');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
+VALUES (2, (465.234323, 756.123432), false,  (0, 1), 'JD03');
+-- Parcelle 5
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
+VALUES (0, (354.234323, 543.123432) , false,  (1, 1), 'JD03');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, periodeJachere, coordonnees, jardinId)
+VALUES (1, (586.234323, 132.123432) , true, 332, (1, 1), 'JD03');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
+VALUES (2, (685.234323, 432.123432), false,  (1, 1), 'JD03');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, periodeJachere, coordonnees, jardinId)
+VALUES (3, (765.234323, 164.123432), true, 123, (1, 1), 'JD03');
+-- Parcelle 6 
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
+VALUES (0, (567.234323, 103.123432), false, ( 2, 1), 'JD03');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, periodeJachere, coordonnees, jardinId)
+VALUES (1, (464.234323, 520.123432), true, 364, (2, 1), 'JD03');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
+VALUES (2, (678.234323, 230.123432), false, ( 2, 1), 'JD03');
 
 -- Jardin Polytechnique 
 -- Parcelle 1 
@@ -248,33 +248,35 @@ VALUES (1, (675.234323, 531.123432), false,  (2, 0), 'JD04');
 INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
 VALUES (2, (525.234323, 345.123432), false,  (2, 0), 'JD04');
 
--- INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
--- VALUES (3, (253.234323, 654.123432), false,  2, 0, 'JD04');
--- INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
--- VALUES (4, (354.234323, 234.123432), false,  2, 0, 'JD04');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
+VALUES (3, (253.234323, 654.123432), false,  (2, 0), 'JD04');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
+VALUES (4, (354.234323, 234.123432), false,  (2, 0), 'JD04');
+
 -- -- Parcelle 4
 INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
 VALUES (0, (467.234323, 562.123432), false,  (0, 1), 'JD04');
--- INSERT INTO JARDINDB.Rang (numero, latitude, longitude, estJachere,  coordonneesX, coordonneesY, jardinId)
--- VALUES (1, 453.234323, 834.123432, 0,  0, 1, 'JD04');
--- INSERT INTO JARDINDB.Rang (numero, latitude, longitude, estJachere,  coordonneesX, coordonneesY, jardinId)
--- VALUES (2, 867.234323, 719.123432, 0,  0, 1, 'JD04');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
+VALUES (1, (453.234323, 834.123432), false,  (0, 1), 'JD04');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
+VALUES (2, (867.234323, 719.123432), false,  (0, 1), 'JD04');
+
 -- -- Parcelle 5
 INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
 VALUES (0, (765.234323, 987.123432), false,  (1, 1), 'JD04');
--- INSERT INTO JARDINDB.Rang (numero, latitude, longitude, estJachere,  coordonneesX, coordonneesY, jardinId)
--- VALUES (1, 345.234323, 435.123432, 0,  1, 1, 'JD04');
--- INSERT INTO JARDINDB.Rang (numero, latitude, longitude, estJachere,  coordonneesX, coordonneesY, jardinId)
--- VALUES (2, 756.234323, 532.123432, 0,  1, 1, 'JD04');
--- INSERT INTO JARDINDB.Rang (numero, latitude, longitude, estJachere,  coordonneesX, coordonneesY, jardinId)
--- VALUES (3, 645.234323, 234.123432, 0,  1, 1, 'JD04');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
+ VALUES (1, (345.234323, 435.123432), false,  (1, 1), 'JD04');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
+VALUES (2, (756.234323, 532.123432), false,  (1, 1), 'JD04');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
+VALUES (3, (645.234323, 234.123432), false,  (1, 1), 'JD04');
 -- -- Parcelle 6
 INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
 VALUES (0, (321.234323, 345.123432), false,  (2, 1), 'JD04');
--- INSERT INTO JARDINDB.Rang (numero, latitude, longitude, estJachere,  coordonneesX, coordonneesY, jardinId)
--- VALUES (1, 445.234323, 645.123432, 0,  2, 1, 'JD04');
--- INSERT INTO JARDINDB.Rang (numero, latitude, longitude, estJachere,  coordonneesX, coordonneesY, jardinId)
--- VALUES (2, 753.234323, 235.123432, 0,  2, 1, 'JD04');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
+VALUES (1, (445.234323, 645.123432), false,  (2, 1), 'JD04');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
+VALUES (2, (753.234323, 235.123432), false,  (2, 1), 'JD04');
 -- Jardin INF3710
 -- Parcelle 1
 INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
@@ -287,37 +289,37 @@ VALUES (0, (464.234323, 286.123432), true, 12, (1, 0), 'JD05');
 -- Parcelle 3
 INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
 VALUES (0, (464.234323, 245.123432), false,  (2, 0), 'JD05');
--- INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
--- VALUES (1, (653.234323, 215.123432), 0,  (2, 0), 'JD05');
--- INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
--- VALUES (2, (463.234323, 237.123432), 0,  (2, 0), 'JD05');
--- INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
--- VALUES (3, (433.234323, 356.123432), 0,  (2, 0), 'JD05');
--- INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
--- VALUES (4, (645.234323, 374.123432), 0,  (2, 0), 'JD05');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
+VALUES (1, (653.234323, 215.123432), false,  (2, 0), 'JD05');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
+VALUES (2, (463.234323, 237.123432), false,  (2, 0), 'JD05');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
+VALUES (3, (433.234323, 356.123432), false,  (2, 0), 'JD05');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
+VALUES (4, (645.234323, 374.123432), false,  (2, 0), 'JD05');
 -- -- Parcelle 4 
 INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
 VALUES (0, (453.234323, 856.123432), false,  (0, 1), 'JD05');
--- INSERT INTO JARDINDB.Rang (numero, latitude, longitude, estJachere, periodeJachere, coordonneesX, coordonneesY, jardinId)
--- VALUES (1, 344.234323, 245.123432, 1, 215, 0, 1, 'JD05');
--- INSERT INTO JARDINDB.Rang (numero, latitude, longitude, estJachere,  coordonneesX, coordonneesY, jardinId)
--- VALUES (2, 643.234323, 224.123432, 0,  0, 1, 'JD05');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, periodeJachere, coordonnees, jardinId)
+VALUES (1, (344.234323, 245.123432), true, 215, (0, 1), 'JD05');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
+VALUES (2, (643.234323, 224.123432), false, (0, 1), 'JD05');
 -- -- Parcelle 51
 INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, periodeJachere, coordonnees, jardinId)
 VALUES (0, (233.234323, 643.123432), true, 153,( 1, 1), 'JD05');
--- INSERT INTO JARDINDB.Rang (numero, latitude, longitude, estJachere, periodeJachere, coordonneesX, coordonneesY, jardinId)
--- VALUES (1, 342.234323, 354.123432, 1, 174, 1, 1, 'JD05');
--- INSERT INTO JARDINDB.Rang (numero, latitude, longitude, estJachere,  coordonneesX, coordonneesY, jardinId)
--- VALUES (2, 456.234323, 453.123432, 0,  1, 1, 'JD05');
--- INSERT INTO JARDINDB.Rang (numero, latitude, longitude, estJachere,  coordonneesX, coordonneesY, jardinId)
--- VALUES (3, 453.234323, 354.123432, 0,  1, 1, 'JD05');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, periodeJachere, coordonnees, jardinId)
+VALUES (1, (342.234323, 354.123432), true , 174, (1, 1), 'JD05');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
+VALUES (2, (456.234323, 453.123432), false,  (1, 1), 'JD05');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
+VALUES (3, (453.234323, 354.123432), false,  (1, 1), 'JD05');
 -- -- Parcelle 6
 INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
 VALUES (0, (353.234323, 435.123432), false, (2, 2), 'JD05');
--- INSERT INTO JARDINDB.Rang (numero, latitude, longitude, estJachere, periodeJachere, coordonneesX, coordonneesY, jardinId)
--- VALUES (1, 454.234323, 746.123432, 1, 34, 2, 1, 'JD05');
--- INSERT INTO JARDINDB.Rang (numero, latitude, longitude, estJachere, periodeJachere, coordonneesX, coordonneesY, jardinId)
--- VALUES (2, 454.234323, 645.123432, 1, 75, 2, 1, 'JD05');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, periodeJachere, coordonnees, jardinId)
+VALUES (1, (454.234323, 746.123432), true, 34, (2, 2), 'JD05');
+INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, periodeJachere, coordonnees, jardinId)
+VALUES (2, (454.234323, 645.123432), true, 75, (2, 2), 'JD05');
 
 
 
@@ -342,6 +344,23 @@ INSERT INTO JARDINDB.PlanteInfo (nomLatin, nom, categorie, typePlante, sousType)
 VALUES ('Cactoceae', 'Cactus', 'Arbre', 'Arbre a fleurs', 'fleur a epine');
 INSERT INTO JARDINDB.PlanteInfo (nomLatin, nom, categorie, typePlante, sousType)
 VALUES ('Trifolium', 'Trefle', 'Herbacee', 'Legumineuse', NULL);
+
+
+
+-- INSERT INTO JARDINDB.Variete (nomVariete,anneeMiseMarche  ,descriptionSemis,plantation  ,entretien ,recolte, periodeMisePlace ,periodeRecolte ,commentaire ,typeSol  ,estBiologique)
+-- VALUES ('tuberosum',2020,'bonne qualité','','','',true);
+
+-- INSERT INTO JARDINDB.Variete (nomVariete,anneeMiseMarche  ,descriptionSemis,plantation  ,entretien ,recolte, periodeMisePlace ,periodeRecolte ,commentaire ,typeSol  ,estBiologique)
+-- VALUES ('boskoop',2022,'','','','',false);
+
+-- INSERT INTO JARDINDB.Variete (nomVariete,anneeMiseMarche  ,descriptionSemis,plantation  ,entretien ,recolte, periodeMisePlace ,periodeRecolte ,commentaire ,typeSol  ,estBiologique)
+-- VALUES ('tuberosum',2019,'','','','','');
+
+-- INSERT INTO JARDINDB.Variete (nomVariete,anneeMiseMarche  ,descriptionSemis,plantation  ,entretien ,recolte, periodeMisePlace ,periodeRecolte ,commentaire ,typeSol  ,estBiologique)
+-- VALUES ('cyathea',2021,'','','','','');
+
+-- INSERT INTO JARDINDB.Variete (nomVariete,anneeMiseMarche  ,descriptionSemis,plantation  ,entretien ,recolte, periodeMisePlace ,periodeRecolte ,commentaire ,typeSol  ,estBiologique)
+-- VALUES ('basjoo',2017,'','','','','');
 
 
 -- Insertion des donnees pour la Table Plante
