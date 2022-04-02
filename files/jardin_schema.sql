@@ -7,6 +7,7 @@ CREATE TYPE DIMENSIONS AS (largeur NUMERIC(10, 2), longueur NUMERIC(10,2));
 CREATE TYPE COORDONNEES AS (coordonneesX NUMERIC(4,0), coordonneesY NUMERIC(4,0));
 CREATE TYPE COORDONNEES_GEOGRAPHIQUE AS (longitude NUMERIC(9,6), latitude NUMERIC(9,6));
 
+-- maybe a constraint to say that at least one boolean value is true
 CREATE TABLE IF NOT EXISTS JARDINDB.Jardin (
     jardinId     VARCHAR(10)    NOT NULL,
     nom          VARCHAR(20)    NOT NULL,
@@ -14,8 +15,8 @@ CREATE TABLE IF NOT EXISTS JARDINDB.Jardin (
 	estPotager   Boolean        NOT NULL,
 	estOrnement  Boolean        NOT NULL,
 	estVerger    Boolean        NOT NULL,
-	typeSol   VARCHAR(30),
-	hauteurMax NUMERIC(6,2),
+	typeSol      VARCHAR(30),
+	hauteurMax   NUMERIC(6,2),
     PRIMARY KEY (jardinId)
 );
 
@@ -33,7 +34,7 @@ CREATE TABLE IF NOT EXISTS JARDINDB.Rang(
     numero         NUMERIC(4,0)             NOT NULL,
     cordonnesGeo   COORDONNEES_GEOGRAPHIQUE NOT NULL,
     estJachere     Boolean                  NOT NULL,
-    periodeJachere NUMERIC(3, 0)            CONSTRAINT max_periode_jachere CHECK (periodeJachere < 1),          
+    periodeJachere NUMERIC(3, 0)            CONSTRAINT max_periode_jachere CHECK (periodeJachere < 365),          
 	coordonnees    COORDONNEES              NOT NULL,
 	jardinId       VARCHAR(10)              NOT NULL,
     FOREIGN KEY(jardinId, coordonnees) REFERENCES JARDINDB.Parcelle(jardinId, coordonnees) ON DELETE RESTRICT ON UPDATE CASCADE,
@@ -42,10 +43,10 @@ CREATE TABLE IF NOT EXISTS JARDINDB.Rang(
 
 CREATE TABLE IF NOT EXISTS JARDINDB.PlanteInfo(
     nomLatin       VARCHAR(30)     NOT NULL,
-    nom            NUMERIC(9,6)    NOT NULL,
-    categorie      NUMERIC(9,6)    NOT NULL,
+    nom            VARCHAR(30)    NOT NULL,
+    categorie      VARCHAR(30)    NOT NULL,
     typePlante     VARCHAR(20)     NOT NULL,
-	sousType       NUMERIC(4,0),
+	sousType       VARCHAR(40),
     PRIMARY KEY(nomLatin)
 );
 
@@ -69,7 +70,7 @@ CREATE TABLE IF NOT EXISTS JARDINDB.Plante(
 	planteId       VARCHAR(10)    NOT NULL,
     nomLatin       VARCHAR(30)     NOT NULL,
 	jardinId       VARCHAR(10),
-    nomVariete           VARCHAR(60)     NOT NULL,
+    nomVariete     VARCHAR(60)     NOT NULL,
     FOREIGN KEY(nomLatin) REFERENCES JARDINDB.PlanteInfo(nomLatin) ON DELETE RESTRICT ON UPDATE CASCADE,
     FOREIGN KEY(jardinId) REFERENCES JARDINDB.Jardin(jardinId) ON DELETE SET NULL ,
     FOREIGN KEY(nomVariete) REFERENCES JARDINDB.Variete(nomVariete) ON DELETE RESTRICT ON UPDATE CASCADE,
