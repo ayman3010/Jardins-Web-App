@@ -38,6 +38,30 @@ CREATE TABLE IF NOT EXISTS JARDINDB.Rang(
 	PRIMARY KEY (jardinId, coordonneesX, coordonneesY,numero)
 );
 
+CREATE TABLE IF NOT EXISTS JARDINDB.PlanteInfo(
+    nomLatin       VARCHAR(30)     NOT NULL,
+    nom            NUMERIC(9,6)    NOT NULL,
+    categorie      NUMERIC(9,6)    NOT NULL,
+    typePlante     VARCHAR(20)     NOT NULL,
+	sousType       NUMERIC(4,0),
+    PRIMARY KEY(nomLatin)
+);
+
+CREATE TABLE IF NOT EXISTS JARDINDB.Variete(
+    nomVariete           VARCHAR(60)     NOT NULL,
+    anneeMiseMarche      NUMERIC(4,0)    NOT NULL,
+    descriptionSemis     VARCHAR(120)    NOT NULL,
+	plantation           VARCHAR(60)     NOT NULL,
+    entretien            VARCHAR(30)     NOT NULL,
+    recolte              VARCHAR(60)     NOT NULL,
+	periodeMisePlace     VARCHAR(60)     NOT NULL,
+    periodeRecolte       VARCHAR(30)     NOT NULL,
+    commentaire          VARCHAR(60)     NOT NULL,
+    typeSol              VARCHAR(60)     NOT NULL,
+    estBiologique        BIT             NOT NULL,
+	PRIMARY KEY (nomVariete)
+);
+
 
 CREATE TABLE IF NOT EXISTS JARDINDB.Plante(
 	planteId       VARCHAR(10)    NOT NULL,
@@ -50,14 +74,7 @@ CREATE TABLE IF NOT EXISTS JARDINDB.Plante(
 	PRIMARY KEY (planteId)
 );
 
-CREATE TABLE IF NOT EXISTS JARDINDB.PlanteInfo(
-    nomLatin       VARCHAR(30)     NOT NULL,
-    nom            NUMERIC(9,6)    NOT NULL,
-    categorie      NUMERIC(9,6)    NOT NULL,
-    typePlante     VARCHAR(20)     NOT NULL,
-	sousType       NUMERIC(4,0),
-    PRIMARY KEY(nomLatin)
-)
+
 
 CREATE TABLE IF NOT EXISTS JARDINDB.CombinaisonPlante(
     effet       VARCHAR(60)     NOT NULL,
@@ -81,7 +98,7 @@ CREATE TABLE IF NOT EXISTS JARDINDB.MenacePlante(
     FOREIGN KEY(nomLatin) REFERENCES JARDINDB.PlanteInfo(nomLatin),
     FOREIGN KEY(nomMenace) REFERENCES JARDINDB.Menace(nomMenace),
     PRIMARY KEY(nomLatin, nomMenace)
-)
+);
 
 CREATE TABLE IF NOT EXISTS JARDINDB.Solution(
     solution       VARCHAR(120),
@@ -90,20 +107,7 @@ CREATE TABLE IF NOT EXISTS JARDINDB.Solution(
 	PRIMARY KEY (solution, nomMenace)
 );
 
-CREATE TABLE IF NOT EXISTS JARDINDB.Variete(
-    nomVariete           VARCHAR(60)     NOT NULL,
-    anneeMiseMarche      NUMERIC(4,0)    NOT NULL,
-    descriptionSemis     VARCHAR(120)    NOT NULL,
-	plantation           VARCHAR(60)     NOT NULL,
-    entretien            VARCHAR(30)     NOT NULL,
-    recolte              VARCHAR(60)     NOT NULL,
-	periodeMisePlace     VARCHAR(60)     NOT NULL,
-    periodeRecolte       VARCHAR(30)     NOT NULL,
-    commentaire          VARCHAR(60)     NOT NULL,
-    typeSol              VARCHAR(60)     NOT NULL,
-    estBiologique        BIT             NOT NULL,
-	PRIMARY KEY (nomVariete)
-);
+
 
 CREATE TABLE IF NOT EXISTS JARDINDB.Semencier(
     semencierID       VARCHAR(10)    NOT NULL,
