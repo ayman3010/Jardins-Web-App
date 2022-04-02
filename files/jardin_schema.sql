@@ -3,33 +3,34 @@ SET search_path = jardins;
 DROP SCHEMA IF EXISTS JARDINDB CASCADE;
 CREATE SCHEMA JARDINDB;
 
+CREATE TYPE DIMENSIONS AS (largeur NUMERIC(10, 2), longueur NUMERIC(10,2));
+CREATE TYPE COORDONNEES AS (coordonneesX NUMERIC(4,0), coordonneesY NUMERIC(4,0));
+CREATE TYPE COORDONNEES_GEOGRAPHIQUE AS (longitude NUMERIC(9,6), latitude NUMERIC(9,6));
+
 CREATE TABLE IF NOT EXISTS JARDINDB.Jardin (
     jardinId     VARCHAR(10)    NOT NULL,
     nom          VARCHAR(20)    NOT NULL,
     surface      NUMERIC(6,2)   NOT NULL,
-	estPotager   Boolean            NOT NULL,
-	estOrnement  Boolean            NOT NULL,
-	estVerger    Boolean            NOT NULL,
+	estPotager   Boolean        NOT NULL,
+	estOrnement  Boolean        NOT NULL,
+	estVerger    Boolean        NOT NULL,
 	typeSol   VARCHAR(30),
 	hauteurMax NUMERIC(6,2),
     PRIMARY KEY (jardinId)
 );
 
-CREATE TABLE IF NOT EXISTS JARDINDB.Parcelle(
-    coordonneesX   NUMERIC(4,0)    NOT NULL,
-    coordonneesY   NUMERIC(4,0)    NOT NULL,
-    longueur     NUMERIC(8,3)    NOT NULL,
-    largeur      NUMERIC(8,3)    NOT NULL,
+CREATE TABLE IF NOT EXISTS JARDINDB.Parcelcle(
+	coordonnees   COORDONNEES    NOT NULL,
+    dimensions     DIMENSIONS    NOT NULL,
 	jardinId     VARCHAR(10)     NOT NULL,
-    FOREIGN KEY(jardinId) REFERENCES JARDINDB.Jardin(jardinId),
-	PRIMARY KEY (jardinId, coordonneesX, coordonneesY)
+    FOREIGN KEY(jardinId) REFERENCES JARDINDB.Jardin(jardinId)  ON DELETE RESTRICT ON UPDATE CASCADE,
+	PRIMARY KEY (jardinId, coordonneesX, coordonneesY) 
 );
 
 CREATE TABLE IF NOT EXISTS JARDINDB.Rang(
-    numero       NUMERIC(4,0)     NOT NULL,
-    latitude     NUMERIC(9,6)     NOT NULL,
-    longitude    NUMERIC(9,6)     NOT NULL,
-    estJachere   Boolean              NOT NULL,
+    numero       NUMERIC(4,0)          NOT NULL,
+    cordonnesGeo       COORDONNEES_GEOGRAPHIQUE NOT NULL,
+    estJachere     Boolean              NOT NULL,
     periodeJachere NUMERIC(3, 0),
 	coordonneesX   NUMERIC(4,0)     NOT NULL,
     coordonneesY   NUMERIC(4,0)     NOT NULL,
