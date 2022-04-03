@@ -13,12 +13,13 @@ RETURN NEW;
 END;
 $historique_variete$ LANGUAGE plpgsql;
 
-CREATE TRIGGER historique_variete 
+
+CREATE OR REPLACE TRIGGER historique_variete 
 AFTER INSERT ON JARDINDB.RangVariete
 FOR EACH ROW EXECUTE PROCEDURE sauvegarder_historique_variete();
 
 INSERT INTO JARDINDB.RangVariete ( numero, coordonnees, jardinId, nomVariete, typeMiseEnplace )
-VALUES(0, (0,0),'JD04','boskoop','');
+VALUES(0, (0,0),'JD05','boskook','');
 
 SELECT * FROM HistoriqueVariete;
 
