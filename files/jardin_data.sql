@@ -102,7 +102,7 @@ VALUES ((1, 1):: COORDONNEES, (143.000, 343.000):: DIMENSIONS, 'JD05');
 
 
 INSERT INTO JARDINDB.Parcelle (coordonnees, dimensions, jardinId)
-VALUES ((2, 2):: COORDONNEES, (453.000, 164.000):: DIMENSIONS, 'JD05');
+VALUES ((2, 1):: COORDONNEES, (453.000, 164.000):: DIMENSIONS, 'JD05');
 
 
 -- Insertion des donnees pour la Table Rang
@@ -152,7 +152,6 @@ VALUES (2, (110.234323, 643.123432), false, (0, 0), 'JD02');
 -- Parcelle 2 
 INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
 VALUES (0, (185.234323, 325.123432), false,  (1, 0), 'JD02');
-
 INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
 VALUES (1, (156.234323, 454.123432), false,  (1, 0), 'JD02');
 INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
@@ -247,12 +246,10 @@ INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardin
 VALUES (1, (675.234323, 531.123432), false,  (2, 0), 'JD04');
 INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
 VALUES (2, (525.234323, 345.123432), false,  (2, 0), 'JD04');
-
 INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
 VALUES (3, (253.234323, 654.123432), false,  (2, 0), 'JD04');
 INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
 VALUES (4, (354.234323, 234.123432), false,  (2, 0), 'JD04');
-
 -- -- Parcelle 4
 INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
 VALUES (0, (467.234323, 562.123432), false,  (0, 1), 'JD04');
@@ -260,7 +257,6 @@ INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardin
 VALUES (1, (453.234323, 834.123432), false,  (0, 1), 'JD04');
 INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
 VALUES (2, (867.234323, 719.123432), false,  (0, 1), 'JD04');
-
 -- -- Parcelle 5
 INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
 VALUES (0, (765.234323, 987.123432), false,  (1, 1), 'JD04');
@@ -304,7 +300,7 @@ INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, periodeJachere, coo
 VALUES (1, (344.234323, 245.123432), true, 215, (0, 1), 'JD05');
 INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
 VALUES (2, (643.234323, 224.123432), false, (0, 1), 'JD05');
--- -- Parcelle 51
+-- -- Parcelle 5
 INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, periodeJachere, coordonnees, jardinId)
 VALUES (0, (233.234323, 643.123432), true, 153,( 1, 1), 'JD05');
 INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, periodeJachere, coordonnees, jardinId)
@@ -315,13 +311,11 @@ INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardin
 VALUES (3, (453.234323, 354.123432), false,  (1, 1), 'JD05');
 -- -- Parcelle 6
 INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, coordonnees, jardinId)
-VALUES (0, (353.234323, 435.123432), false, (2, 2), 'JD05');
+VALUES (0, (353.234323, 435.123432), false, (2, 1), 'JD05');
 INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, periodeJachere, coordonnees, jardinId)
-VALUES (1, (454.234323, 746.123432), true, 34, (2, 2), 'JD05');
+VALUES (1, (454.234323, 746.123432), true, 34, (2, 1), 'JD05');
 INSERT INTO JARDINDB.Rang (numero, cordonnesGeo, estJachere, periodeJachere, coordonnees, jardinId)
-VALUES (2, (454.234323, 645.123432), true, 75, (2, 2), 'JD05');
-
-
+VALUES (2, (454.234323, 645.123432), true, 75, (2, 1), 'JD05');
 
 -- Insertion des donnees pour la Table PlanteInfo
 INSERT INTO JARDINDB.PlanteInfo (nomLatin, nom, categorie, typePlante, sousType)
@@ -398,23 +392,23 @@ VALUES ('00071', 'Filicophytes', 'JD01', 'cyathea');
 INSERT INTO JARDINDB.Plante (planteId, nomLatin, jardinId, nomVariete)
 VALUES ('00076', 'Filicophytes', 'JD01', 'cyathea');
 INSERT INTO JARDINDB.Plante (planteId, nomLatin, jardinId, nomVariete)
-VALUES ('00081', 'Orchidaceae', 'JD01', 'Phalaenopsis');
+VALUES ('00081', 'Orchidaceae', 'JD01', 'phalaenopsis');
 INSERT INTO JARDINDB.Plante (planteId, nomLatin, jardinId, nomVariete)
-VALUES ('00086', 'Orchidaceae', 'JD01', 'Phalaenopsis');
+VALUES ('00086', 'Orchidaceae', 'JD01', 'phalaenopsis');
 INSERT INTO JARDINDB.Plante (planteId, nomLatin, jardinId, nomVariete)
-VALUES ('00091', 'Orchidaceae', 'JD01', 'Phalaenopsis');
+VALUES ('00091', 'Orchidaceae', 'JD01', 'phalaenopsis');
 INSERT INTO JARDINDB.Plante (planteId, nomLatin, jardinId, nomVariete)
-VALUES ('00096', 'Orchidaceae', 'JD01', 'Phalaenopsis');
+VALUES ('00096', 'Orchidaceae', 'JD01', 'phalaenopsis');
 INSERT INTO JARDINDB.Plante (planteId, nomLatin, jardinId, nomVariete)
-VALUES ('00101', 'Orchidaceae', 'JD01', 'Phalaenopsis');
+VALUES ('00101', 'Orchidaceae', 'JD01', 'phalaenopsis');
 INSERT INTO JARDINDB.Plante (planteId, nomLatin, jardinId, nomVariete)
-VALUES ('00106', 'Orchidaceae', 'JD01', 'Phalaenopsis');
+VALUES ('00106', 'Orchidaceae', 'JD01', 'phalaenopsis');
 INSERT INTO JARDINDB.Plante (planteId, nomLatin, jardinId, nomVariete)
-VALUES ('00111', 'Orchidaceae', 'JD01', 'Phalaenopsis');
+VALUES ('00111', 'Orchidaceae', 'JD01', 'phalaenopsis');
 INSERT INTO JARDINDB.Plante (planteId, nomLatin, jardinId, nomVariete)
-VALUES ('00116', 'Orchidaceae', 'JD01', 'Phalaenopsis');
+VALUES ('00116', 'Orchidaceae', 'JD01', 'phalaenopsis');
 INSERT INTO JARDINDB.Plante (planteId, nomLatin, jardinId, nomVariete)
-VALUES ('00121', 'Orchidaceae', 'JD01', 'Phalaenopsis');
+VALUES ('00121', 'Orchidaceae', 'JD01', 'phalaenopsis');
 -- Jardin Principal
 INSERT INTO JARDINDB.Plante (planteId, nomLatin, jardinId, nomVariete)
 VALUES ('00002', 'Malus', 'JD02', 'boskoop');
@@ -557,19 +551,19 @@ VALUES ('00079', 'Boletus', 'JD04', 'edulis');
 INSERT INTO JARDINDB.Plante (planteId, nomLatin, jardinId, nomVariete)
 VALUES ('00084', 'Boletus', 'JD04', 'edulis');
 INSERT INTO JARDINDB.Plante (planteId, nomLatin, jardinId, nomVariete)
-VALUES ('00089', 'Orchidaceae', 'JD04', 'Phalaenopsis');
+VALUES ('00089', 'Orchidaceae', 'JD04', 'phalaenopsis');
 INSERT INTO JARDINDB.Plante (planteId, nomLatin, jardinId, nomVariete)
-VALUES ('00094', 'Orchidaceae', 'JD04', 'Phalaenopsis');
+VALUES ('00094', 'Orchidaceae', 'JD04', 'phalaenopsis');
 INSERT INTO JARDINDB.Plante (planteId, nomLatin, jardinId, nomVariete)
-VALUES ('00099', 'Orchidaceae', 'JD04', 'Phalaenopsis');
+VALUES ('00099', 'Orchidaceae', 'JD04', 'phalaenopsis');
 INSERT INTO JARDINDB.Plante (planteId, nomLatin, jardinId, nomVariete)
-VALUES ('00104', 'Orchidaceae', 'JD04', 'Phalaenopsis');
+VALUES ('00104', 'Orchidaceae', 'JD04', 'phalaenopsis');
 INSERT INTO JARDINDB.Plante (planteId, nomLatin, jardinId, nomVariete)
-VALUES ('00109', 'Orchidaceae', 'JD04', 'Phalaenopsis');
+VALUES ('00109', 'Orchidaceae', 'JD04', 'phalaenopsis');
 INSERT INTO JARDINDB.Plante (planteId, nomLatin, jardinId, nomVariete)
-VALUES ('00114', 'Orchidaceae', 'JD04', 'Phalaenopsis');
+VALUES ('00114', 'Orchidaceae', 'JD04', 'phalaenopsis');
 INSERT INTO JARDINDB.Plante (planteId, nomLatin, jardinId, nomVariete)
-VALUES ('00119', 'Orchidaceae', 'JD04', 'Phalaenopsis');
+VALUES ('00119', 'Orchidaceae', 'JD04', 'phalaenopsis');
 INSERT INTO JARDINDB.Plante (planteId, nomLatin, jardinId, nomVariete)
 VALUES ('00124', 'Trifolium', 'JD04', 'alexandrie');
 INSERT INTO JARDINDB.Plante (planteId, nomLatin, jardinId, nomVariete)
@@ -727,9 +721,263 @@ VALUES ('Produit toxique pour les oiseaux', 'Attaque doiseaux');
 
 
 --Insertion de donnees pour la Table Variete
+INSERT INTO JARDINDB.Variete (nomVariete, anneeMiseMarche, descriptionSemis, plantation, entretien, recolte, periodeMisePlace, typeSol, estBiologique)
+VALUES ('boskoop', 2002, 'semis à graine dans le sols', 'plantation en rang', 'recole unitaire une fois les fruits mûres', 'argileux', 0);
+INSERT INTO JARDINDB.Variete (nomVariete, anneeMiseMarche, descriptionSemis, plantation, entretien, recolte, periodeMisePlace, typeSol, estBiologique)
+VALUES ('tuberosum', 2012, 'semis à volée', 'plantation en groupe', 'recolte unitaire une fois la plante arrivée à maturation', 'limoneux', 0);
+INSERT INTO JARDINDB.Variete (nomVariete, anneeMiseMarche, descriptionSemis, plantation, entretien, recolte, periodeMisePlace, typeSol, estBiologique)
+VALUES ('innocencia', 2022, 'semis pensée', 'plantation en rang', 'recole groupé par coupe', 'humifère', 1);
+INSERT INTO JARDINDB.Variete (nomVariete, anneeMiseMarche, descriptionSemis, plantation, entretien, recolte, periodeMisePlace, typeSol, estBiologique)
+VALUES ('basjoo', 2020, 'semis à volée', 'plantation en rang', 'recole unitaire une fois les fruits mûres', 'argileux', 0);
+INSERT INTO JARDINDB.Variete (nomVariete, anneeMiseMarche, descriptionSemis, plantation, entretien, recolte, periodeMisePlace, typeSol, estBiologique)
+VALUES ('sunrich', 1990, 'semis à graine dans le sols', 'plantation en rang', 'recole unitaire une fois les fruits mûres', 'argileux', 1);
+INSERT INTO JARDINDB.Variete (nomVariete, anneeMiseMarche, descriptionSemis, plantation, entretien, recolte, periodeMisePlace, typeSol, estBiologique)
+VALUES ('cyathea', 2004, 'semis à volée', 'plantation en groupe', 'recole unitaire une fois les fruits mûres', 'argileux', 0);
+INSERT INTO JARDINDB.Variete (nomVariete, anneeMiseMarche, descriptionSemis, plantation, entretien, recolte, periodeMisePlace, typeSol, estBiologique)
+VALUES ('edulis', 2002, 'semis pensée dans le sols', 'plantation en rang', 'recole groupé par coupe', 'limoneux', 1);
+INSERT INTO JARDINDB.Variete (nomVariete, anneeMiseMarche, descriptionSemis, plantation, entretien, recolte, periodeMisePlace, typeSol, estBiologique)
+VALUES ('burlate', 2005, 'semis à graine dans le sols', 'plantation en groupe', 'recolte unitaire une fois la plante arrivée à maturation', 'limoneux', 0);
+INSERT INTO JARDINDB.Variete (nomVariete, anneeMiseMarche, descriptionSemis, plantation, entretien, recolte, periodeMisePlace, typeSol, estBiologique)
+VALUES ('phalaenopsis', 2007, 'semis pensée dans le sols', 'plantation en rang', 'recole groupé par coupe', 'humifère', 1);
+INSERT INTO JARDINDB.Variete (nomVariete, anneeMiseMarche, descriptionSemis, plantation, entretien, recolte, periodeMisePlace, typeSol, estBiologique)
+VALUES ('opuntia', 2007, 'semis à graine dans le sols', 'plantation en groupe', 'recole unitaire une fois les fruits mûres', 'limoneux', 1);
+INSERT INTO JARDINDB.Variete (nomVariete, anneeMiseMarche, descriptionSemis, plantation, entretien, recolte, periodeMisePlace, typeSol, estBiologique)
+VALUES ('alexandrie', 2018, 'semis pensée dans le sols', 'plantation en rang', 'recole groupé par coupe', 'limoneux', 1);
 
 --Insertion de donnees pour la Table Semancier
+INSERT INTO JARDINDB.Semancier (semencierID, nom, siteWeb)
+VALUES ('SE1', 'LASSONDE', 'htttp://LASSONDE-SEMANCIER.com');
+INSERT INTO JARDINDB.Semancier (semencierID, nom, siteWeb)
+VALUES ('SE2', 'MICHEL', 'htttp://MICHEL-SEMANCIER.com');
+INSERT INTO JARDINDB.Semancier (semencierID, nom, siteWeb)
+VALUES ('SE3', 'PATRICK', 'htttp://PATRICK-SEMANCIER.com');
+INSERT INTO JARDINDB.Semancier (semencierID, nom, siteWeb)
+VALUES ('SE4', 'PAUL', 'htttp://PAUL-SEMANCIER.com');
+INSERT INTO JARDINDB.Semancier (semencierID, nom, siteWeb)
+VALUES ('SE5', 'JEAN', 'htttp://JEAN-SEMANCIER.com');
+INSERT INTO JARDINDB.Semancier (semencierID, nom, siteWeb)
+VALUES ('SE6', 'LILY', 'htttp://LILY-SEMANCIER.com');
+INSERT INTO JARDINDB.Semancier (semencierID, nom, siteWeb)
+VALUES ('SE7', 'CATHERINE', 'htttp://CATHERINE-SEMANCIER.com');
+INSERT INTO JARDINDB.Semancier (semencierID, nom, siteWeb)
+VALUES ('SE8', 'JEREMY', 'htttp://JEREMY-SEMANCIER.com');
+INSERT INTO JARDINDB.Semancier (semencierID, nom, siteWeb)
+VALUES ('SE9', 'MARIE', 'htttp://MARIE-SEMANCIER.com');
+INSERT INTO JARDINDB.Semancier (semencierID, nom, siteWeb)
+VALUES ('SE10', 'BENJAMIN', 'htttp://BENJAMIN-SEMANCIER.com');
+INSERT INTO JARDINDB.Semancier (semencierID, nom, siteWeb)
+VALUES ('SE11', 'WILL', 'htttp://WILL-SEMANCIER.com');
+INSERT INTO JARDINDB.Semancier (semencierID, nom, siteWeb)
+VALUES ('SE12', 'XAVIER', 'htttp://XAVIER-SEMANCIER.com');
+INSERT INTO JARDINDB.Semancier (semencierID, nom, siteWeb)
+VALUES ('SE13', 'MANON', 'htttp://MANON-SEMANCIER.com');
+INSERT INTO JARDINDB.Semancier (semencierID, nom, siteWeb)
+VALUES ('SE14', 'JORDAN', 'htttp://JORDAN-SEMANCIER.com');
+INSERT INTO JARDINDB.Semancier (semencierID, nom, siteWeb)
+VALUES ('SE15', 'HANNA', 'htttp://HANNA-SEMANCIER.com');
 
 --Insertion de donnees pour la Table ProductionVariete
+INSERT INTO JARDINDB.ProductionVariete (semencierID, nomVariete)
+VALUES ('SE1', 'boskoop');
+INSERT INTO JARDINDB.ProductionVariete (semencierID, nomVariete)
+VALUES ('SE2', 'tuberosum');
+INSERT INTO JARDINDB.ProductionVariete (semencierID, nomVariete)
+VALUES ('SE3', 'tuberosum');
+INSERT INTO JARDINDB.ProductionVariete (semencierID, nomVariete)
+VALUES ('SE4', 'tuberosum');
+INSERT INTO JARDINDB.ProductionVariete (semencierID, nomVariete)
+VALUES ('SE5', 'innocencia');
+INSERT INTO JARDINDB.ProductionVariete (semencierID, nomVariete)
+VALUES ('SE6', 'innocencia');
+INSERT INTO JARDINDB.ProductionVariete (semencierID, nomVariete)
+VALUES ('SE7', 'innocencia');
+INSERT INTO JARDINDB.ProductionVariete (semencierID, nomVariete)
+VALUES ('SE8', 'basjoo');
+INSERT INTO JARDINDB.ProductionVariete (semencierID, nomVariete)
+VALUES ('SE9', 'basjoo');
+INSERT INTO JARDINDB.ProductionVariete (semencierID, nomVariete)
+VALUES ('SE9', 'sunrich');
+INSERT INTO JARDINDB.ProductionVariete (semencierID, nomVariete)
+VALUES ('SE10', 'cyathea');
+INSERT INTO JARDINDB.ProductionVariete (semencierID, nomVariete)
+VALUES ('SE10', 'burlate');
+INSERT INTO JARDINDB.ProductionVariete (semencierID, nomVariete)
+VALUES ('SE10', 'phalaenopsis');
+INSERT INTO JARDINDB.ProductionVariete (semencierID, nomVariete)
+VALUES ('SE2', 'opuntia');
+INSERT INTO JARDINDB.ProductionVariete (semencierID, nomVariete)
+VALUES ('SE2', 'alexandrie');
 
 --Insertion de donnees pour la Table RangVariete
+-- JD01
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (0, (0, 0), 'JD01', 'innocencia', 'plant');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (2, (0, 0), 'JD01', 'tuberosum', 'graines');
+
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (0, (1, 0), 'JD01', 'cyathea', 'plant');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (2, (1, 0), 'JD01', 'tuberosum', 'graines');
+
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (0, (0, 1), 'JD01', 'innocencia', 'plant');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (2, (0, 1), 'JD01', 'burlate', 'semis');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (3, (0, 1), 'JD01', 'cyathea', 'graines');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (4, (0, 1), 'JD01', 'boskoop', 'plant');
+
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (0, (1, 1), 'JD01', 'innocencia', 'semis');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (2, (1, 1), 'JD01', 'burlate', 'plant');
+-- JD02
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (0, (0, 0), 'JD02', 'innocencia', 'graines');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (1, (0, 0), 'JD02', 'opuntia', 'graines');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (2, (0, 0), 'JD02', 'innocencia', 'plant');
+
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (0, (1, 0), 'JD02', 'innocencia', 'semis');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (1, (1, 0), 'JD02', 'boskoop', 'semis');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (2, (1, 0), 'JD02', 'boskoop', 'semis');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (3, (1, 0), 'JD02', 'innocencia', 'graines');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (4, (1, 0), 'JD02', 'boskoop', 'plant');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (5, (1, 0), 'JD02', 'boskoop', 'plant');
+
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (0, (0, 1), 'JD02', 'opuntia', 'plant');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (1, (0, 1), 'JD02', 'opuntia', 'greffe');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (2, (0, 1), 'JD02', 'boskoop', 'graines');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (3, (0, 1), 'JD02', 'boskoop', 'plant');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (4, (0, 1), 'JD02', 'innocencia', 'graines');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (5, (0, 1), 'JD02', 'innocencia', 'plant');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (6, (0, 1), 'JD02', 'boskoop', 'graines');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (7, (0, 1), 'JD02', 'innocencia', 'greffe');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (8, (0, 1), 'JD02', 'opuntia', 'greffe');
+
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (0, (1, 1), 'JD02', 'boskoop', 'plant');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (1, (1, 1), 'JD02', 'boskoop', 'graines');
+
+-- JD03
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (0, (0, 0), 'JD03', 'burlate', 'semis');
+
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (0, (1, 0), 'JD03', 'basjoo', 'plant');
+
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (0, (2, 0), 'JD03', 'boskoop', 'plant');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (2, (2, 0), 'JD03', 'boskoop', 'graines');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (4, (2, 0), 'JD03', 'burlate', 'semis');
+
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (0, (0, 1), 'JD03', 'boskoop', 'greffe');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (1, (0, 1), 'JD03', 'basjoo', 'plant');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (2, (0, 1), 'JD03', 'boskoop', 'greffe');
+
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (0, (1, 1), 'JD03', 'burlate', 'plant');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (2, (1, 1), 'JD03', 'burlate', 'plant');
+
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (0, (2, 1), 'JD03', 'boskoop', 'plant');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (2, (2, 1), 'JD03', 'boskoop', 'greffe');
+
+-- JD04
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (0, (0, 0), 'JD04', 'tuberosum', 'graines');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (1, (0, 0), 'JD04', 'sunrich', 'plant');
+
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (0, (1, 0), 'JD04', 'alexandrie', 'plant');
+
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (0, (2, 0), 'JD04', 'tuberosum', 'greffe');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (1, (2, 0), 'JD04', 'phalaenopsis', 'semis');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (2, (2, 0), 'JD04', 'sunrich', 'graines');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (3, (2, 0), 'JD04', 'basjoo', 'plant');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (4, (2, 0), 'JD04', 'boskoop', 'greffe');
+
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (0, (0, 1), 'JD04', 'basjoo', 'plant');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (1, (0, 1), 'JD04', 'boskoop', 'plant');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (2, (0, 1), 'JD04', 'alexandrie', 'semis');
+
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (0, (1, 1), 'JD04', 'boskoop', 'semis');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (1, (1, 1), 'JD04', 'sunrich', 'plant');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (2, (1, 1), 'JD04', 'phalaenopsis', 'plant');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (3, (1, 1), 'JD04', 'basjoo', 'semis');
+
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (0, (2, 1), 'JD04', 'alexandrie', 'plant');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (1, (2, 1), 'JD04', 'basjoo', 'graines');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (2, (2, 1), 'JD04', 'phalaenopsis', 'plant');
+
+-- JD05
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (0, (0, 0), 'JD04', 'alexandrie', 'semis');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (1, (0, 0), 'JD04', 'boskoop', 'plant');
+
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (0, (0, 0), 'JD04', 'sunrich', 'greffe');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (1, (0, 0), 'JD04', 'boskoop', 'semis');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (2, (0, 0), 'JD04', 'alexandrie', 'semis');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (3, (0, 0), 'JD04', 'cyathea', 'greffe');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (4, (0, 0), 'JD04', 'alexandrie', 'plant');
+
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (0, (0, 0), 'JD04', 'boskoop', 'plant');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (2, (0, 0), 'JD04', 'boskoop', 'graines');
+
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (2, (0, 0), 'JD04', 'sunrich', 'greffe');
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (3, (0, 0), 'JD04', 'cyathea', 'graines');
+
+INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
+VALUES (0, (0, 0), 'JD04', 'sunrich', 'semis');
