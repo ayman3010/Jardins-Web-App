@@ -1,6 +1,10 @@
 SET search_path = jardindb;
 
 -- 1) (2 points) Lister toutes les plantes qui sont actuellement dans les rangs d’un jardin
+SELECT *
+FROM plante P
+WHERE P.jardinId IS NOT NULL;
+
 -- 2) (2 points) Lister le nombre de rangs minimum et maximum sur les parcelles d’un jardin donné (choisissez-en dans vos données)
 
 select min(S.nbRang) as minNbRang, max(s.nbRang) as maxNbRang
@@ -45,6 +49,26 @@ WHERE EXISTS(
 		AND (RV.nomVariete = 'boskoop' OR RV.nomVariete = 'cythea' ) ));
 -- 5) (2 points) Lister les détails des parcelles qui ont la variété de plante A mais pas la variété de plante B
 
+SELECT *
+FROM parcelle P
+WHERE EXISTS(
+	SELECT * 
+	FROM rang R
+	WHERE R.JardinId = P.jardinId AND R.coordonnees = P.coordonnees AND EXISTS (
+		SELECT * 
+		FROM RangVariete RV
+	    WHERE R.numero = RV.numero AND R.JardinId = RV.jardinId AND R.coordonnees = RV.coordonnees 
+		AND (RV.nomVariete = 'boskoop') ))
+EXCEPT
+SELECT *
+FROM parcelle P
+WHERE EXISTS(
+	SELECT * 
+	FROM rang R
+	WHERE R.JardinId = P.jardinId AND R.coordonnees = P.coordonnees AND EXISTS (
+		SELECT * 
+		FROM RangVariete RV
+	    WHERE R.numero = RV.numero AND R.JardinId = RV.jardinId AND R.coordonnees = RV.coordonnees AND RV.nomVariete = 'cyathea'));
 
 -- 6) (2 points) Lister tous les rangs d’un jardin donné avec leurs variétés de plantes s’ils sont cultivés. Dans le cas contraire, affichez null.
 SELECT R.numero,R.JardinId ,R.coordonnees,R.estJachere,R.periodeJachere, RV.nomVariete
@@ -63,8 +87,11 @@ FROM JARDIN J JOIN PARCELLE P using (JardinId)
 WHERE EXISTS (SELECT * from rang R
 			 WHERE P.jardinId = R.jardinId AND P.coordonnees = R.coordonnees AND R.estJachere = true )
 ORDER BY JardinId;
--- 9) (2 points) Quelles sont les menaces auxquelles sont sensibles les plantes fougères ?
 
+-- 9) (2 points) Quelles sont les menaces auxquelles sont sensibles les plantes fougères ?
+SELECT DISTINCT nomMenace
+FROM MenacePlante M
+WHERE M.nomLatin = 'Filicophytes';
 
 -- 10) (2 points) Quelles sont les plantes de la variété tuberosum ?
 SELECT *
