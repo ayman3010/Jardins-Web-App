@@ -68,7 +68,8 @@ WHERE EXISTS(
 	WHERE R.JardinId = P.jardinId AND R.coordonnees = P.coordonnees AND EXISTS (
 		SELECT * 
 		FROM RangVariete RV
-	    WHERE R.numero = RV.numero AND R.JardinId = RV.jardinId AND R.coordonnees = RV.coordonnees AND RV.nomVariete = 'cyathea'));
+	    WHERE R.numero = RV.numero AND R.JardinId = RV.jardinId AND R.coordonnees = RV.coordonnees 
+		AND RV.nomVariete = 'cyathea'));
 
 -- 6) (2 points) Lister tous les rangs d’un jardin donné avec leurs variétés de plantes s’ils sont cultivés. Dans le cas contraire, affichez null.
 SELECT R.numero,R.JardinId ,R.coordonnees,R.estJachere,R.periodeJachere, RV.nomVariete
@@ -78,7 +79,6 @@ WHERE R.jardinId = 'JD01'
 ORDER BY numero, coordonnees;
 
 -- 7) (2 points) Quel est le nombre de jardins uniquement avec des semences biologiques ?
-
 
 
 -- 8) (2 points) Lister tous les jardins qui ont au moins un rang en jachère
@@ -97,19 +97,6 @@ WHERE M.nomLatin = 'Filicophytes';
 SELECT *
 FROM plante P 
 WHERE nomVariete = 'tuberosum';
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -19,7 +19,7 @@ AFTER INSERT ON JARDINDB.RangVariete
 FOR EACH ROW EXECUTE PROCEDURE sauvegarder_historique_variete();
 
 INSERT INTO JARDINDB.RangVariete ( numero, coordonnees, jardinId, nomVariete, typeMiseEnplace )
-VALUES(0, (0,0),'JD05','boskook','');
+VALUES(0, (2,0),'JD05','boskoop','');
 
 SELECT * FROM HistoriqueVariete;
 
