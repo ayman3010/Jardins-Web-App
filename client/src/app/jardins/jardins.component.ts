@@ -1,3 +1,5 @@
+import { Jardin } from './../../../../common/tables/Jardins';
+import { CommunicationService } from './../communication.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JardinsComponent implements OnInit {
 
-  constructor() { }
+  jardins: Jardin[];
+  constructor(private communicationService: CommunicationService) { }
+
 
   ngOnInit() {
+    this.getJardins()
   }
+  getJardins(){
+    this.communicationService.getJardins().subscribe((jardins: Jardin[]) => {
+      console.log(JSON.stringify(jardins))
+      this.jardins = jardins;
+      console.log(JSON.stringify(this.jardins));
+    });
+  }
+
 
 }

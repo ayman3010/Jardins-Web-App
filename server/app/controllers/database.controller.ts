@@ -1,3 +1,4 @@
+import { Jardin } from '@common/tables/Jardins';
 import { NextFunction, Request, Response, Router } from "express";
 import { inject, injectable } from "inversify";
 import * as pg from "pg";
@@ -35,6 +36,27 @@ export class DatabaseController {
             city: hotel.city,
           }));
           res.json(hotels);
+        })
+        .catch((e: Error) => {
+          console.error(e.stack);
+        });
+    });
+
+    router.get("/jardins", (req: Request, res: Response, _: NextFunction) => {
+      this.databaseService
+        .filterJardins()
+        .then((result: pg.QueryResult) => {
+          const jardins: Jardin[] = result.rows.map((jardin: Jardin) => ({
+            jardinid: jardin.jardinid,
+            nom: jardin.nom,
+            surface: jardin.surface,
+            estPotager:   jardin.estpotager,
+            estOrnement : jardin.estornement,
+            estVerger  :   jardin.estverger,
+            typeSol     :  jardin.typesol,
+            hauteurMax  : jardin.hauteurmax,
+          }));
+          res.json(jardins);
         })
         .catch((e: Error) => {
           console.error(e.stack);

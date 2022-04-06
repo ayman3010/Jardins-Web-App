@@ -11,7 +11,7 @@ export class DatabaseService {
   // TODO: A MODIFIER POUR VOTRE BD
   public connectionConfig: pg.ConnectionConfig = {
     user: "postgres",
-    database: "postgres",
+    database: "Jardins",
     password: "jardins",
     port: 5432,
     host: "127.0.0.1",
@@ -64,6 +64,20 @@ export class DatabaseService {
     client.release()
     return res;
   }
+  public async filterJardins(): Promise<pg.QueryResult> {
+    console.log(" avant connection")
+    const client = await this.pool.connect();
+    console.log(" apres connection")
+    let queryText = "SELECT * FROM JARDINDB.Jardin";
+    queryText += ";";
+
+    const res = await client.query(queryText);
+    client.release()
+    console.log(JSON.stringify(res.rows));
+
+    return res;
+  }
+
 
 
   // get the hotel names and numbers so so that the user can only select an existing hotel

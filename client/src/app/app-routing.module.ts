@@ -1,3 +1,4 @@
+import { JardinsComponent } from './jardins/jardins.component';
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
@@ -11,6 +12,8 @@ const routes: Routes = [
   { path: "rooms", component: RoomComponent },
   { path: "hotels", component: HotelComponent },
   { path: "guests", component: GuestComponent },
+  { path: "jardins", component: JardinsComponent },
+
 ];
 
 @NgModule({

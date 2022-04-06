@@ -7,6 +7,7 @@ import { Hotel } from "../../../common/tables/Hotel";
 import { Room } from "../../../common/tables/Room";
 import { HotelPK } from "../../../common/tables/HotelPK";
 import { Guest } from "../../../common/tables/Guest";
+import { Jardin } from "../../../common/tables/Jardins";
 
 @Injectable()
 export class CommunicationService {
@@ -21,6 +22,12 @@ export class CommunicationService {
 
   public filter(filterBy: string): void {
     this._listners.next(filterBy);
+  }
+
+  public getJardins(): Observable<Jardin[]> {
+    return this.http
+      .get<Jardin[]>(this.BASE_URL + "/jardins")
+      .pipe(catchError(this.handleError<Jardin[]>("getJardins")));
   }
 
   public getHotels(): Observable<Hotel[]> {
