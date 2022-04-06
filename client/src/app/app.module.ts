@@ -9,6 +9,7 @@ import { CommunicationService } from "./communication.service";
 import { GuestComponent } from "./guest/guest.component";
 import { HotelComponent } from "./hotel/hotel.component";
 import { RoomComponent } from "./room/room.component";
+import { JardinsComponent } from './jardins/jardins.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { RoomComponent } from "./room/room.component";
     RoomComponent,
     HotelComponent,
     GuestComponent,
+    JardinsComponent,
   ],
   imports: [
     CommonModule,
