@@ -11,8 +11,8 @@ export class DatabaseService {
   // TODO: A MODIFIER POUR VOTRE BD
   public connectionConfig: pg.ConnectionConfig = {
     user: "postgres",
-    database: "hoteldb",
-    password: "admin",
+    database: "postgres",
+    password: "jardins",
     port: 5432,
     host: "127.0.0.1",
     keepAlive: true
@@ -48,8 +48,9 @@ export class DatabaseService {
 
   // get hotels that correspond to certain caracteristics
   public async filterHotels(hotelNb: string, hotelName: string, city: string): Promise<pg.QueryResult> {
+    console.log(" avant connection")
     const client = await this.pool.connect();
-
+    console.log(" apres connection")
     const searchTerms: string[] = [];
     if (hotelNb.length > 0) searchTerms.push(`hotelNb = '${hotelNb}'`);
     if (hotelName.length > 0) searchTerms.push(`name = '${hotelName}'`);
