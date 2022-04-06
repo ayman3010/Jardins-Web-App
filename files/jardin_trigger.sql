@@ -4,7 +4,7 @@ BEGIN
 CREATE TABLE IF NOT EXISTS JARDINDB.HistoriqueVariete(
 	 jardinId     VARCHAR(10)    NOT NULL,
 	 nomVariete        VARCHAR(30)    NOT NULL,
-	 dateAjout         DATE           NOT NULL
+	 dateAjout         timestamp           NOT NULL
 );
 IF(TG_OP='INSERT') THEN
 INSERT INTO JARDINDB.HistoriqueVariete VALUES(NEW.jardinId,NEW.nomVariete, NOW() );
