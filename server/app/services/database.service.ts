@@ -64,12 +64,23 @@ export class DatabaseService {
     client.release()
     return res;
   }
+
   public async filterJardins(): Promise<pg.QueryResult> {
-    console.log(" avant connection")
     const client = await this.pool.connect();
-    console.log(" apres connection")
     let queryText = "SELECT * FROM JARDINDB.Jardin";
     queryText += ";";
+
+    const res = await client.query(queryText);
+    client.release()
+
+    return res;
+  }
+
+  public async filtrerParcelles(jardinid: string): Promise<pg.QueryResult> {
+    console.log("called");
+    const client = await this.pool.connect();
+    let queryText = "SELECT * FROM JARDINDB.parcelle";
+    queryText += " WHERE "+  `jardinid = '${jardinid}'` + ";";
 
     const res = await client.query(queryText);
     client.release()
@@ -77,6 +88,7 @@ export class DatabaseService {
 
     return res;
   }
+  
 
 
 

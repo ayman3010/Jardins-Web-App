@@ -1,0 +1,39 @@
+<div id="room">
+  <h1>Parcelles</h1>
+
+  <div class="divider"></div>
+  <div *ngFor="let parcelle of parcelles; let i = index">
+
+  <table
+    id="ht"
+    align="center"
+    border="1"
+    width="1000"
+    class="table-striped table-hover"
+  >
+    <thead class="roomsheader">
+      <th class="contentCell">NUMERO JARDIN</th>
+      <th class="contentCell">CORDONEES (X,Y)</th>
+      <th class="contentCell">DIMENSIONS (LONGUEUR, LARGEUR)</th>
+
+      <th class="actionCell">ACTION</th>
+    </thead>
+    <tbody>
+      
+      <tr *ngFor="let parcelle of parcelles; let i = index">
+        <td class="contentCell" >{{ parcelle.jardinId }}</td>
+        <td class="contentCell"  >{{ parcelle.coordonnees}}</td>
+        <td class="contentCell">{{ parcelle.dimensions}}</td>
+        <td class="actionCell">
+          <button type="button" class="submitbtn" (click)="updateRoom(i)"> <i class="fa fa-edit"></i></button>
+          <button type="button" class="deletebtn" (click)="deleteRoom(room.hotelnb, room.roomnb)">
+            <i class="fa fa-trash-o"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  <button type="button" class="btn">+</button>
+</div>

@@ -1,11 +1,15 @@
-import { Jardin } from '@common/tables/Jardins';
+import { stringify } from 'querystring';
+import { Jardin } from "../../../common/tables/Jardins";
 import { NextFunction, Request, Response, Router } from "express";
 import { inject, injectable } from "inversify";
 import * as pg from "pg";
 
 import { Hotel } from "../../../common/tables/Hotel";
 import { HotelPK } from "../../../common/tables/HotelPK";
+import { Parcelle } from "../../../common/tables/parcelle";
 import { Room } from "../../../common/tables/Room";
+
+
 import { Guest } from "../../../common/tables/Guest";
 
 import { DatabaseService } from "../services/database.service";
@@ -46,17 +50,36 @@ export class DatabaseController {
       this.databaseService
         .filterJardins()
         .then((result: pg.QueryResult) => {
-          const jardins: Jardin[] = result.rows.map((jardin: Jardin) => ({
+          const jardins: Jardin[] = result.rows.map((jardin: any) => ({
             jardinid: jardin.jardinid,
             nom: jardin.nom,
             surface: jardin.surface,
-            estPotager:   jardin.estpotager,
-            estOrnement : jardin.estornement,
-            estVerger  :   jardin.estverger,
-            typeSol     :  jardin.typesol,
-            hauteurMax  : jardin.hauteurmax,
+            potager:   jardin.estpotager,
+            ornement : jardin.estornement,
+            verger  :   jardin.estverger,
+            typesol     :  jardin.typesol,
+            hauteur  : jardin.hauteurmax,
           }));
           res.json(jardins);
+        })
+        .catch((e: Error) => {
+          console.error(e.stack);
+        });
+    });
+
+
+    router.get("/parcelles", (req: Request, res: Response, _: NextFunction) => {
+      const jardinId = req.query.jardinId ? req.query.jardinId : "";
+      this.databaseService
+        .filtrerParcelles(jardinId)
+        .then((result: pg.QueryResult) => {
+          const parcelles: Parcelle[] = result.rows.map((parcelle: any) => ({
+               jardinId: parcelle.jardinid,
+               dimensions: parcelle.dimensions,
+               coordonnees: parcelle.coordonnees,
+          }));
+          console.log(JSON.stringify(parcelles))
+          res.json(parcelles);
         })
         .catch((e: Error) => {
           console.error(e.stack);

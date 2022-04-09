@@ -10,6 +10,8 @@ import { GuestComponent } from "./guest/guest.component";
 import { HotelComponent } from "./hotel/hotel.component";
 import { RoomComponent } from "./room/room.component";
 import { JardinsComponent } from './jardins/jardins.component';
+import { ParcelleComponent } from './parcelle/parcelle.component';
+import { RangComponent } from './rang/rang.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { JardinsComponent } from './jardins/jardins.component';
     HotelComponent,
     GuestComponent,
     JardinsComponent,
+    ParcelleComponent,
+    RangComponent,
   ],
   imports: [
     CommonModule,

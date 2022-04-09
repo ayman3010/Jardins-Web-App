@@ -8,6 +8,8 @@ import { Room } from "../../../common/tables/Room";
 import { HotelPK } from "../../../common/tables/HotelPK";
 import { Guest } from "../../../common/tables/Guest";
 import { Jardin } from "../../../common/tables/Jardins";
+import { Parcelle } from "../../../common/tables/Parcelle";
+
 
 @Injectable()
 export class CommunicationService {
@@ -22,6 +24,12 @@ export class CommunicationService {
 
   public filter(filterBy: string): void {
     this._listners.next(filterBy);
+  }
+
+  public getParcelles(jardinId: string): Observable<Parcelle[]> {
+    return this.http
+      .get<Parcelle[]>(this.BASE_URL + `/parcelles?jardinId=${jardinId}`)
+      .pipe(catchError(this.handleError<Parcelle[]>("getParcelles")));
   }
 
   public getJardins(): Observable<Jardin[]> {
