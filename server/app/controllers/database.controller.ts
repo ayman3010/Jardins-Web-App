@@ -1,4 +1,3 @@
-import { stringify } from 'querystring';
 import { Jardin } from "../../../common/tables/Jardins";
 import { NextFunction, Request, Response, Router } from "express";
 import { inject, injectable } from "inversify";
