@@ -48,9 +48,7 @@ export class DatabaseService {
 
   // get hotels that correspond to certain caracteristics
   public async filterHotels(hotelNb: string, hotelName: string, city: string): Promise<pg.QueryResult> {
-    console.log(" avant connection")
     const client = await this.pool.connect();
-    console.log(" apres connection")
     const searchTerms: string[] = [];
     if (hotelNb.length > 0) searchTerms.push(`hotelNb = '${hotelNb}'`);
     if (hotelName.length > 0) searchTerms.push(`name = '${hotelName}'`);
@@ -77,18 +75,33 @@ export class DatabaseService {
   }
 
   public async filtrerParcelles(jardinid: string): Promise<pg.QueryResult> {
-    console.log("called");
     const client = await this.pool.connect();
     let queryText = "SELECT * FROM JARDINDB.parcelle";
     queryText += " WHERE "+  `jardinid = '${jardinid}'` + ";";
 
     const res = await client.query(queryText);
     client.release()
+    return res;
+  }
+  
+  public async filtrerRangs(jardinId: string, coordonnees: string): Promise<pg.QueryResult> {
+    const client = await this.pool.connect();
+    const searchTerms: string[] = [];
+    console.log(coordonnees);
+    if (jardinId.length > 0) searchTerms.push(`jardinId = '${jardinId}'`);
+    if (coordonnees.length > 0) searchTerms.push(`coordonnees = ${coordonnees}`);
+    let queryText = "SELECT * FROM JARDINDB.rang";
+    if (searchTerms.length > 0) queryText += " WHERE " + searchTerms.join(" AND ");
+    queryText += ";";
+    console.log("erroor1");
+    const res = await client.query(queryText);
+    console.log("erroor2");
+
+    client.release()
     console.log(JSON.stringify(res.rows));
 
     return res;
   }
-  
 
 
 

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Rang } from '../../../../common/tables/Rang';
+import { CommunicationService } from '../communication.service';
 
 @Component({
   selector: 'app-rang',
@@ -7,12 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RangComponent implements OnInit {
 
-  constructor() { }
+  constructor( private communicationService: CommunicationService) { }
 
-  parcelleId: string;
+  @Input() jardinId: string = 'JD01';
+  @Input() coordonneesParcelle: string = '(0,0)';
+  rangs: Rang[];
 
   ngOnInit() {
-    
+    this.getRangs();
+  }
+  getRangs(){
+    this.communicationService.getRangs(this.jardinId, this.coordonneesParcelle).subscribe((rangs: Rang[]) => {
+      this.rangs = rangs;
+    });
   }
 
 }

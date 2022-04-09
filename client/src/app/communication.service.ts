@@ -1,3 +1,4 @@
+import { Rang } from './../../../common/tables/Rang';
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 // tslint:disable-next-line:ordered-imports
@@ -30,6 +31,11 @@ export class CommunicationService {
     return this.http
       .get<Parcelle[]>(this.BASE_URL + `/parcelles?jardinId=${jardinId}`)
       .pipe(catchError(this.handleError<Parcelle[]>("getParcelles")));
+  }
+  public getRangs(jardinId: string, coordonnees: string): Observable<Rang[]> {
+    return this.http
+      .get<Rang[]>(this.BASE_URL + `/parcelles/${jardinId}/${coordonnees}`)
+      .pipe(catchError(this.handleError<Rang[]>("getRangs")));
   }
 
   public getJardins(): Observable<Jardin[]> {

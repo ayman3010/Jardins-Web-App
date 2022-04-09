@@ -1,14 +1,14 @@
 <div id="room">
-  <h1>Parcelles</h1>
-
-  <div class="divider"></div>
   <div *ngFor="let parcelle of parcelles; let i = index">
+    <h1>Parcelle {{i}}</h1>
+  
+    <div class="divider"></div>
 
   <table
     id="ht"
     align="center"
     border="1"
-    width="1000"
+    width="1250"
     class="table-striped table-hover"
   >
     <thead class="roomsheader">
@@ -20,7 +20,7 @@
     </thead>
     <tbody>
       
-      <tr *ngFor="let parcelle of parcelles; let i = index">
+      <!-- <tr *ngFor="let parcelle of parcelles; let i = index"> -->
         <td class="contentCell" >{{ parcelle.jardinId }}</td>
         <td class="contentCell"  >{{ parcelle.coordonnees}}</td>
         <td class="contentCell">{{ parcelle.dimensions}}</td>
@@ -30,10 +30,14 @@
             <i class="fa fa-trash-o"></i>
           </button>
         </td>
-      </tr>
+         
+      <!-- </tr> -->
     </tbody>
   </table>
+  <app-rang [coordonneesParcelle] = parcelle.coordonnees [jardinId]  = "jardinId">
+  </app-rang>
 </div>
+
 
   <button type="button" class="btn">+</button>
 </div>

@@ -1,3 +1,32 @@
-<p>
-  rang works!
-</p>
+<div id="room">
+  <table
+    id="ht"
+    align="center"
+    border="1"
+    width="1000"
+    class="table-striped table-hover"
+  >
+    <thead class="roomsheader">
+      <th class="contentCell">NUMERO RANG</th>
+      <th class="contentCell">PERIODE JACHERE</th>
+      <th class="contentCell">COORDONNEES GEOGRAPHIQUE</th>
+    
+      <th class="actionCell">ACTION</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let rang of rangs; let i = index">
+        <td class="contentCell">{{ rang.numero }}</td>
+        <td class="contentCell">{{ rang?.periodeJachere}}</td>
+        <td class="contentCell">{{ rang?.coordGeo }}</td>
+        <td class="actionCell">
+          <button type="button" class="submitbtn" (click)="updateRoom(i)"> <i class="fa fa-edit"></i></button>
+          <button type="button" class="deletebtn" (click)="deleteRoom(room.hotelnb, room.roomnb)">
+            <i class="fa fa-trash-o"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button type="button" class="btn">+ rang</button>
+</div>

@@ -1,3 +1,4 @@
+import { Rang } from './../../../common/tables/Rang';
 import { Jardin } from "../../../common/tables/Jardins";
 import { NextFunction, Request, Response, Router } from "express";
 import { inject, injectable } from "inversify";
@@ -77,13 +78,41 @@ export class DatabaseController {
                dimensions: parcelle.dimensions,
                coordonnees: parcelle.coordonnees,
           }));
-          console.log(JSON.stringify(parcelles))
           res.json(parcelles);
         })
         .catch((e: Error) => {
           console.error(e.stack);
         });
     });
+
+
+    router.get(
+      "/parcelles/:jardinId/:coordonnees",
+      (req: Request, res: Response, _: NextFunction) => {
+        const jardinId: string = req.params.jardinId;
+        const coordonnees: string = req.params.coordonnees;
+      console.log("jardinId : ",jardinId);    
+      console.log("coordonnes : ", coordonnees);
+
+
+        this.databaseService
+        .filtrerRangs(jardinId, coordonnees)
+        .then((result: pg.QueryResult) => {
+          const rangs: Rang[] = result.rows.map((rang: any) => ({
+            numero: rang.numero,
+            variete: rang.variete,
+            periodeJachere: rang.periodejachere,
+            estJachere: rang.estjachere ,
+            coordGeo: rang.cordonnesgeo
+          }));
+          res.json(rangs);
+        })
+        .catch((e: Error) => {
+          console.error(e.stack);
+          res.json(-1);
+        });
+      }
+    );
 
 
     router.get(
