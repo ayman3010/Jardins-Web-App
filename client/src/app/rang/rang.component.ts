@@ -11,17 +11,22 @@ export class RangComponent implements OnInit {
 
   constructor( private communicationService: CommunicationService) { }
 
-  @Input() jardinId: string = 'JD01';
-  @Input() coordonneesParcelle: string = '(0,0)';
+  @Input() jardinId: string;
+  @Input() coordonneesParcelle: string;
   rangs: Rang[];
+  variete: string[];
 
   ngOnInit() {
-    this.getRangs();
+    this.getRangs();    
   }
   getRangs(){
     this.communicationService.getRangs(this.jardinId, this.coordonneesParcelle).subscribe((rangs: Rang[]) => {
       this.rangs = rangs;
+      for (let i = 0; i< this.rangs.length; i++ ){
+        this.communicationService.getVarieteByRang(this.jardinId, this.coordonneesParcelle, this.rangs[i].numero ).subscribe((varietes: string[]) => {
+          this.rangs[i].variete = varietes.join(',\n') ;
+        });
+      }
     });
   }
-
 }

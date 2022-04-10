@@ -37,6 +37,11 @@ export class CommunicationService {
       .get<Rang[]>(this.BASE_URL + `/parcelles/${jardinId}/${coordonnees}`)
       .pipe(catchError(this.handleError<Rang[]>("getRangs")));
   }
+  public getVarieteByRang(jardinId: string, coordonnees: string, numero: number): Observable<string[]> {
+    return this.http
+      .get<string[]>(this.BASE_URL + `/varietes/${jardinId}/${coordonnees}/${numero}`)
+      .pipe(catchError(this.handleError<string[]>("getVarieteByRang")));
+  }
 
   public getJardins(): Observable<Jardin[]> {
     return this.http

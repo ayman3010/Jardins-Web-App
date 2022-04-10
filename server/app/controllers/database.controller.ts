@@ -91,10 +91,6 @@ export class DatabaseController {
       (req: Request, res: Response, _: NextFunction) => {
         const jardinId: string = req.params.jardinId;
         const coordonnees: string = req.params.coordonnees;
-      console.log("jardinId : ",jardinId);    
-      console.log("coordonnes : ", coordonnees);
-
-
         this.databaseService
         .filtrerRangs(jardinId, coordonnees)
         .then((result: pg.QueryResult) => {
@@ -106,6 +102,27 @@ export class DatabaseController {
             coordGeo: rang.cordonnesgeo
           }));
           res.json(rangs);
+        })
+        .catch((e: Error) => {
+          console.error(e.stack);
+          res.json(-1);
+        });
+      }
+    );
+
+    router.get(
+      "/varietes/:jardinId/:coordonnees/:numero",
+      (req: Request, res: Response, _: NextFunction) => {
+        const jardinId: string = req.params.jardinId;
+        const coordonnees: string = req.params.coordonnees;
+        const numero: number = req.params.numero;
+        this.databaseService
+        .filtrerVarietebyRang(jardinId, coordonnees, numero)
+        .then((result: pg.QueryResult) => {
+          const varietes: string[] = result.rows.map((variete: any) => (
+             variete.nomvariete
+          ));
+          res.json(varietes);
         })
         .catch((e: Error) => {
           console.error(e.stack);
