@@ -1,0 +1,15 @@
+.formulaire {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 50%;
+}
+
+.formulaire label {
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+#submit-button {
+    margin-bottom: 50px;
+}

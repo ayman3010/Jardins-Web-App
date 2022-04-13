@@ -1,0 +1,54 @@
+<div id="room">
+    <h1>Variétés</h1>
+  
+    <div class="divider"></div>
+
+    <table
+      id="ht"
+      align="center"
+      border="1"
+      width="1000"
+      class="table-striped table-hover"
+    >
+      <thead class="roomsheader">
+        <th class="contentCell">NOM VARIETE</th>
+        <th class="contentCell">ANNEE MISE MARCHE</th>
+        <th class="contentCell">DESCRIPTION DU SEMIS</th>
+        <th class="contentCell">TYPE DE PLANTATION</th>
+        <th class="contentCell">MODE D'ENTRETIEN</th>
+        <th class="contentCell">TYPE DE RECOLTE</th>
+        <th class="contentCell">PERIODE DE MISE EN PLACE</th>
+        <th class="contentCell">PERIODE DE RECOLTE</th>
+        <th class="contentCell">COMMENTAIRE GENERAL</th>
+        <th class="contentCell">TYPE DE SOL</th>
+        <th class="contentCell">EST BIOLOGIQUE</th>
+        <th class="actionCell">ACTION</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let variete of varietes; let i = index">
+          <td class="contentCell">{{ variete.nomVariete }}</td>
+          <td class="contentCell">{{ variete.anneeMiseMarche }}</td>
+          <td class="contentCell">{{ variete.descriptionSemis }}</td>
+          <td class="contentCell">{{ variete.plantation }}</td>
+          <td class="contentCell">{{ variete.entretien }}</td>
+          <td class="contentCell">{{ variete.recolte }}</td>
+          <td class="contentCell">{{ variete.periodeMisePlace }}</td>
+          <td class="contentCell">{{ variete.periodeRecolte }}</td>
+          <td class="contentCell">{{ variete.commentaire }}</td>
+          <td class="contentCell">{{ variete.typeSol }}</td>
+          <td class="contentCell">{{ variete.estBiologique }}</td>
+          <td class="actionCell" id="action-content">
+                <button type="button" class="submitbtn" [routerLink]="['/ajoutvariete', variete.nomVariete]" > <i class="fa fa-edit"></i></button>
+                <button type="button" class="deletebtn" (click)="deleteVariete(variete.nomVariete)">
+                <i class="fa fa-trash-o"></i>
+                </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <button type="button" class="btn">+ Ajouter une variété</button>
+  </div>
+  
+  
+  

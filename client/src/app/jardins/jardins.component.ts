@@ -13,21 +13,20 @@ export class JardinsComponent implements OnInit {
   constructor(private communicationService: CommunicationService) { }
 
   ngOnInit() {
-    this.getJardins()
+    this.getJardins();
   }
+  
   getJardins(){
     this.communicationService.getJardins().subscribe((jardins: Jardin[]) => {
       this.jardins = jardins;
     });
   }
 
-  getTypeJardin(jardin: Jardin): string{
+  getTypeJardin(jardin: Jardin): string {
     let typeJardin: string = '';
     if (jardin.ornement) typeJardin +="ornement ";
     if (jardin.verger)  typeJardin +="verger ";
     if (jardin.potager) typeJardin +="potager ";
     return typeJardin;
   }
-
-
 }

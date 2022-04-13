@@ -12,6 +12,10 @@ import { RoomComponent } from "./room/room.component";
 import { JardinsComponent } from './jardins/jardins.component';
 import { ParcelleComponent } from './parcelle/parcelle.component';
 import { RangComponent } from './rang/rang.component';
+import { VarieteComponent } from "./varietes/variete.component";
+import { AjoutVariete } from "./ajout-variete/ajout-variete.component";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -22,14 +26,18 @@ import { RangComponent } from './rang/rang.component';
     JardinsComponent,
     ParcelleComponent,
     RangComponent,
+    VarieteComponent,
+    AjoutVariete,
   ],
   imports: [
     CommonModule,
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
   ],
+
   providers: [CommunicationService],
   bootstrap: [AppComponent],
 })

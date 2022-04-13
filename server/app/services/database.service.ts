@@ -12,7 +12,7 @@ export class DatabaseService {
   public connectionConfig: pg.ConnectionConfig = {
     user: "postgres",
     database: "Jardins",
-    password: "jardins",
+    password: "Jt140301",
     port: 5432,
     host: "127.0.0.1",
     keepAlive: true
@@ -66,6 +66,17 @@ export class DatabaseService {
   public async filterJardins(): Promise<pg.QueryResult> {
     const client = await this.pool.connect();
     let queryText = "SELECT * FROM JARDINDB.Jardin";
+    queryText += ";";
+
+    const res = await client.query(queryText);
+    client.release()
+
+    return res;
+  }
+
+  public async filterVarietes(): Promise<pg.QueryResult> {
+    const client = await this.pool.connect();
+    let queryText = "SELECT * FROM JARDINDB.Variete";
     queryText += ";";
 
     const res = await client.query(queryText);
@@ -139,6 +150,18 @@ export class DatabaseService {
     const query = `UPDATE HOTELDB.Hotel SET ${toUpdateValues.join(", ")} WHERE hotelNb = '${hotel.hotelnb}';`;
     const res = await client.query(query);
     client.release()
+    return res;
+  }
+
+  public async deleteVariete(nomVariete: string): Promise<pg.QueryResult> {
+    if(nomVariete.length === 0) throw new Error("Invalid delete query");
+
+    const client = await this.pool.connect();
+
+    const query = `DELETE FROM JARDINDB.Variete WHERE nomVariete = '${nomVariete}'`
+    console.log(query);
+    const res = await client.query(query);
+    client.release();
     return res;
   }
 
