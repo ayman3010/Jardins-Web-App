@@ -1,84 +1,85 @@
-
-    <div class = "formulaire">
-        <label>
-            Nom de la variété :
-            <input type="text" [(ngModel)]="varieteFormulaire.nomVariete">
-        </label>
-        <label>
-            Année de mise en marche :
-            <input type="text" [(ngModel)]="varieteFormulaire.anneeMiseMarche">
-        </label>
-        <label>
-            Description pour le semis :
-            <input type="text" [(ngModel)]="varieteFormulaire.descriptionSemis">
-        </label>
-        <label>
-            Description de la plantation :
-            <input type="text" [(ngModel)]="varieteFormulaire.plantation">
-        </label>
-        <label>
-            Description sur la récolte :
-            <input type="text" [(ngModel)]="varieteFormulaire.recolte">
-        </label>
-        <label>
-            Description sur l'entretien :
-            <input type="text" [(ngModel)]="varieteFormulaire.entretien">
-        </label>
-        <label>
-            Période de mise de en place :
-            <input type="text" [(ngModel)]="varieteFormulaire.periodeMisePlace">
-        </label>
-        <label>
-            Période de récolte :
-            <input type="text" [(ngModel)]="varieteFormulaire.periodeRecolte">
-        </label>
-        <label>
-            Commentaire sur la variété :
-            <input type="text" [(ngModel)]="varieteFormulaire.commentaire">
-        </label>
+<h1>Ajouter une variété</h1>
+<div class="divider"></div>
+<div class = "formulaire">
+    <label>
+        Nom de la variété : 
+        <input type="text" [(ngModel)]="varieteFormulaire.nomvariete">
+    </label>
+    <label>
+        Année de mise en marche :
+        <input type="text" [(ngModel)]="varieteFormulaire.anneemisemarche">
+    </label>
+    <label>
+        Description pour le semis :
+        <textarea rows="4" cols="50" [(ngModel)]="varieteFormulaire.descriptionsemis"></textarea>
+    </label>
+    <label>
+        Description de la plantation :
+        <textarea rows="4" cols="50" [(ngModel)]="varieteFormulaire.plantation"></textarea>
+    </label>
+    <label>
+        Description sur la récolte :
+        <textarea rows="4" cols="50" [(ngModel)]="varieteFormulaire.recolte"></textarea>
+    </label>
+    <label>
+        Description sur l'entretien :
+        <textarea rows="4" cols="50" [(ngModel)]="varieteFormulaire.entretien"></textarea>
+    </label>
+    <label>
+        Période de mise de en place :
+        <input type="text" [(ngModel)]="varieteFormulaire.periodemiseplace">
+    </label>
+    <label>
+        Période de récolte :
+        <input type="text" [(ngModel)]="varieteFormulaire.perioderecolte">
+    </label>
+    <label>
+        Commentaire sur la variété :
+        <textarea rows="4" cols="50" [(ngModel)]="varieteFormulaire.commentaire"></textarea>
+    </label>
         <label>Type de sol :
-            <select [(ngModel)]="varieteFormulaire.typeSol"> 
-                <option> Argileux </option>
-                <option> Limoneux </option>
-                <option> Humifère </option>
-              </select>
-        </label>
+        <select [(ngModel)]="varieteFormulaire.typesol"> 
+            <option> Argileux </option>
+            <option> Limoneux </option>
+            <option> Humifère </option>
+        </select>
+    </label>
         <label> Nom semancier :
-            <select [(ngModel)]="nomSemancier"> 
-                <option> LASSONDE</option>
-                <option> MICHEL </option>
-                <option> PATRICK </option>
-                <option> PAUL </option>
-                <option> JEAN </option>
-                <option> LILY </option>
-                <option> CATHERINE </option>
-                <option> JEREMY </option>
-                <option> MARIE </option>
-                <option> BENJAMIN </option>
-                <option> WILL </option>
-                <option> XAVIER </option>
-                <option> MANON </option>
-                <option> JORDAN </option>
-                <option> HANNA </option>
-              </select>
-        </label>
-        <label> Nom Plante :
-            <select [(ngModel)]="nomPlante"> 
-                <option> Pommier </option>
-                <option> Rossier </option>
-                <option> Pomme de terre </option>
-                <option> Tournesol </option>
-                <option> Cepe </option>
-                <option> Cerisier </option>
-                <option> Cactus </option>
-                <option> Trefle </option>
-                <option> Orchidée </option>
-              </select>
-        </label>
-        <label>
-            La variété est-elle biologique ? 
-            <input type="checkbox" [(ngModel)]="varieteFormulaire.estBiologique">
-        </label>
-        
-        <button (click)="submit()" id="submit-button"> Envoyer !</button>
-    </div>
+        <select [(ngModel)]="nomsemancier"> 
+            <option> LASSONDE</option>
+            <option> MICHEL </option>
+            <option> PATRICK </option>
+            <option> PAUL </option>
+            <option> JEAN </option>
+            <option> LILY </option>
+            <option> CATHERINE </option>
+            <option> JEREMY </option>
+            <option> MARIE </option>
+            <option> BENJAMIN </option>
+            <option> WILL </option>
+            <option> XAVIER </option>
+            <option> MANON </option>
+            <option> JORDAN </option>
+            <option> HANNA </option>
+        </select>
+    </label>
+    <label> Nom Plante :
+        <select [(ngModel)]="nomplante"> 
+            <option> Pommier </option>
+            <option> Rossier </option>
+            <option> Pomme de terre </option>
+            <option> Tournesol </option>
+            <option> Cepe </option>
+            <option> Cerisier </option>
+            <option> Cactus </option>
+            <option> Trefle </option>
+            <option> Orchidée </option>
+        </select>
+    </label>
+    <label>
+        La variété est-elle biologique ? 
+        <input type="checkbox" [(ngModel)]="varieteFormulaire.estbiologique">
+    </label>
+
+    <button (click)="submit()" id="submit-button"> Envoyer !</button>
+</div>

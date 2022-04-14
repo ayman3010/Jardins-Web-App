@@ -7,9 +7,31 @@
 
 .formulaire label {
     margin-bottom: 50px;
-    margin-top: 50px;
 }
 
 #submit-button {
     margin-bottom: 50px;
+}
+
+.divider {
+    border-bottom: 1px solid var(--theme-blue);
+    margin: auto;
+    width: 50%;
+    margin-bottom: 25px;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 4%;
+}
+
+label {
+    font-size: 20px;
+    margin: 0 auto;
+    font-weight: 550;
+    display: flex;
+}
+
+input {
+    margin-left: 10px;
 }

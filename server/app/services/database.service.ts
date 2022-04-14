@@ -12,7 +12,7 @@ export class DatabaseService {
   public connectionConfig: pg.ConnectionConfig = {
     user: "postgres",
     database: "Jardins",
-    password: "postgre",
+    password: "Jt140301",
     port: 5432,
     host: "127.0.0.1",
     keepAlive: true
@@ -73,27 +73,6 @@ export class DatabaseService {
 
     return res;
   }
-
-  public async filterVarietes(): Promise<pg.QueryResult> {
-    const client = await this.pool.connect();
-    let queryText = "SELECT * FROM JARDINDB.Variete";
-    queryText += ";";
-
-    const res = await client.query(queryText);
-    client.release()
-
-    return res;
-  }
-
-  public async filtrerParcelles(jardinid: string): Promise<pg.QueryResult> {
-    const client = await this.pool.connect();
-    let queryText = "SELECT * FROM JARDINDB.parcelle";
-    queryText += " WHERE "+  `jardinid = '${jardinid}'` + ";";
-
-    const res = await client.query(queryText);
-    client.release()
-    return res;
-  }
   
   public async filtrerRangs(jardinId: string, coordonnees: string): Promise<pg.QueryResult> {
 
@@ -130,6 +109,38 @@ export class DatabaseService {
   public async getHotelNamesByNos(): Promise<pg.QueryResult> {
     const client = await this.pool.connect();
     const res = await client.query("SELECT hotelNb, name FROM HOTELDB.Hotel;");
+    client.release()
+    return res;
+  }
+
+  public async getVariete(nomVariete: string): Promise<pg.QueryResult> {
+    const client = await this.pool.connect();
+    let queryText = "SELECT * FROM JARDINDB.Variete";
+    queryText += " WHERE "+  `nomVariete = '${nomVariete.substring(1)}'` + ";";
+
+    const res = await client.query(queryText);
+    client.release();
+
+    return res;
+  }
+
+  public async filterVarietes(): Promise<pg.QueryResult> {
+    const client = await this.pool.connect();
+    let queryText = "SELECT * FROM JARDINDB.Variete";
+    queryText += ";";
+
+    const res = await client.query(queryText);
+    client.release()
+
+    return res;
+  }
+
+  public async filtrerParcelles(jardinid: string): Promise<pg.QueryResult> {
+    const client = await this.pool.connect();
+    let queryText = "SELECT * FROM JARDINDB.parcelle";
+    queryText += " WHERE "+  `jardinid = '${jardinid}'` + ";";
+
+    const res = await client.query(queryText);
     client.release()
     return res;
   }

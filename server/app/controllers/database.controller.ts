@@ -90,6 +90,37 @@ export class DatabaseController {
         });
     });
 
+    router.get(
+      "/variete/:nomVariete",
+      (req: Request, res: Response, _: NextFunction) => {
+        const nomVariete: string = req.params.nomVariete;
+        this.databaseService
+        .getVariete(nomVariete)
+        .then((result: pg.QueryResult) => {
+          const variete: Variete[] = result.rows.map((variete: any) => ({
+            nomvariete           : variete.nomvariete,
+            anneemisemarche     : variete.anneemisemarche,
+            descriptionsemis    : variete.descriptionsemis,
+	          plantation          : variete.plantation,
+            entretien           : variete.entretien,
+            recolte             : variete.recolte,
+	          periodemiseplace    : variete.periodemisplace,
+            perioderecolte      : variete.perioderecolte,
+            commentaire         : variete.commentaire,
+            typesol             : variete.typesol,
+            estbiologique       : variete.estbiologique,
+          }));
+          res.json(variete);
+        })
+        .catch((e: Error) => {
+          console.error(e.stack);
+          res.json(-1);
+        });
+      }
+    );
+
+    
+
 
     router.get("/parcelles", (req: Request, res: Response, _: NextFunction) => {
       const jardinId = req.query.jardinId ? req.query.jardinId.toString() : "";
@@ -107,7 +138,6 @@ export class DatabaseController {
           console.error(e.stack);
         });
     });
-
 
     router.get(
       "/parcelles/:jardinId/:coordonnees",

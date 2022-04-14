@@ -55,7 +55,13 @@ export class CommunicationService {
   public getVarietes(): Observable<Variete[]> {
     return this.http
           .get<Variete[]>(this.BASE_URL + "/variete")
-          .pipe(catchError(this.handleError<Variete[]>("getVarietes")))
+          .pipe(catchError(this.handleError<Variete[]>("getVariete")))
+  }
+
+  public getVariete(nomVariete: string): Observable<Variete[]> {
+    return this.http
+          .get<Variete[]>(this.BASE_URL + `/variete/:${nomVariete}`)
+          .pipe(catchError(this.handleError<Variete[]>("getVariete")))
   }
 
   public getHotels(): Observable<Hotel[]> {
