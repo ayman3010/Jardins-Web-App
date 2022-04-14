@@ -77,7 +77,7 @@ export class DatabaseController {
 	          plantation          : variete.plantation,
             entretien           : variete.entretien,
             recolte             : variete.recolte,
-	          periodeMisePlace    : variete.periodemisplace,
+	          periodeMisePlace    : variete.periodemiseplace,
             periodeRecolte      : variete.perioderecolte,
             commentaire         : variete.commentaire,
             typeSol             : variete.typesol,
@@ -97,14 +97,16 @@ export class DatabaseController {
         this.databaseService
         .getVariete(nomVariete)
         .then((result: pg.QueryResult) => {
-          const variete: Variete[] = result.rows.map((variete: any) => ({
+          console.log(result);
+          const variete: Variete[] = result.rows.map((variete: any) => (
+            {
             nomvariete           : variete.nomvariete,
             anneemisemarche     : variete.anneemisemarche,
             descriptionsemis    : variete.descriptionsemis,
 	          plantation          : variete.plantation,
             entretien           : variete.entretien,
             recolte             : variete.recolte,
-	          periodemiseplace    : variete.periodemisplace,
+	          periodemiseplace    : variete.periodemiseplace,
             perioderecolte      : variete.perioderecolte,
             commentaire         : variete.commentaire,
             typesol             : variete.typesol,

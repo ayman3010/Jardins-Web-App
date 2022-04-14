@@ -16,8 +16,9 @@ export class VarieteComponent implements OnInit {
   }
 
   getVarietes(){
-    this.communicationService.getVarietes().subscribe((jardins: Variete[]) => {
-      this.varietes = jardins;
+    this.communicationService.getVarietes().subscribe((varietes: Variete[]) => {
+      console.log(varietes);
+      this.varietes = varietes;
     });
   }
 

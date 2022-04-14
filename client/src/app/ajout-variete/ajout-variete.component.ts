@@ -29,9 +29,7 @@ export class AjoutVariete {
       this.varieteFormulaire.entretien = variete[0].entretien;
       this.varieteFormulaire.estbiologique = variete[0].estbiologique;
       this.varieteFormulaire.nomvariete = variete[0].nomvariete;
-      console.log(variete[0]);
       this.varieteFormulaire.periodemiseplace = variete[0].periodemiseplace;
-      console.log(this.varieteFormulaire.perioderecolte);
       this.varieteFormulaire.perioderecolte = variete[0].perioderecolte;
       this.varieteFormulaire.plantation = variete[0].plantation;
       this.varieteFormulaire.recolte = variete[0].recolte;
