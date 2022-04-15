@@ -53,15 +53,15 @@ CREATE TABLE IF NOT EXISTS JARDINDB.PlanteInfo(
 CREATE TABLE IF NOT EXISTS JARDINDB.Variete(
     nomVariete           VARCHAR(60)     NOT NULL,
     anneeMiseMarche      NUMERIC(4,0)    NOT NULL,
-    descriptionSemis     VARCHAR(120)    NOT NULL,
-	plantation           VARCHAR(60)     NOT NULL,
-    entretien            VARCHAR(60)     NOT NULL,
-    recolte              VARCHAR(60)     NOT NULL,
+    descriptionSemis     VARCHAR(120)    ,
+	plantation           VARCHAR(60)     ,
+    entretien            VARCHAR(60)     ,
+    recolte              VARCHAR(60)     ,
 	periodeMisePlace     VARCHAR(60)     ,
     periodeRecolte       VARCHAR(60)     ,
     commentaire          VARCHAR(60)     ,
     typeSol              VARCHAR(60)     NOT NULL,
-    estBiologique        Boolean         NOT NULL,
+    estBiologique        Boolean         DEFAULT false,
 	PRIMARY KEY (nomVariete)
 );
 

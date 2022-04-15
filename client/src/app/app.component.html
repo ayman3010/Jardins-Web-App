@@ -2,19 +2,19 @@
   <a class="navbar-brand title" href="/">INF3710 - TP5</a>
   <div class="navbar-expand mr-auto">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" routerLink="/jardins">Jardins</a>
-      <a class="nav-item nav-link active" routerLink="/rooms">Rooms</a>
+      <a class="nav-item nav-link active" routerLink="/jardins">Nos Jardins</a>
       <a class="nav-item nav-link active" routerLink="/variete">Les variétés</a>
     </div>
   </div>
 </nav>
 
 <div class="home" *ngIf="route == ''">
-  <p>
-    Welcome<br />to<br /><span class="hotel1">hotels</span
-    ><span class="hotel2">hotels</span><span class="hotel3">hotels</span>
-  </p>
-  <button type="button" class="btn" routerLink="/jardins">Voici nos jardins &#10140;</button>
+  <div class = "content-home">
+    <p class = "intro-text">
+      Bienvenenue chez Garden-Royal
+    </p>
+    <button type="button" class="btn" routerLink="/jardins">Découvrir nos jardins &#10140;</button>
+  </div>
 </div>
 
 <router-outlet></router-outlet>

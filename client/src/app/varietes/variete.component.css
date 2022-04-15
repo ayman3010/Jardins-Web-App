@@ -1,9 +1,21 @@
-#room {
-    background-color: var(--theme-background);
+#varietes {
     font-family: 'Roboto', sans-serif;
     text-align: center;
     padding: 3%;
 }
+
+#varietes h1 {
+    background-color: white;
+    width: 30%;
+    margin: 0 auto;
+}
+
+.variete-page {
+    background-image: url('../../assets/varietes.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
 
 #ht {
     background-color: white;

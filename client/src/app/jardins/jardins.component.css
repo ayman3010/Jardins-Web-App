@@ -1,8 +1,23 @@
-#room {
-    background-color: var(--theme-background);
+#jardins {
+    background-color: wheat;
+    width: 70%;
     font-family: 'Roboto', sans-serif;
     text-align: center;
     padding: 3%;
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    transform: translateY(30%);
+
+}
+
+.jardin-page {
+    background-image: url('../../assets/gardens.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 100%;
+    margin-top: 0;
+
 }
 
 #ht {
