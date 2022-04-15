@@ -4,6 +4,7 @@ import "reflect-metadata";
 import { Room } from "../../../common/tables/Room";
 import { Hotel } from "../../../common/tables/Hotel";
 import { Gender, Guest } from "../../../common/tables/Guest";
+import { Variete } from "../../../common/tables/Variete";
 
 @injectable()
 export class DatabaseService {
@@ -12,7 +13,7 @@ export class DatabaseService {
   public connectionConfig: pg.ConnectionConfig = {
     user: "postgres",
     database: "Jardins",
-    password: "postgre",
+    password: "postgres",
     port: 5432,
     host: "127.0.0.1",
     keepAlive: true
@@ -39,6 +40,20 @@ export class DatabaseService {
 
     const values: string[] = [hotel.hotelnb, hotel.name, hotel.city];
     const queryText: string = `INSERT INTO HOTELDB.Hotel VALUES($1, $2, $3);`;
+
+    const res = await client.query(queryText, values);
+    client.release()
+    return res;
+  }
+
+  public async createVariete(variete: Variete): Promise<pg.QueryResult> {
+    const client = await this.pool.connect();
+
+    if (!variete.nomvariete || !variete.anneemisemarche || !variete.descriptionsemis || !variete.plantation || !variete.entretien || !variete.recolte || !variete.typesol || !variete.estbiologique)
+      throw new Error("Invalid create hotel values");
+
+    const values: any[] = [variete.nomvariete, variete.anneemisemarche, variete.descriptionsemis, variete.plantation, variete.entretien, variete.recolte, variete.periodemiseplace, variete.perioderecolte, variete.commentaire, variete.typesol, variete.estbiologique];
+    const queryText: string = `INSERT INTO JARDINDB.Variete VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11);`;
 
     const res = await client.query(queryText, values);
     client.release()
@@ -170,7 +185,6 @@ export class DatabaseService {
     const client = await this.pool.connect();
 
     const query = `DELETE FROM JARDINDB.Variete WHERE nomVariete = '${nomVariete}'`
-    console.log(query);
     const res = await client.query(query);
     client.release();
     return res;

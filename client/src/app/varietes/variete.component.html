@@ -26,28 +26,26 @@
       </thead>
       <tbody>
         <tr *ngFor="let variete of varietes; let i = index">
-          <td class="contentCell">{{ variete.nomVariete }}</td>
-          <td class="contentCell">{{ variete.anneeMiseMarche }}</td>
-          <td class="contentCell">{{ variete.descriptionSemis }}</td>
+          <td class="contentCell">{{ variete.nomvariete }}</td>
+          <td class="contentCell">{{ variete.anneemisemarche }}</td>
+          <td class="contentCell">{{ variete.descriptionsemis }}</td>
           <td class="contentCell">{{ variete.plantation }}</td>
           <td class="contentCell">{{ variete.entretien }}</td>
           <td class="contentCell">{{ variete.recolte }}</td>
-          <td class="contentCell">{{ variete.periodeMisePlace }}</td>
-          <td class="contentCell">{{ variete.periodeRecolte }}</td>
+          <td class="contentCell">{{ variete.periodemiseplace }}</td>
+          <td class="contentCell">{{ variete.perioderecolte }}</td>
           <td class="contentCell">{{ variete.commentaire }}</td>
-          <td class="contentCell">{{ variete.typeSol }}</td>
-          <td class="contentCell">{{ variete.estBiologique }}</td>
+          <td class="contentCell">{{ variete.typesol }}</td>
+          <td class="contentCell">{{ variete.estbiologique }}</td>
           <td class="actionCell" id="action-content">
-                <button type="button" class="submitbtn" [routerLink]="['/ajoutvariete', variete.nomVariete]" > <i class="fa fa-edit"></i></button>
-                <button type="button" class="deletebtn" (click)="deleteVariete(variete.nomVariete)">
+                <button type="button" class="submitbtn" [routerLink]="['/ajoutvariete', variete.nomvariete]" > <i class="fa fa-edit"></i></button>
+                <button type="button" class="deletebtn" (click)="deleteVariete(variete.nomvariete)">
                 <i class="fa fa-trash-o"></i>
                 </button>
           </td>
         </tr>
       </tbody>
     </table>
-  
-    <button type="button" class="btn">+ Ajouter une variété</button>
   </div>
   
   

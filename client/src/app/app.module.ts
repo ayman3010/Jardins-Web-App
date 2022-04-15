@@ -16,7 +16,6 @@ import { VarieteComponent } from "./varietes/variete.component";
 import { AjoutVariete } from "./ajout-variete/ajout-variete.component";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +29,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AjoutVariete,
   ],
   imports: [
+    AppRoutingModule,
     CommonModule,
     BrowserModule,
     HttpClientModule,

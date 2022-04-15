@@ -71,17 +71,17 @@ export class DatabaseController {
         .filterVarietes()
         .then((result: pg.QueryResult) => {
           const varietes: Variete[] = result.rows.map((variete: any) => ({
-            nomVariete           : variete.nomvariete,
-            anneeMiseMarche     : variete.anneemisemarche,
-            descriptionSemis    : variete.descriptionsemis,
+            nomvariete           : variete.nomvariete,
+            anneemisemarche     : variete.anneemisemarche,
+            descriptionsemis    : variete.descriptionsemis,
 	          plantation          : variete.plantation,
             entretien           : variete.entretien,
             recolte             : variete.recolte,
-	          periodeMisePlace    : variete.periodemiseplace,
-            periodeRecolte      : variete.perioderecolte,
+	          periodemiseplace    : variete.periodemiseplace,
+            perioderecolte      : variete.perioderecolte,
             commentaire         : variete.commentaire,
-            typeSol             : variete.typesol,
-            estBiologique       : variete.estbiologique,
+            typesol             : variete.typesol,
+            estbiologique       : variete.estbiologique,
           }));
           res.json(varietes);
         })
@@ -97,7 +97,6 @@ export class DatabaseController {
         this.databaseService
         .getVariete(nomVariete)
         .then((result: pg.QueryResult) => {
-          console.log(result);
           const variete: Variete[] = result.rows.map((variete: any) => (
             {
             nomvariete           : variete.nomvariete,
@@ -227,6 +226,35 @@ export class DatabaseController {
           });
       }
     );
+
+    router.post(
+      "/variete/insert",
+      (req: Request, res: Response, _: NextFunction) => {
+        const variete: Variete = {
+          nomvariete         : req.body.nomvariete,
+          anneemisemarche    : req.body.anneemisemarche,
+          descriptionsemis   : req.body.descriptionsemis,
+	        plantation         : req.body.plantation,
+          entretien          : req.body.entretien,
+          recolte            : req.body.recolte,
+	        periodemiseplace   : req.body.periodemiseplace,
+          perioderecolte     : req.body.perioderecolte,
+          commentaire        : req.body.commentaire,
+          typesol            : req.body.typesol,
+          estbiologique      : req.body.estbiologique,
+        };
+        this.databaseService
+          .createVariete(variete)
+          .then((result: pg.QueryResult) => {
+            res.json(result.rowCount);
+          })
+          .catch((e: Error) => {
+            console.error(e.stack);
+            res.json(-1);
+          });
+      }
+    );
+
 
     router.post(
       "/variete/delete/:nomVariete",

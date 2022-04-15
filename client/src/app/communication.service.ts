@@ -76,6 +76,12 @@ export class CommunicationService {
       .pipe(catchError(this.handleError<number>("insertHotel")));
   }
 
+  public insertVariete(variete: Variete): Observable<number> {
+    return this.http
+      .post<number>(this.BASE_URL + "/variete/insert", variete)
+      .pipe(catchError(this.handleError<number>("insertVariet")));
+  }
+
   public updateHotel(hotel: Hotel): Observable<number> {
     return this.http
       .put<number>(this.BASE_URL + "/hotels/update", hotel)
