@@ -4,7 +4,7 @@ DROP SCHEMA IF EXISTS JARDINDB CASCADE;
 CREATE SCHEMA JARDINDB;
 
 CREATE TYPE DIMENSIONS AS (largeur NUMERIC(10, 2), longueur NUMERIC(10,2));
-CREATE TYPE COORDONNEES AS (coordonneesX NUMERIC(4,0), coordonneesY NUMERIC(4,0));
+CREATE TYPE COORDONNEES AS (coordonneesX INTEGER, coordonneesY INTEGER);
 CREATE TYPE COORDONNEES_GEOGRAPHIQUE AS (longitude NUMERIC(9,6), latitude NUMERIC(9,6));
 
 -- maybe a constraint to say that at least one boolean value is true
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS JARDINDB.Parcelle(
 -- TODO - we probably don't need "estJachere" since period jachere already
 ---tells us if it on "jachere" depending on if it's a null value 
 CREATE TABLE IF NOT EXISTS JARDINDB.Rang(
-    numero         NUMERIC(4,0)             NOT NULL,
+    numero         Integer             NOT NULL,
     cordonnesGeo   COORDONNEES_GEOGRAPHIQUE NOT NULL,
     estJachere     Boolean                  NOT NULL,
     periodeJachere NUMERIC(3, 0)            CONSTRAINT max_periode_jachere CHECK (periodeJachere < 365),          
@@ -58,9 +58,9 @@ CREATE TABLE IF NOT EXISTS JARDINDB.Variete(
     entretien            VARCHAR(30)     NOT NULL,
     recolte              VARCHAR(60)     NOT NULL,
 	periodeMisePlace     VARCHAR(60)     NOT NULL,
-    periodeRecolte       VARCHAR(30)     NOT NULL,
-    commentaire          VARCHAR(60)     NOT NULL,
-    typeSol              VARCHAR(60)     NOT NULL,
+    periodeRecolte       VARCHAR(30)     ,
+    commentaire          VARCHAR(60)    ,
+    typeSol              VARCHAR(60)     ,
     estBiologique        Boolean         NOT NULL,
 	PRIMARY KEY (nomVariete)
 );
@@ -128,7 +128,7 @@ CREATE TABLE IF NOT EXISTS JARDINDB.ProductionVariete(
 );
 --- TO_DO should we keep the not nulls given that association is 0 .. * , 0 .. *
 CREATE TABLE IF NOT EXISTS JARDINDB.RangVariete(
-    numero         NUMERIC(4,0)     NOT NULL,
+    numero         Integer     NOT NULL,
 	coordonnees    COORDONNEES      NOT NULL,
 	jardinId       VARCHAR(10)      NOT NULL,
     nomVariete     VARCHAR(60)      NOT NULL,
