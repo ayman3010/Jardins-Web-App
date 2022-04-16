@@ -1,5 +1,6 @@
 import { Rang } from './../../../common/tables/Rang';
 import { Jardin } from "../../../common/tables/Jardins";
+import { Variete } from "../../../common/tables/Variete";
 import { NextFunction, Request, Response, Router } from "express";
 import { inject, injectable } from "inversify";
 import * as pg from "pg";
@@ -7,8 +8,6 @@ import * as pg from "pg";
 import { Hotel } from "../../../common/tables/Hotel";
 import { HotelPK } from "../../../common/tables/HotelPK";
 import { Parcelle } from "../../../common/tables/parcelle";
-import { Room } from "../../../common/tables/Room";
-
 
 import { Guest } from "../../../common/tables/Guest";
 
@@ -67,9 +66,65 @@ export class DatabaseController {
         });
     });
 
+    router.get("/variete", (req: Request, res: Response, _: NextFunction) => {
+      this.databaseService
+        .filterVarietes()
+        .then((result: pg.QueryResult) => {
+          const varietes: Variete[] = result.rows.map((variete: any) => ({
+            nomvariete           : variete.nomvariete,
+            anneemisemarche     : variete.anneemisemarche,
+            descriptionsemis    : variete.descriptionsemis,
+	          plantation          : variete.plantation,
+            entretien           : variete.entretien,
+            recolte             : variete.recolte,
+	          periodemiseplace    : variete.periodemiseplace,
+            perioderecolte      : variete.perioderecolte,
+            commentaire         : variete.commentaire,
+            typesol             : variete.typesol,
+            estbiologique       : variete.estbiologique,
+          }));
+          res.json(varietes);
+        })
+        .catch((e: Error) => {
+          console.error(e.stack);
+        });
+    });
+
+    router.get(
+      "/variete/:nomVariete",
+      (req: Request, res: Response, _: NextFunction) => {
+        const nomVariete: string = req.params.nomVariete;
+        this.databaseService
+        .getVariete(nomVariete)
+        .then((result: pg.QueryResult) => {
+          const variete: Variete[] = result.rows.map((variete: any) => (
+            {
+            nomvariete           : variete.nomvariete,
+            anneemisemarche     : variete.anneemisemarche,
+            descriptionsemis    : variete.descriptionsemis,
+	          plantation          : variete.plantation,
+            entretien           : variete.entretien,
+            recolte             : variete.recolte,
+	          periodemiseplace    : variete.periodemiseplace,
+            perioderecolte      : variete.perioderecolte,
+            commentaire         : variete.commentaire,
+            typesol             : variete.typesol,
+            estbiologique       : variete.estbiologique,
+          }));
+          res.json(variete);
+        })
+        .catch((e: Error) => {
+          console.error(e.stack);
+          res.json(-1);
+        });
+      }
+    );
+
+    
+
 
     router.get("/parcelles", (req: Request, res: Response, _: NextFunction) => {
-      const jardinId = req.query.jardinId ? req.query.jardinId : "";
+      const jardinId = req.query.jardinId ? req.query.jardinId.toString() : "";
       this.databaseService
         .filtrerParcelles(jardinId)
         .then((result: pg.QueryResult) => {
@@ -84,7 +139,6 @@ export class DatabaseController {
           console.error(e.stack);
         });
     });
-
 
     router.get(
       "/parcelles/:jardinId/:coordonnees",
@@ -115,7 +169,7 @@ export class DatabaseController {
       (req: Request, res: Response, _: NextFunction) => {
         const jardinId: string = req.params.jardinId;
         const coordonnees: string = req.params.coordonnees;
-        const numero: number = req.params.numero;
+        const numero: number = parseInt(req.params.numero);
         this.databaseService
         .filtrerVarietebyRang(jardinId, coordonnees, numero)
         .then((result: pg.QueryResult) => {
@@ -173,6 +227,46 @@ export class DatabaseController {
       }
     );
 
+    router.post(
+      "/variete/insert",
+      (req: Request, res: Response, _: NextFunction) => {
+        const variete: Variete = {
+          nomvariete         : req.body.nomvariete,
+          anneemisemarche    : req.body.anneemisemarche,
+          descriptionsemis   : req.body.descriptionsemis,
+	        plantation         : req.body.plantation,
+          entretien          : req.body.entretien,
+          recolte            : req.body.recolte,
+	        periodemiseplace   : req.body.periodemiseplace,
+          perioderecolte     : req.body.perioderecolte,
+          commentaire        : req.body.commentaire,
+          typesol            : req.body.typesol,
+          estbiologique      : req.body.estbiologique,
+        };
+        this.databaseService
+          .createVariete(variete)
+          .then((result: pg.QueryResult) => {
+            res.json(result.rowCount);
+          })
+          .catch((e: Error) => {
+            console.error(e.stack);
+            res.json(-1);
+          });
+      }
+    );
+
+
+    router.post(
+      "/variete/delete/:nomVariete",
+      (req: Request, res: Response, _: NextFunction) => {
+        const nomVariete: string = req.params.nomVariete;
+        this.databaseService.deleteVariete(nomVariete).then((result: pg.QueryResult) => {
+          res.json(result.rowCount);
+        }).catch((e: Error) => {
+          console.error(e.stack);
+        });
+      }
+    )
 
     router.post(
       "/hotels/delete/:hotelNb",
@@ -210,95 +304,6 @@ export class DatabaseController {
       }
     );
 
-
-    // ======= ROOMS ROUTES =======
-    router.get("/rooms", (req: Request, res: Response, _: NextFunction) => {
-      const hotelNb = req.query.hotelNb ? req.query.hotelNb : "";
-      const roomNb = req.query.roomNb ? req.query.roomNb : "";
-      const roomType = req.query.type ? req.query.type : "";
-      const roomPrice = req.query.price ? parseFloat(req.query.price) : -1;
-
-      this.databaseService
-        .filterRooms(hotelNb, roomNb, roomType, roomPrice)
-        .then((result: pg.QueryResult) => {
-          const rooms: Room[] = result.rows.map((room: Room) => ({
-            hotelnb: room.hotelnb,
-            roomnb: room.roomnb,
-            type: room.type,
-            price: parseFloat(room.price.toString()),
-          }));
-
-          res.json(rooms);
-        })
-        .catch((e: Error) => {
-          console.error(e.stack);
-        });
-    });
-
-
-    router.post(
-      "/rooms/insert",
-      (req: Request, res: Response, _: NextFunction) => {
-        const room: Room = {
-          hotelnb: req.body.hotelnb,
-          roomnb: req.body.roomnb,
-          type: req.body.type,
-          price: parseFloat(req.body.price),
-        };
-
-        this.databaseService
-          .createRoom(room)
-          .then((result: pg.QueryResult) => {
-            res.json(result.rowCount);
-          })
-          .catch((e: Error) => {
-            console.error(e.stack);
-            res.json(-1);
-          });
-      }
-    );
-
-
-    router.put(
-      "/rooms/update",
-      (req: Request, res: Response, _: NextFunction) => {
-        const room: Room = {
-          hotelnb: req.body.hotelnb,
-          roomnb: req.body.roomnb,
-          type: req.body.type,
-          price: parseFloat(req.body.price),
-        };
-
-        this.databaseService
-          .updateRoom(room)
-          .then((result: pg.QueryResult) => {
-            res.json(result.rowCount);
-          })
-          .catch((e: Error) => {
-            console.error(e.stack);
-            res.json(-1);
-          });
-      }
-    );
-
-
-    router.post(
-      "/rooms/delete/:hotelNb/:roomNb",
-      (req: Request, res: Response, _: NextFunction) => {
-        const hotelNb: string = req.params.hotelNb;
-        const roomNb: string = req.params.roomNb;
-
-        this.databaseService
-          .deleteRoom(hotelNb, roomNb)
-          .then((result: pg.QueryResult) => {
-            res.json(result.rowCount);
-          })
-          .catch((e: Error) => {
-            console.error(e.stack);
-            res.json(-1);
-          });
-      }
-    );
 
 
     // ======= GUEST ROUTES =======

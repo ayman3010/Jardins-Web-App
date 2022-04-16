@@ -10,6 +10,7 @@ import { HotelPK } from "../../../common/tables/HotelPK";
 import { Guest } from "../../../common/tables/Guest";
 import { Jardin } from "../../../common/tables/Jardins";
 import { Parcelle } from "../../../common/tables/Parcelle";
+import { Variete } from '../../../common/tables/Variete';
 
 
 @Injectable()
@@ -32,11 +33,13 @@ export class CommunicationService {
       .get<Parcelle[]>(this.BASE_URL + `/parcelles?jardinId=${jardinId}`)
       .pipe(catchError(this.handleError<Parcelle[]>("getParcelles")));
   }
+
   public getRangs(jardinId: string, coordonnees: string): Observable<Rang[]> {
     return this.http
       .get<Rang[]>(this.BASE_URL + `/parcelles/${jardinId}/${coordonnees}`)
       .pipe(catchError(this.handleError<Rang[]>("getRangs")));
   }
+
   public getVarieteByRang(jardinId: string, coordonnees: string, numero: number): Observable<string[]> {
     return this.http
       .get<string[]>(this.BASE_URL + `/varietes/${jardinId}/${coordonnees}/${numero}`)
@@ -47,6 +50,18 @@ export class CommunicationService {
     return this.http
       .get<Jardin[]>(this.BASE_URL + "/jardins")
       .pipe(catchError(this.handleError<Jardin[]>("getJardins")));
+  }
+
+  public getVarietes(): Observable<Variete[]> {
+    return this.http
+          .get<Variete[]>(this.BASE_URL + "/variete")
+          .pipe(catchError(this.handleError<Variete[]>("getVariete")))
+  }
+
+  public getVariete(nomVariete: string): Observable<Variete[]> {
+    return this.http
+          .get<Variete[]>(this.BASE_URL + `/variete/:${nomVariete}`)
+          .pipe(catchError(this.handleError<Variete[]>("getVariete")))
   }
 
   public getHotels(): Observable<Hotel[]> {
@@ -61,6 +76,12 @@ export class CommunicationService {
       .pipe(catchError(this.handleError<number>("insertHotel")));
   }
 
+  public insertVariete(variete: Variete): Observable<number> {
+    return this.http
+      .post<number>(this.BASE_URL + "/variete/insert", variete)
+      .pipe(catchError(this.handleError<number>("insertVariet")));
+  }
+
   public updateHotel(hotel: Hotel): Observable<number> {
     return this.http
       .put<number>(this.BASE_URL + "/hotels/update", hotel)
@@ -71,6 +92,12 @@ export class CommunicationService {
     return this.http
       .post<number>(this.BASE_URL + "/hotels/delete/" + hotelNb, {})
       .pipe(catchError(this.handleError<number>("deleteHotel")));
+  }
+
+  public deleteVariete(nomVariete: string): Observable<number> {
+    return this.http
+    .post<number>(this.BASE_URL + "/variete/delete/" + nomVariete, {})
+    .pipe(catchError(this.handleError<number>("deleteVariete")));
   }
 
   public getHotelPKs(): Observable<HotelPK[]> {

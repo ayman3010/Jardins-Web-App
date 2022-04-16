@@ -70,10 +70,10 @@ CREATE TABLE IF NOT EXISTS JARDINDB.Plante(
 	planteId       VARCHAR(10)    NOT NULL,
     nomLatin       VARCHAR(30)     NOT NULL,
 	jardinId       VARCHAR(10),
-    nomVariete     VARCHAR(60)     NOT NULL,
+    nomVariete     VARCHAR(60),
     FOREIGN KEY(nomLatin) REFERENCES JARDINDB.PlanteInfo(nomLatin) ON DELETE RESTRICT ON UPDATE CASCADE,
     FOREIGN KEY(jardinId) REFERENCES JARDINDB.Jardin(jardinId) ON DELETE SET NULL ,
-    FOREIGN KEY(nomVariete) REFERENCES JARDINDB.Variete(nomVariete) ON DELETE RESTRICT ON UPDATE CASCADE,
+    FOREIGN KEY(nomVariete) REFERENCES JARDINDB.Variete(nomVariete) ON DELETE SET NULL ON UPDATE CASCADE,
 	PRIMARY KEY (planteId)
 );
 
@@ -122,10 +122,11 @@ CREATE TABLE IF NOT EXISTS JARDINDB.Semencier(
 CREATE TABLE IF NOT EXISTS JARDINDB.ProductionVariete(
     semencierID       VARCHAR(10)    NOT NULL,
     nomVariete        VARCHAR(30)    NOT NULL,
-	FOREIGN KEY(semencierID) REFERENCES JARDINDB.Semencier(semencierID) ON DELETE SET NULL ON UPDATE CASCADE,
-    FOREIGN KEY(nomVariete) REFERENCES JARDINDB.Variete(nomVariete)ON DELETE SET NULL ON UPDATE CASCADE,
-	PRIMARY KEY (SemencierID, nomVariete)
+	FOREIGN KEY(semencierID) REFERENCES JARDINDB.Semencier(semencierID) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY(nomVariete) REFERENCES JARDINDB.Variete(nomVariete) ON DELETE CASCADE ON UPDATE CASCADE,
+	PRIMARY KEY (semencierID, nomVariete)
 );
+
 --- TO_DO should we keep the not nulls given that association is 0 .. * , 0 .. *
 CREATE TABLE IF NOT EXISTS JARDINDB.RangVariete(
     numero         Integer     NOT NULL,
@@ -134,7 +135,7 @@ CREATE TABLE IF NOT EXISTS JARDINDB.RangVariete(
     nomVariete     VARCHAR(60)      NOT NULL,
 	typeMiseEnplace VARCHAR(60),
     FOREIGN KEY(jardinId, coordonnees, numero) REFERENCES JARDINDB.Rang(jardinId,coordonnees, numero),
-    FOREIGN KEY(nomVariete) REFERENCES JARDINDB.Variete(nomVariete),
+    FOREIGN KEY(nomVariete) REFERENCES JARDINDB.Variete(nomVariete) ON DELETE CASCADE,
     PRIMARY KEY(jardinId, coordonnees, numero, nomVariete)
 )
 

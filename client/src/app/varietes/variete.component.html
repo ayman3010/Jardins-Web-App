@@ -1,0 +1,53 @@
+<div class="variete-page">
+<div id="varietes">
+    <h1>Découvrez nos variétés</h1>
+  
+    <div class="divider"></div>
+
+    <table
+      id="ht"
+      align="center"
+      border="1"
+      width="1000"
+      class="table-striped table-hover"
+    >
+      <thead class="roomsheader">
+        <th class="contentCell">NOM VARIETE</th>
+        <th class="contentCell">ANNEE MISE MARCHE</th>
+        <th class="contentCell">DESCRIPTION DU SEMIS</th>
+        <th class="contentCell">TYPE DE PLANTATION</th>
+        <th class="contentCell">MODE D'ENTRETIEN</th>
+        <th class="contentCell">TYPE DE RECOLTE</th>
+        <th class="contentCell">PERIODE DE MISE EN PLACE</th>
+        <th class="contentCell">PERIODE DE RECOLTE</th>
+        <th class="contentCell">COMMENTAIRE GENERAL</th>
+        <th class="contentCell">TYPE DE SOL</th>
+        <th class="contentCell">EST BIOLOGIQUE</th>
+        <th class="actionCell">ACTION</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let variete of varietes; let i = index">
+          <td class="contentCell">{{ variete.nomvariete }}</td>
+          <td class="contentCell">{{ variete.anneemisemarche }}</td>
+          <td class="contentCell">{{ variete.descriptionsemis }}</td>
+          <td class="contentCell">{{ variete.plantation }}</td>
+          <td class="contentCell">{{ variete.entretien }}</td>
+          <td class="contentCell">{{ variete.recolte }}</td>
+          <td class="contentCell">{{ variete.periodemiseplace }}</td>
+          <td class="contentCell">{{ variete.perioderecolte }}</td>
+          <td class="contentCell">{{ variete.commentaire }}</td>
+          <td class="contentCell">{{ variete.typesol }}</td>
+          <td class="contentCell">{{ variete.estbiologique }}</td>
+          <td class="actionCell" id="action-content">
+                <button type="button" class="submitbtn" [routerLink]="['/ajoutvariete', variete.nomvariete]" > <i class="fa fa-edit"></i></button>
+                <button type="button" class="deletebtn" (click)="deleteVariete(variete.nomvariete)">
+                <i class="fa fa-trash-o"></i>
+                </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+  
+  
