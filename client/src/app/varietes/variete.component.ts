@@ -1,4 +1,6 @@
+import {AjoutVarieteComponent } from './../ajout-variete/ajout-variete.component';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { CommunicationService } from '../communication.service';
 import { Variete } from './../../../../common/tables/Variete';
 
@@ -9,7 +11,7 @@ import { Variete } from './../../../../common/tables/Variete';
 })
 export class VarieteComponent implements OnInit {
   varietes: Variete[];
-  constructor(private communicationService: CommunicationService) { }
+  constructor(private communicationService: CommunicationService, public dialog: MatDialog, ) { }
 
   ngOnInit() {
     this.getVarietes();
@@ -26,4 +28,16 @@ export class VarieteComponent implements OnInit {
       this.getVarietes();
     });
   }
+
+  openDialog(variete: Variete): void {
+    const nameInputDialog = this.dialog.open(AjoutVarieteComponent, {
+        height: '1200px',
+        width: '1000px',
+        data: variete,
+    });
+
+    nameInputDialog.afterClosed().subscribe((result: Variete) => {
+           console.log(result.nomvariete);
+    });
+}
 }

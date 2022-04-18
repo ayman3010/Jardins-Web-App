@@ -1,98 +1,108 @@
-<h1 mat-dialog-title>Rejoindre une partie</h1>
-<div mat-dialog-content (keyup.enter)="onConfirmClick()">
-    <mat-form-field appearance="fill">
-        <mat-label>Nom de joueur</mat-label>
-        <input matInput #input minlength="3" maxLength="20" placeholder="Ex. polylover123" [(ngModel)]="varieteFormulaire.nomvariete" required cdkFocusInitial />
-        <mat-hint align="end">{{ input.value?.length || 0 }}/20</mat-hint>
-    </mat-form-field>
-</div>
-<div mat-dialog-actions>
-    <button mat-button (click)="onCancelClick()">Annuler</button>
-    <button mat-button (click)="onConfirmClick()">Confirmer</button>
-</div>
-
-<!-- <h1>Ajouter une variété</h1>
+<h1 mat-dialog-title>Ajouter une variété</h1>
 <div class="divider"></div>
 <div class = "formulaire">
-    <label>
-        Nom de la variété : 
-        <input type="text" [(ngModel)]="varieteFormulaire.nomvariete">
-    </label>
-    <label>
-        Année de mise en marche :
-        <input type="text" [(ngModel)]="varieteFormulaire.anneemisemarche">
-    </label>
-    <label>
-        Description pour le semis :
-        <textarea rows="4" cols="50" [(ngModel)]="varieteFormulaire.descriptionsemis"></textarea>
-    </label>
-    <label>
-        Description de la plantation :
-        <textarea rows="4" cols="50" [(ngModel)]="varieteFormulaire.plantation"></textarea>
-    </label>
-    <label>
-        Description sur la récolte :
-        <textarea rows="4" cols="50" [(ngModel)]="varieteFormulaire.recolte"></textarea>
-    </label>
-    <label>
-        Description sur l'entretien :
-        <textarea rows="4" cols="50" [(ngModel)]="varieteFormulaire.entretien"></textarea>
-    </label>
-    <label>
-        Période de mise de en place :
-        <input type="text" [(ngModel)]="varieteFormulaire.periodemiseplace">
-    </label>
-    <label>
-        Période de récolte :
-        <input type="text" [(ngModel)]="varieteFormulaire.perioderecolte">
-    </label>
-    <label>
-        Commentaire sur la variété :
-        <textarea rows="4" cols="50" [(ngModel)]="varieteFormulaire.commentaire"></textarea>
-    </label>
-        <label>Type de sol :
-        <select [(ngModel)]="varieteFormulaire.typesol"> 
-            <option> Argileux </option>
-            <option> Limoneux </option>
-            <option> Humifère </option>
-        </select>
-    </label>
-        <label> Nom semancier :
-        <select [(ngModel)]="nomSemancier"> 
-            <option> LASSONDE</option>
-            <option> MICHEL </option>
-            <option> PATRICK </option>
-            <option> PAUL </option>
-            <option> JEAN </option>
-            <option> LILY </option>
-            <option> CATHERINE </option>
-            <option> JEREMY </option>
-            <option> MARIE </option>
-            <option> BENJAMIN </option>
-            <option> WILL </option>
-            <option> XAVIER </option>
-            <option> MANON </option>
-            <option> JORDAN </option>
-            <option> HANNA </option>
-        </select>
-    </label>
-    <label> Nom Plante :
-        <select [(ngModel)]="nomPlante"> 
-            <option> Pommier </option>
-            <option> Rossier </option>
-            <option> Pomme de terre </option>
-            <option> Tournesol </option>
-            <option> Cepe </option>
-            <option> Cerisier </option>
-            <option> Cactus </option>
-            <option> Trefle </option>
-            <option> Orchidée </option>
-        </select>
-    </label>
-    <label>
-        La variété est-elle biologique ? 
+    <span>
+        <mat-form-field appearance="fill">
+            <mat-label>Nom de la variété</mat-label>
+                <input matInput type="text" [(ngModel)]="varieteFormulaire.nomvariete">
+        </mat-form-field>
+        <mat-label>La variété est-elle biologique ?  </mat-label>  
         <input type="checkbox" [(ngModel)]="varieteFormulaire.estbiologique">
-    </label>
+    </span>  
+    
 
-    <button (click)="submit()" id="submit-button"> Envoyer !</button>
-</div> -->
+    <mat-form-field appearance="fill">
+        <mat-label>Année de mise en marche :</mat-label>
+            <input matInput type="text" [(ngModel)]="varieteFormulaire.anneemisemarche">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Description pour le semis :</mat-label>
+            <textarea matInput rows="4" cols="50" matInput type="text" [(ngModel)]="varieteFormulaire.descriptionsemis"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Description de la plantation :</mat-label>
+            <textarea matInput rows="4" cols="50" type="text" [(ngModel)]="varieteFormulaire.plantation"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Description sur la récolte </mat-label>
+            <textarea matInput rows="4" cols="50" type="text" [(ngModel)]="varieteFormulaire.recolte"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Description sur l'entretien :</mat-label>
+            <textarea matInput rows="4" cols="50" type="text" [(ngModel)]="varieteFormulaire.entretien"></textarea>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="fill">
+        <mat-label>Période de mise de en place </mat-label>
+            <input matInput type="text" [(ngModel)]="varieteFormulaire.periodemiseplace">
+        </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Période de récolte </mat-label>
+        <input matInput type="text" [(ngModel)]="varieteFormulaire.perioderecolte">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Commentaire sur la variété </mat-label>
+        <input matInput type="text" [(ngModel)]="varieteFormulaire.commentaire">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Type de sol </mat-label>
+        <mat-select [(value)]="varieteFormulaire.typesol"> 
+            <mat-option> Argileux </mat-option>
+            <mat-option> Limoneux </mat-option>
+                <mat-option> Humifère </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Nom semancier </mat-label>
+        <mat-select [(value)]="nomSemancier"> 
+            <mat-option> LASSONDE</mat-option>
+            <mat-option> MICHEL </mat-option>
+            <mat-option> PATRICK </mat-option>
+            <mat-option> PAUL </mat-option>
+            <mat-option> JEAN </mat-option>
+            <mat-option> LILY </mat-option>
+            <mat-option> CATHERINE </mat-option>
+            <mat-option> JEREMY </mat-option>
+            <mat-option> MARIE </mat-option>
+            <mat-option> BENJAMIN </mat-option>
+            <mat-option> WILL </mat-option>
+            <mat-option> XAVIER </mat-option>
+            <mat-option> MANON </mat-option>
+            <mat-option> JORDAN </mat-option>
+            <mat-option> HANNA </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="fill">
+        <mat-label>Nom Plante </mat-label>
+        <mat-select [(value)]="nomPlante"> 
+            <mat-option value = "Pommier"> Pommier </mat-option>
+            <mat-option value = "Rosier"> Rossier </mat-option>
+            <mat-option > Pomme de terre </mat-option>
+            <mat-option> Tournesol </mat-option>
+            <mat-option> Cepe </mat-option>
+            <mat-option> Cerisier </mat-option>
+            <mat-option> Cactus </mat-option>
+            <mat-option> Trefle </mat-option>
+            <mat-option> Orchidée </mat-option>
+        </mat-select>
+</mat-form-field>
+<p>You selected: {{nomPlante}}</p>
+
+    
+
+
+    <div mat-dialog-actions>
+        <button mat-button (click)="submit()" id="submit-button"> Envoyer !</button>
+    </div>
+
+    <div class = "formulaire">

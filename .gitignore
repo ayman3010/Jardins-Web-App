@@ -33,3 +33,4 @@ coverage/
 
 #Node Modules
 /node_modules
+client/.angular

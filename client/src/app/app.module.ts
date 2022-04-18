@@ -13,7 +13,7 @@ import { JardinsComponent } from './jardins/jardins.component';
 import { ParcelleComponent } from './parcelle/parcelle.component';
 import { RangComponent } from './rang/rang.component';
 import { VarieteComponent } from "./varietes/variete.component";
-import { AjoutVariete } from "./ajout-variete/ajout-variete.component";
+import { AjoutVarieteComponent } from "./ajout-variete/ajout-variete.component";
 import { AppMaterialModule } from '@app/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogRef } from '@angular/material/dialog';
@@ -28,7 +28,7 @@ import { MatDialogRef } from '@angular/material/dialog';
     ParcelleComponent,
     RangComponent,
     VarieteComponent,
-    AjoutVariete,
+    AjoutVarieteComponent,
   ],
   imports: [
     AppRoutingModule,

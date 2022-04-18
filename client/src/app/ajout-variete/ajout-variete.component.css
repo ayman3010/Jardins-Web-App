@@ -1,8 +1,8 @@
-/* .formulaire {
+.formulaire {
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    width: 50%;
+    width: 70%;
 }
 
 .formulaire label {
@@ -46,4 +46,4 @@ input {
 
 #submit-button:hover {
     background-color: greenyellow;
-} */
+}

@@ -103,6 +103,17 @@ export class DatabaseService {
     return res;
   }
 
+
+  public async filtrerPlante(): Promise<pg.QueryResult> {
+
+    const client = await this.pool.connect();
+    let queryText = "SELECT nomLatin FROM JARDINDB.Plante";
+  
+    const res = await client.query(queryText);
+    client.release()
+    return res;
+  }
+
   public async filtrerVarietebyRang(jardinId: string, coordonnees: string, numero: number): Promise<pg.QueryResult> {
 
     const client = await this.pool.connect();

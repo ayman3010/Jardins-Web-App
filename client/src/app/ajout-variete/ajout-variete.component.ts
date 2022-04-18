@@ -1,5 +1,5 @@
-import { Component} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Inject} from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Variete } from '../../../../common/tables/Variete';
 import { CommunicationService } from '../communication.service';
 
@@ -8,7 +8,7 @@ import { CommunicationService } from '../communication.service';
   templateUrl: './ajout-variete.component.html',
   styleUrls: ['./ajout-variete.component.css']
 })
-export class AjoutVariete {
+export class AjoutVarieteComponent {
 
   varieteFormulaire: Variete = new Variete();
   nomPlante: string;
@@ -16,18 +16,17 @@ export class AjoutVariete {
   isModified: boolean;
   duplicateError: boolean = false;
 
-  constructor(private route: ActivatedRoute, private communicationService: CommunicationService) {
-    this.route.params.subscribe(params => {
-      this.getVariete(params.nomVariete);
-    });
+  constructor( private communicationService: CommunicationService, public nameInputDialog: MatDialogRef<AjoutVarieteComponent>, @Inject(MAT_DIALOG_DATA) public data: Variete) {
+    this.getVariete(data.nomvariete);
    }
 
    onCancelClick(): void {
-}
+
+   }
 
    onConfirmClick(): void {
-   
-}
+   }
+
   getVariete(nomVariete: string){
     this.communicationService.getVariete(nomVariete).subscribe((variete: Variete[]) => {
       this.varieteFormulaire.anneemisemarche = variete[0].anneemisemarche;

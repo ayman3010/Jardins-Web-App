@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS JARDINDB.PlanteInfo(
 );
 
 CREATE TABLE IF NOT EXISTS JARDINDB.Variete(
-   nomVariete           VARCHAR(60)     NOT NULL,
+    nomVariete           VARCHAR(60)     NOT NULL,
     anneeMiseMarche      NUMERIC(4,0)    NOT NULL,
     descriptionSemis     VARCHAR(120)    ,
 	plantation           VARCHAR(60)     ,

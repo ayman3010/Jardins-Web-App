@@ -20,11 +20,11 @@
     </thead>
     <tbody>
       <tr *ngFor="let jardin of jardins; let i = index">
-        <td class="contentCell" [routerLink]="['/parcelle', jardin.jardinid]">{{ jardin.jardinid }}</td>
-        <td class="contentCell"  [routerLink]="['/parcelle', jardin.jardinid]">{{ jardin.nom}}</td>
-        <td class="contentCell"  [routerLink]="['/parcelle', jardin.jardinid]">{{ jardin.surface}}</td>
-        <td class="contentCell"  [routerLink]="['/parcelle', jardin.jardinid]">{{jardin?.typesol}}</td>
-        <td class="contentCell"   [routerLink]="['/parcelle', 1]">{{ getTypeJardin(jardin) }}</td>
+        <td class="contentCell" [routerLink]="['/parcelle', jardin.jardinid]" >{{ jardin.jardinid }}</td>
+        <td class="contentCell"  [routerLink]="['/parcelle', jardin.jardinid]" >{{ jardin.nom}}</td>
+        <td class="contentCell"  [routerLink]="['/parcelle', jardin.jardinid]" >{{ jardin.surface}}</td>
+        <td class="contentCell"  [routerLink]="['/parcelle', jardin.jardinid]" >{{jardin?.typesol}}</td>
+        <td class="contentCell"   [routerLink]="['/parcelle', jardin.jardinid]" >{{ getTypeJardin(jardin) }}</td>
       </tr>
     </tbody>
   </table>
