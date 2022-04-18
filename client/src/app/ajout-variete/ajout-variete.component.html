@@ -62,22 +62,8 @@
 
     <mat-form-field appearance="fill">
         <mat-label>Nom semancier </mat-label>
-        <mat-select [(value)]="nomSemancier"> 
-            <mat-option> LASSONDE</mat-option>
-            <mat-option> MICHEL </mat-option>
-            <mat-option> PATRICK </mat-option>
-            <mat-option> PAUL </mat-option>
-            <mat-option> JEAN </mat-option>
-            <mat-option> LILY </mat-option>
-            <mat-option> CATHERINE </mat-option>
-            <mat-option> JEREMY </mat-option>
-            <mat-option> MARIE </mat-option>
-            <mat-option> BENJAMIN </mat-option>
-            <mat-option> WILL </mat-option>
-            <mat-option> XAVIER </mat-option>
-            <mat-option> MANON </mat-option>
-            <mat-option> JORDAN </mat-option>
-            <mat-option> HANNA </mat-option>
+        <mat-select [(value)]="nomSemencier"> 
+            <mat-option *ngFor="let semencier of semenciers" [value]="semencier.id"> {{semencier.nom}}</mat-option>            
         </mat-select>
     </mat-form-field>
 
@@ -85,15 +71,7 @@
     <mat-form-field appearance="fill">
         <mat-label>Nom Plante </mat-label>
         <mat-select [(value)]="nomPlante"> 
-            <mat-option value = "Pommier"> Pommier </mat-option>
-            <mat-option value = "Rosier"> Rossier </mat-option>
-            <mat-option > Pomme de terre </mat-option>
-            <mat-option> Tournesol </mat-option>
-            <mat-option> Cepe </mat-option>
-            <mat-option> Cerisier </mat-option>
-            <mat-option> Cactus </mat-option>
-            <mat-option> Trefle </mat-option>
-            <mat-option> Orchidée </mat-option>
+            <mat-option *ngFor="let nom of nomPlantes" [value]="nom"> {{nom}}</mat-option>            
         </mat-select>
 </mat-form-field>
 <p>You selected: {{nomPlante}}</p>

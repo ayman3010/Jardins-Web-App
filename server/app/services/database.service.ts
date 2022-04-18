@@ -104,13 +104,20 @@ export class DatabaseService {
   }
 
 
-  public async filtrerPlante(): Promise<pg.QueryResult> {
-
+  public async filtrerSemenciers(): Promise<pg.QueryResult> {
     const client = await this.pool.connect();
-    let queryText = "SELECT nomLatin FROM JARDINDB.Plante";
-  
+    let queryText = "SELECT semencierID, nom FROM JARDINDB.Semencier";
     const res = await client.query(queryText);
     client.release()
+    return res;
+  }
+
+  public async filtrerPlantes(): Promise<pg.QueryResult> {
+    const client = await this.pool.connect();
+    let queryText = "SELECT nomLatin, nom FROM JARDINDB.PlanteInfo";
+    const res = await client.query(queryText);
+    client.release()
+    console.log(JSON.stringify(res.rows));
     return res;
   }
 

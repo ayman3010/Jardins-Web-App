@@ -1,3 +1,4 @@
+import { Semencier } from './../../../common/tables/Semencier';
 import { Rang } from './../../../common/tables/Rang';
 import { Jardin } from "../../../common/tables/Jardins";
 import { Variete } from "../../../common/tables/Variete";
@@ -23,22 +24,31 @@ export class DatabaseController {
   public get router(): Router {
     const router: Router = Router();
 
-    // ======= HOTEL ROUTES =======
-    // ex http://localhost:3000/database/hotel?hotelNb=3&name=LeGrandHotel&city=laval
-    router.get("/hotels", (req: Request, res: Response, _: NextFunction) => {
-      var hotelNb = req.params.hotelNb ? req.params.hotelNb : "";
-      var hotelName = req.params.name ? req.params.name : "";
-      var hotelCity = req.params.city ? req.params.city : "";
 
+    router.get("/nomplantes", (req: Request, res: Response, _: NextFunction) => {
       this.databaseService
-        .filterHotels(hotelNb, hotelName, hotelCity)
+        .filtrerPlantes()
         .then((result: pg.QueryResult) => {
-          const hotels: Hotel[] = result.rows.map((hotel: Hotel) => ({
-            hotelnb: hotel.hotelnb,
-            name: hotel.name,
-            city: hotel.city,
+          const nomPlantes: string[] = result.rows.map((plante: any) => (
+             plante.nom
+          ));
+          res.json(nomPlantes);
+        })
+        .catch((e: Error) => {
+          console.error(e.stack);
+        });
+    });
+
+
+    router.get("/semenciers", (req: Request, res: Response, _: NextFunction) => {
+      this.databaseService
+        .filtrerSemenciers()
+        .then((result: pg.QueryResult) => {
+          const semenciers: Semencier[] = result.rows.map((semencier: any) => ({
+            id: semencier.semencierid,
+            nom: semencier.nom,
           }));
-          res.json(hotels);
+          res.json(semenciers);
         })
         .catch((e: Error) => {
           console.error(e.stack);

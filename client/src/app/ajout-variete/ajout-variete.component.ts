@@ -1,6 +1,8 @@
+import { Semencier } from './../../../../common/tables/Semencier';
 import { Component, Inject} from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Variete } from '../../../../common/tables/Variete';
+
 import { CommunicationService } from '../communication.service';
 
 @Component({
@@ -12,12 +14,16 @@ export class AjoutVarieteComponent {
 
   varieteFormulaire: Variete = new Variete();
   nomPlante: string;
-  nomSemancier: string;
+  semenciers: Semencier[];
+  nomPlantes: string[];
+  nomSemencier: string;
   isModified: boolean;
   duplicateError: boolean = false;
 
   constructor( private communicationService: CommunicationService, public nameInputDialog: MatDialogRef<AjoutVarieteComponent>, @Inject(MAT_DIALOG_DATA) public data: Variete) {
     this.getVariete(data.nomvariete);
+    this.getSemenciers();
+    this.getNomPlantes();
    }
 
    onCancelClick(): void {
@@ -25,6 +31,17 @@ export class AjoutVarieteComponent {
    }
 
    onConfirmClick(): void {
+   }
+   getSemenciers(){
+    this.communicationService.getSemenciers().subscribe((semenciers: Semencier[]) => {
+      this.semenciers = semenciers;
+    });
+   }
+
+   getNomPlantes(){
+    this.communicationService.getNomPlantes().subscribe((noms: string[]) => {
+      this.nomPlantes = noms;
+    });
    }
 
   getVariete(nomVariete: string){
