@@ -114,6 +114,12 @@ export class CommunicationService {
     .pipe(catchError(this.handleError<number>("deleteVariete")));
   }
 
+  public modifierVariete(variete: Variete, nomVariete: string): Observable<number> {
+    return this.http
+    .post<number>(this.BASE_URL + "/variete/modifier/" + nomVariete, variete)
+    .pipe(catchError(this.handleError<number>("modifierVariete")));
+  }
+
   public getHotelPKs(): Observable<HotelPK[]> {
     return this.http
       .get<HotelPK[]>(this.BASE_URL + "/hotels/hotelNb")

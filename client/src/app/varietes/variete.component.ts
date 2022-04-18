@@ -29,15 +29,15 @@ export class VarieteComponent implements OnInit {
     });
   }
 
-  openDialog(variete: Variete): void {
+  openDialog(variete?: Variete): void {
     const nameInputDialog = this.dialog.open(AjoutVarieteComponent, {
         height: '1200px',
         width: '1000px',
         data: variete,
     });
-
+    console.log("failed1");
     nameInputDialog.afterClosed().subscribe((result: Variete) => {
-           console.log(result.nomvariete);
+           this.ngOnInit();
     });
 }
 }

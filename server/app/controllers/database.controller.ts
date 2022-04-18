@@ -195,38 +195,25 @@ export class DatabaseController {
       }
     );
 
-
-    router.get(
-      "/hotels/hotelNb",
-      (req: Request, res: Response, _: NextFunction) => {
-        this.databaseService
-          .getHotelNamesByNos()
-          .then((result: pg.QueryResult) => {
-            const hotelsNbsNames = result.rows.map((hotel: HotelPK) => ({
-              hotelnb: hotel.hotelnb,
-              name: hotel.name,
-            }));
-            res.json(hotelsNbsNames);
-          })
-
-          .catch((e: Error) => {
-            console.error(e.stack);
-          });
-      }
-    );
-
-
     router.post(
-      "/hotels/insert",
+      "/variete/modifier/:nomVariete",
       (req: Request, res: Response, _: NextFunction) => {
-        const hotel: Hotel = {
-          hotelnb: req.body.hotelnb,
-          name: req.body.name,
-          city: req.body.city,
+        const nomVariete: string = req.params.nomVariete;
+        const variete: Variete = {
+          nomvariete         : req.body.nomvariete,
+          anneemisemarche    : req.body.anneemisemarche,
+          descriptionsemis   : req.body.descriptionsemis,
+	        plantation         : req.body.plantation,
+          entretien          : req.body.entretien,
+          recolte            : req.body.recolte,
+	        periodemiseplace   : req.body.periodemiseplace,
+          perioderecolte     : req.body.perioderecolte,
+          commentaire        : req.body.commentaire,
+          typesol            : req.body.typesol,
+          estbiologique      : req.body.estbiologique,
         };
-
         this.databaseService
-          .createHotel(hotel)
+          .modifierVariete(variete, nomVariete)
           .then((result: pg.QueryResult) => {
             res.json(result.rowCount);
           })
@@ -254,7 +241,7 @@ export class DatabaseController {
           estbiologique      : req.body.estbiologique,
         };
         this.databaseService
-          .createVariete(variete)
+          .creerVariete(variete)
           .then((result: pg.QueryResult) => {
             res.json(result.rowCount);
           })

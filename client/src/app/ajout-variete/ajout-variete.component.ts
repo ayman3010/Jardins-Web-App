@@ -19,19 +19,27 @@ export class AjoutVarieteComponent {
   nomSemencier: string;
   isModified: boolean;
   duplicateError: boolean = false;
+  action : string = "Ajouter";
 
   constructor( private communicationService: CommunicationService, public nameInputDialog: MatDialogRef<AjoutVarieteComponent>, @Inject(MAT_DIALOG_DATA) public data: Variete) {
-    this.getVariete(data.nomvariete);
+    if (data) {
+      this.getVariete(data.nomvariete);
+      this.action = "Modifier"
+    }
     this.getSemenciers();
     this.getNomPlantes();
    }
 
-   onCancelClick(): void {
-
+   annuler(): void {
+    this.nameInputDialog.close();
    }
 
-   onConfirmClick(): void {
-   }
+   soumettre() {  
+    this.insertVariete();
+    this.varieteFormulaire = new Variete();
+    this.nameInputDialog.close();
+  }
+
    getSemenciers(){
     this.communicationService.getSemenciers().subscribe((semenciers: Semencier[]) => {
       this.semenciers = semenciers;
@@ -46,35 +54,21 @@ export class AjoutVarieteComponent {
 
   getVariete(nomVariete: string){
     this.communicationService.getVariete(nomVariete).subscribe((variete: Variete[]) => {
-      this.varieteFormulaire.anneemisemarche = variete[0].anneemisemarche;
-      this.varieteFormulaire.commentaire = variete[0].commentaire;
-      this.varieteFormulaire.descriptionsemis = variete[0].descriptionsemis;
-      this.varieteFormulaire.entretien = variete[0].entretien;
-      this.varieteFormulaire.estbiologique = variete[0].estbiologique;
-      this.varieteFormulaire.nomvariete = variete[0].nomvariete;
-      this.varieteFormulaire.periodemiseplace = variete[0].periodemiseplace;
-      this.varieteFormulaire.perioderecolte = variete[0].perioderecolte;
-      this.varieteFormulaire.plantation = variete[0].plantation;
-      this.varieteFormulaire.recolte = variete[0].recolte;
-      this.varieteFormulaire.typesol = variete[0].typesol;
+      this.varieteFormulaire = {...variete[0]}
     });
   }
   public insertVariete(): void {
-    const variete: Variete = {
-      nomvariete         : this.varieteFormulaire.nomvariete,
-      anneemisemarche    : this.varieteFormulaire.anneemisemarche,
-      descriptionsemis   : this.varieteFormulaire.descriptionsemis,
-	    plantation         : this.varieteFormulaire.plantation,
-      entretien          : this.varieteFormulaire.entretien,
-      recolte            : this.varieteFormulaire.recolte,
-	    periodemiseplace   : this.varieteFormulaire.periodemiseplace,
-      perioderecolte     : this.varieteFormulaire.perioderecolte,
-      commentaire        : this.varieteFormulaire.commentaire,
-      typesol            : this.varieteFormulaire.typesol,
-      estbiologique      : this.varieteFormulaire.estbiologique,
-    };
-
-    this.communicationService.insertVariete(variete).subscribe((res: number) => {
+    const variete: Variete = { ... this.varieteFormulaire };
+    if (this.action === 'Ajouter'){
+      this.communicationService.insertVariete(variete).subscribe((res: number) => {
+        if (res > 0) {
+          this.communicationService.filter("update");
+        }
+        this.duplicateError = res === -1;
+      });
+      return;
+    }
+    this.communicationService.modifierVariete(variete, this.data.nomvariete).subscribe((res: number) => {
       if (res > 0) {
         this.communicationService.filter("update");
       }
@@ -82,8 +76,5 @@ export class AjoutVarieteComponent {
     });
   }
 
-  submit() {  
-    this.insertVariete();
-    this.varieteFormulaire = new Variete();
-  }
+
 }

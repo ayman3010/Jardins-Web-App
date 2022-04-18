@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Ajouter une variété</h1>
+<h1 mat-dialog-title>{{action}} une variété</h1>
 <div class="divider"></div>
 <div class = "formulaire">
     <span>
@@ -59,28 +59,14 @@
                 <mat-option> Humifère </mat-option>
         </mat-select>
     </mat-form-field>
-
-    <mat-form-field appearance="fill">
-        <mat-label>Nom semancier </mat-label>
-        <mat-select [(value)]="nomSemencier"> 
-            <mat-option *ngFor="let semencier of semenciers" [value]="semencier.id"> {{semencier.nom}}</mat-option>            
-        </mat-select>
-    </mat-form-field>
-
-
-    <mat-form-field appearance="fill">
-        <mat-label>Nom Plante </mat-label>
-        <mat-select [(value)]="nomPlante"> 
-            <mat-option *ngFor="let nom of nomPlantes" [value]="nom"> {{nom}}</mat-option>            
-        </mat-select>
-</mat-form-field>
-<p>You selected: {{nomPlante}}</p>
-
-    
-
-
+   <span>
     <div mat-dialog-actions>
-        <button mat-button (click)="submit()" id="submit-button"> Envoyer !</button>
+        <button type="button" class="btn" (click)="soumettre()" id="submit-button"> {{action}}</button>
     </div>
+    <div mat-dialog-actions>
+        <button type="button" class="btn" (click)="annuler()" id="submit-button"> Annuller </button>
+    </div>
+   </span>
+    
 
     <div class = "formulaire">
