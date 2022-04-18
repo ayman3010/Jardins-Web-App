@@ -1,4 +1,17 @@
-<h1>Ajouter une variété</h1>
+<h1 mat-dialog-title>Rejoindre une partie</h1>
+<div mat-dialog-content (keyup.enter)="onConfirmClick()">
+    <mat-form-field appearance="fill">
+        <mat-label>Nom de joueur</mat-label>
+        <input matInput #input minlength="3" maxLength="20" placeholder="Ex. polylover123" [(ngModel)]="varieteFormulaire.nomvariete" required cdkFocusInitial />
+        <mat-hint align="end">{{ input.value?.length || 0 }}/20</mat-hint>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onCancelClick()">Annuler</button>
+    <button mat-button (click)="onConfirmClick()">Confirmer</button>
+</div>
+
+<!-- <h1>Ajouter une variété</h1>
 <div class="divider"></div>
 <div class = "formulaire">
     <label>
@@ -82,4 +95,4 @@
     </label>
 
     <button (click)="submit()" id="submit-button"> Envoyer !</button>
-</div>
+</div> -->

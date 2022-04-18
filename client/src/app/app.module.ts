@@ -14,8 +14,9 @@ import { ParcelleComponent } from './parcelle/parcelle.component';
 import { RangComponent } from './rang/rang.component';
 import { VarieteComponent } from "./varietes/variete.component";
 import { AjoutVariete } from "./ajout-variete/ajout-variete.component";
-import { MatTableModule } from '@angular/material/table'  
+import { AppMaterialModule } from '@app/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -37,10 +38,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatTableModule,
+    AppMaterialModule,
   ],
 
-  providers: [CommunicationService],
+  providers: [CommunicationService,  {
+    provide: MatDialogRef,
+    useValue: {},
+},],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

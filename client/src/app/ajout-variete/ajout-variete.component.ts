@@ -22,6 +22,12 @@ export class AjoutVariete {
     });
    }
 
+   onCancelClick(): void {
+}
+
+   onConfirmClick(): void {
+   
+}
   getVariete(nomVariete: string){
     this.communicationService.getVariete(nomVariete).subscribe((variete: Variete[]) => {
       this.varieteFormulaire.anneemisemarche = variete[0].anneemisemarche;
