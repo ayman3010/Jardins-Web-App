@@ -14,6 +14,7 @@ import { ParcelleComponent } from './parcelle/parcelle.component';
 import { RangComponent } from './rang/rang.component';
 import { VarieteComponent } from "./varietes/variete.component";
 import { AjoutVariete } from "./ajout-variete/ajout-variete.component";
+import { MatTableModule } from '@angular/material/table'  
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -36,6 +37,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    MatTableModule,
   ],
 
   providers: [CommunicationService],

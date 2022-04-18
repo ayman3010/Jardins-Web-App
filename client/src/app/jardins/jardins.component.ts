@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./jardins.component.css']
 })
 export class JardinsComponent implements OnInit {
-
+  displayedColumns: string[] = ['Id', 'Nom', 'Surface', 'TypeSol', 'TypeJardin'];
   jardins: Jardin[];
   constructor(private communicationService: CommunicationService) { }
 

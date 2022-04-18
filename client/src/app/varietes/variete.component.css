@@ -41,6 +41,7 @@
 
 .contentCell {
     padding: 10px;
+    border: 1px solid;
 }
 
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
