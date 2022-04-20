@@ -34,7 +34,6 @@ export class DatabaseService {
 
   public async modifierVariete(variete: Variete, nomVariete: string): Promise<pg.QueryResult> {
     const client = await this.pool.connect();
-    console.log(nomVariete);
     if (!variete.nomvariete || !variete.anneemisemarche )
       throw new Error("Invalid create variete values");
 
@@ -71,8 +70,7 @@ export class DatabaseService {
     const client = await this.pool.connect();
     let queryText = "SELECT nomtypeSol FROM JARDINDB.typeSol";
     const res = await client.query(queryText);
-    client.release()
-    console.log(JSON.stringify(res.rows));
+    client.release();
     return res;
   }
 
