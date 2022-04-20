@@ -53,17 +53,5 @@ export class Application {
         error: err,
       });
     });
-    // }
-
-    // production error handler
-    // no stacktraces leaked to user (in production env only)
-    // tslint:disable-next-line:no-any
-    // this.app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
-    //     res.status(err.status || this.internalError);
-    //     res.send({
-    //         message: err.message,
-    //         error: {},
-    //     });
-    // });
   }
 }

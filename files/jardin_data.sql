@@ -323,7 +323,7 @@ VALUES ('Malus', 'Pommier', 'Arbre', 'Arbre-fruitier', 'fruit a pepin');
 INSERT INTO JARDINDB.PlanteInfo (nomLatin, nom, categorie, typePlante, sousType)
 VALUES ('Rosaceae', 'Rossier', 'Arbre', 'Arbre a fleurs', 'fleur a petales');
 INSERT INTO JARDINDB.PlanteInfo (nomLatin, nom, categorie, typePlante, sousType)
-VALUES ('Solanum', 'Pomme de terre', 'Racine', 'Racine a legumes', 'legumineuse');
+VALUES ('Solanum', 'Pomme de terre', 'Légumes', 'Racine a legumes', 'legumineuse');
 INSERT INTO JARDINDB.PlanteInfo (nomLatin, nom, categorie, typePlante, sousType)
 VALUES ('Musa', 'Bananier', 'Arbre', 'Arbre-fruitier', 'fruit a pepin');
 INSERT INTO JARDINDB.PlanteInfo (nomLatin, nom, categorie, typePlante, sousType)
@@ -331,15 +331,15 @@ VALUES ('Heliantus', 'Tournesol', 'Fleur', 'Fleur a petale', NULL);
 INSERT INTO JARDINDB.PlanteInfo (nomLatin, nom, categorie, typePlante, sousType)
 VALUES ('Filicophytes', 'Fougeres', 'Arbuste', 'Arbuste vasculaire', NULL);
 INSERT INTO JARDINDB.PlanteInfo (nomLatin, nom, categorie, typePlante, sousType)
-VALUES ('Boletus', 'Cepe', 'Champignon', 'Champignon commestible', NULL);
+VALUES ('Boletus', 'Cepe', 'Légumes', 'Champignon commestible', NULL);
 INSERT INTO JARDINDB.PlanteInfo (nomLatin, nom, categorie, typePlante, sousType)
 VALUES ('Cerasuc', 'Cerisier', 'Arbre', 'Arbre-fruitier', 'fruit a noyau');
 INSERT INTO JARDINDB.PlanteInfo (nomLatin, nom, categorie, typePlante, sousType)
-VALUES ('Cactoceae', 'Cactus', 'Arbre', 'Arbre a fleurs', 'fleur a epine');
+VALUES ('Cactoceae', 'Cactus', 'Fleur', 'Arbre a fleurs', 'fleur a epine');
 INSERT INTO JARDINDB.PlanteInfo (nomLatin, nom, categorie, typePlante, sousType)
-VALUES ('Trifolium', 'Trefle', 'Herbacee', 'Legumineuse', NULL);
+VALUES ('Trifolium', 'Trefle', 'Arbre', 'Legumineuse', NULL);
 INSERT INTO JARDINDB.PlanteInfo (nomLatin, nom, categorie, typePlante, sousType)
-VALUES ('Orchidaceae', 'Orchidée', 'Arbre', 'Arbre a fleurs', 'fleur a petal');
+VALUES ('Orchidaceae', 'Orchidée', 'Fleur', 'Arbre a fleurs', 'fleur a petal');
 
 
 --Insertion de donnees pour la Table Variete

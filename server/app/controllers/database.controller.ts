@@ -4,13 +4,7 @@ import { Variete } from "../../../common/tables/Variete";
 import { NextFunction, Request, Response, Router } from "express";
 import { inject, injectable } from "inversify";
 import * as pg from "pg";
-
-import { Hotel } from "../../../common/tables/Hotel";
-import { HotelPK } from "../../../common/tables/HotelPK";
 import { Parcelle } from "../../../common/tables/parcelle";
-
-import { Guest } from "../../../common/tables/Guest";
-
 import { DatabaseService } from "../services/database.service";
 import Types from "../types";
 
@@ -23,27 +17,6 @@ export class DatabaseController {
   public get router(): Router {
     const router: Router = Router();
 
-    // ======= HOTEL ROUTES =======
-    // ex http://localhost:3000/database/hotel?hotelNb=3&name=LeGrandHotel&city=laval
-    router.get("/hotels", (req: Request, res: Response, _: NextFunction) => {
-      var hotelNb = req.params.hotelNb ? req.params.hotelNb : "";
-      var hotelName = req.params.name ? req.params.name : "";
-      var hotelCity = req.params.city ? req.params.city : "";
-
-      this.databaseService
-        .filterHotels(hotelNb, hotelName, hotelCity)
-        .then((result: pg.QueryResult) => {
-          const hotels: Hotel[] = result.rows.map((hotel: Hotel) => ({
-            hotelnb: hotel.hotelnb,
-            name: hotel.name,
-            city: hotel.city,
-          }));
-          res.json(hotels);
-        })
-        .catch((e: Error) => {
-          console.error(e.stack);
-        });
-    });
 
     router.get("/jardins", (req: Request, res: Response, _: NextFunction) => {
       this.databaseService
@@ -120,8 +93,6 @@ export class DatabaseController {
       }
     );
 
-    
-
 
     router.get("/parcelles", (req: Request, res: Response, _: NextFunction) => {
       const jardinId = req.query.jardinId ? req.query.jardinId.toString() : "";
@@ -186,47 +157,6 @@ export class DatabaseController {
     );
 
 
-    router.get(
-      "/hotels/hotelNb",
-      (req: Request, res: Response, _: NextFunction) => {
-        this.databaseService
-          .getHotelNamesByNos()
-          .then((result: pg.QueryResult) => {
-            const hotelsNbsNames = result.rows.map((hotel: HotelPK) => ({
-              hotelnb: hotel.hotelnb,
-              name: hotel.name,
-            }));
-            res.json(hotelsNbsNames);
-          })
-
-          .catch((e: Error) => {
-            console.error(e.stack);
-          });
-      }
-    );
-
-
-    router.post(
-      "/hotels/insert",
-      (req: Request, res: Response, _: NextFunction) => {
-        const hotel: Hotel = {
-          hotelnb: req.body.hotelnb,
-          name: req.body.name,
-          city: req.body.city,
-        };
-
-        this.databaseService
-          .createHotel(hotel)
-          .then((result: pg.QueryResult) => {
-            res.json(result.rowCount);
-          })
-          .catch((e: Error) => {
-            console.error(e.stack);
-            res.json(-1);
-          });
-      }
-    );
-
     router.post(
       "/variete/insert",
       (req: Request, res: Response, _: NextFunction) => {
@@ -265,113 +195,7 @@ export class DatabaseController {
         }).catch((e: Error) => {
           console.error(e.stack);
         });
-      }
-    )
-
-    router.post(
-      "/hotels/delete/:hotelNb",
-      (req: Request, res: Response, _: NextFunction) => {
-        const hotelNb: string = req.params.hotelNb;
-        this.databaseService
-          .deleteHotel(hotelNb)
-          .then((result: pg.QueryResult) => {
-            res.json(result.rowCount);
-          })
-          .catch((e: Error) => {
-            console.error(e.stack);
-          });
-      }
-    );
-
-
-    router.put(
-      "/hotels/update",
-      (req: Request, res: Response, _: NextFunction) => {
-        const hotel: Hotel = {
-          hotelnb: req.body.hotelnb,
-          name: req.body.name ? req.body.name : "",
-          city: req.body.city ? req.body.city : "",
-        };
-
-        this.databaseService
-          .updateHotel(hotel)
-          .then((result: pg.QueryResult) => {
-            res.json(result.rowCount);
-          })
-          .catch((e: Error) => {
-            console.error(e.stack);
-          });
-      }
-    );
-
-
-
-    // ======= GUEST ROUTES =======
-    router.post(
-      "/guests/insert",
-      (req: Request, res: Response, _: NextFunction) => {
-        const guest: Guest = {
-          guestnb: req.body.guestnb,
-          nas: req.body.nas,
-          name: req.body.name,
-          gender: req.body.gender,
-          city: req.body.city
-        };
-
-        this.databaseService
-          .createGuest(guest)
-          .then((result: pg.QueryResult) => {
-            res.json(result.rowCount);
-          })
-          .catch((e: Error) => {
-            console.error(e.stack);
-            res.json(-1);
-          });
-      }
-    );
-
-
-    router.get(
-      "/guests/:hotelNb/:roomNb",
-      (req: Request, res: Response, _: NextFunction) => {
-        const hotelNb: string = req.params.hotelNb;
-        const roomNb: string = req.params.roomNb;
-
-        this.databaseService
-        .getGuests(hotelNb, roomNb)
-        .then((result: pg.QueryResult) => {
-          const guests: Guest[] = result.rows.map((guest: any) => ({
-            guestnb: guest.guestnb,
-            nas: guest.nas,
-            name: guest.name,
-            gender: guest.gender,
-            city: guest.city,
-          }));
-          res.json(guests);
-        })
-        .catch((e: Error) => {
-          console.error(e.stack);
-          res.json(-1);
-        });
-      }
-    );
-
-
-    // ======= GENERAL ROUTES =======
-    router.get(
-      "/tables/:tableName",
-      (req: Request, res: Response, next: NextFunction) => {
-        this.databaseService
-          .getAllFromTable(req.params.tableName)
-          .then((result: pg.QueryResult) => {
-            res.json(result.rows);
-          })
-          .catch((e: Error) => {
-            console.error(e.stack);
-          });
-      }
-    );
-
-    return router;
-  }
+      })
+      return router;
+    }
 }
