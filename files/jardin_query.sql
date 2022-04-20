@@ -80,6 +80,16 @@ ORDER BY numero, coordonnees;
 
 -- 7) (2 points) Quel est le nombre de jardins uniquement avec des semences biologiques ?
 
+SELECT count(distinct jardinid)
+FROM (
+	SELECT jardinid
+	FROM "Jardins".jardindb.rangvariete V JOIN "Jardins".jardindb.Variete USING (nomvariete)
+	WHERE Variete.estBiologique = true
+	EXCEPT
+	SELECT jardinid
+	FROM "Jardins".jardindb.rangvariete V JOIN "Jardins".jardindb.Variete USING (nomvariete)
+	WHERE Variete.estBiologique = false)
+
 
 -- 8) (2 points) Lister tous les jardins qui ont au moins un rang en jachère
 SELECT DISTINCT JardinId, nom,surface
