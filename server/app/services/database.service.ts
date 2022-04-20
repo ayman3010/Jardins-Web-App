@@ -10,7 +10,7 @@ export class DatabaseService {
   public connectionConfig: pg.ConnectionConfig = {
     user: "postgres",
     database: "Jardins",
-    password: "jardins",
+    password: "Jt140301",
     port: 5432,
     host: "127.0.0.1",
     keepAlive: true
@@ -36,7 +36,7 @@ export class DatabaseService {
     const client = await this.pool.connect();
     console.log(nomVariete);
     if (!variete.nomvariete || !variete.anneemisemarche )
-      throw new Error("Invalid create hotel values");
+      throw new Error("Invalid create variete values");
 
     const values: any[] = [variete.nomvariete, variete.anneemisemarche, variete.descriptionsemis, variete.plantation, variete.entretien, variete.recolte, variete.periodemiseplace, variete.perioderecolte, variete.commentaire, variete.typesol, variete.estbiologique];
     const queryText: string = `UPDATE JARDINDB.Variete SET 

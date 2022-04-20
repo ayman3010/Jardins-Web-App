@@ -13,6 +13,7 @@
 .variete-page {
     background-image: url('../../assets/varietes.jpg');
     background-repeat: no-repeat;
+    background-repeat: repeat-y;
     background-size: 100%;
 }
 
