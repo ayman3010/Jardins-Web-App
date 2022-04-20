@@ -35,7 +35,6 @@ export class VarieteComponent implements OnInit {
         width: '1000px',
         data: variete,
     });
-    console.log("failed1");
     nameInputDialog.afterClosed().subscribe((result: Variete) => {
            this.ngOnInit();
     });

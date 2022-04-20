@@ -1,9 +1,11 @@
 <nav class="navbar navbar-dark bg-dark">
-  <a class="navbar-brand title" href="/">INF3710 - TP5</a>
+  <a class="navbar-brand title" href="/">INF3710 - TP4</a>
   <div class="navbar-expand mr-auto">
     <div class="navbar-nav">
       <a class="nav-item nav-link active" routerLink="/jardins">Nos Jardins</a>
       <a class="nav-item nav-link active" routerLink="/variete">Les variétés</a>
+      <a class="nav-item nav-link active" routerLink="/plante">Rechercher une plante</a>
+
     </div>
   </div>
 </nav>
@@ -13,7 +15,11 @@
     <p class = "intro-text">
       Bienvenenue chez Garden-Royal
     </p>
-    <button type="button" class="btn" routerLink="/jardins">Découvrir nos jardins &#10140;</button>
+    <div class="button-acceuil">
+      <button type="button" class="btn" routerLink="/jardins">Découvrir nos jardins &#10140;</button>
+      <button type="button" class="btn" routerLink="/variete">Modifier nos variétés &#10140;</button>
+      <button type="button" class="btn" routerLink="/plante">Rechercher nos plantes &#10140;</button>
+    </div>
   </div>
 </div>
 
