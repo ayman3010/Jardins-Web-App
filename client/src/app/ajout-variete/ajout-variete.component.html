@@ -51,12 +51,11 @@
         <input matInput type="text" [(ngModel)]="varieteFormulaire.commentaire">
     </mat-form-field>
 
+
     <mat-form-field appearance="fill">
-        <mat-label>Type de sol </mat-label>
+        <mat-label>Nom Plante </mat-label>
         <mat-select [(value)]="varieteFormulaire.typesol"> 
-            <mat-option> Argileux </mat-option>
-            <mat-option> Limoneux </mat-option>
-                <mat-option> Humifère </mat-option>
+            <mat-option *ngFor="let typeSol of typeSols" [value]="typeSol"> {{typeSol}}</mat-option>            
         </mat-select>
     </mat-form-field>
    <span>

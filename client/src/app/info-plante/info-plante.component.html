@@ -1,0 +1,42 @@
+<div class = "jardin-page">
+    <div id="jardins">
+      <h1>Découvrir nos plantes !</h1>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Rechercher une plante</mat-label>
+        <input matInput
+            id="message"
+            [(ngModel)]="partieNom"
+            (keydown.enter)="getPlantes()"
+            maxLength="512"
+            placeholder="plante"
+        />
+    </mat-form-field>
+    <button mat-button class="send" (click)="getPlantes()">Envoyer</button>
+    
+      <div class="divider"></div>
+      
+      <table
+        id="ht"
+        align="center"
+        border="1"
+        width="1000"
+        class="table-striped table-hover"
+      >
+        <thead class="roomsheader">
+          <th class="contentCell">NOM</th>
+          <th class="contentCell">NOM LATIN</th>
+          <th class="contentCell">SOUS TYPE</th>
+          <th class="contentCell">TYPE PLANTE</th>
+          <th class="contentCell">CATEGORIE</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let plante of plantes; let i = index">
+            <td class="contentCell" >{{ plante.nom}}</td>
+            <td class="contentCell" >{{ plante.nomLatin }}</td>
+            <td class="contentCell" >{{ plante.sousType}}</td>
+            <td class="contentCell" >{{ plante.typePlante}}</td>
+            <td class="contentCell" >{{ plante.categorie }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>

@@ -1,3 +1,4 @@
+import { Plante } from './../../../common/tables/Plante';
 import { Semencier } from './../../../common/tables/Semencier';
 import { Rang } from './../../../common/tables/Rang';
 import { Jardin } from "../../../common/tables/Jardins";
@@ -6,6 +7,7 @@ import { NextFunction, Request, Response, Router } from "express";
 import { inject, injectable } from "inversify";
 import * as pg from "pg";
 import { Parcelle } from "../../../common/tables/parcelle";
+
 import { DatabaseService } from "../services/database.service";
 import Types from "../types";
 
@@ -19,14 +21,14 @@ export class DatabaseController {
     const router: Router = Router();
 
 
-    router.get("/nomplantes", (req: Request, res: Response, _: NextFunction) => {
+    router.get("/typesols", (req: Request, res: Response, _: NextFunction) => {
       this.databaseService
-        .filtrerPlantes()
+        .filtrerTypeSols()
         .then((result: pg.QueryResult) => {
-          const nomPlantes: string[] = result.rows.map((plante: any) => (
-             plante.nom
+          const typeSols: string[] = result.rows.map((typesol: any) => (
+             typesol.nomtypesol
           ));
-          res.json(nomPlantes);
+          res.json(typeSols);
         })
         .catch((e: Error) => {
           console.error(e.stack);
@@ -179,6 +181,29 @@ export class DatabaseController {
              variete.nomvariete
           ));
           res.json(varietes);
+        })
+        .catch((e: Error) => {
+          console.error(e.stack);
+          res.json(-1);
+        });
+      }
+    );
+
+    router.get(
+      "/plantes/:partienom",
+      (req: Request, res: Response, _: NextFunction) => {
+        const partieNom: string = req.params.partienom;
+        this.databaseService
+        .filtrerPlante(partieNom)
+        .then((result: pg.QueryResult) => {
+          const plantes: Plante[] = result.rows.map((plante: any) => ({
+            nomLatin: plante.nomlatin,
+            nom: plante.nom,
+            categorie: plante.categorie,
+            typePlante : plante.typeplante,
+            sousType:   plante.soustype
+          }));
+          res.json(plantes);
         })
         .catch((e: Error) => {
           console.error(e.stack);

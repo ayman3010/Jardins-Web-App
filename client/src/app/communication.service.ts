@@ -1,3 +1,4 @@
+import { Plante } from './../../../common/tables/Plante';
 import { Semencier } from './../../../common/tables/Semencier';
 import { Rang } from './../../../common/tables/Rang';
 import { HttpClient } from "@angular/common/http";
@@ -37,10 +38,10 @@ export class CommunicationService {
       .pipe(catchError(this.handleError<Semencier[]>("getSemenciers")));
   }
 
-  getNomPlantes():  Observable<string[]> {
+  getTypeSols():  Observable<string[]> {
     return this.http
-    .get<string[]>(this.BASE_URL + `/nomplantes`)
-    .pipe(catchError(this.handleError<string[]>("getNomPlantes")));
+    .get<string[]>(this.BASE_URL + `/typesols`)
+    .pipe(catchError(this.handleError<string[]>("getTypeSols")));
   }
 
   public getRangs(jardinId: string, coordonnees: string): Observable<Rang[]> {
@@ -53,6 +54,12 @@ export class CommunicationService {
     return this.http
       .get<string[]>(this.BASE_URL + `/varietes/${jardinId}/${coordonnees}/${numero}`)
       .pipe(catchError(this.handleError<string[]>("getVarieteByRang")));
+  }
+
+  public getPlantes(partieNom: string): Observable<Plante[]> {
+    return this.http
+      .get<Plante[]>(this.BASE_URL + `/plantes/${partieNom}`)
+      .pipe(catchError(this.handleError<Plante[]>("getPlantes")));
   }
 
   public getJardins(): Observable<Jardin[]> {

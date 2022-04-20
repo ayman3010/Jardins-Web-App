@@ -10,7 +10,7 @@ export class DatabaseService {
   public connectionConfig: pg.ConnectionConfig = {
     user: "postgres",
     database: "Jardins",
-    password: "postgres",
+    password: "jardins",
     port: 5432,
     host: "127.0.0.1",
     keepAlive: true
@@ -67,11 +67,12 @@ export class DatabaseService {
     return res;
   }
 
-  public async filtrerPlantes(): Promise<pg.QueryResult> {
+  public async filtrerTypeSols(): Promise<pg.QueryResult> {
     const client = await this.pool.connect();
-    let queryText = "SELECT nomLatin, nom FROM JARDINDB.PlanteInfo";
+    let queryText = "SELECT nomtypeSol FROM JARDINDB.typeSol";
     const res = await client.query(queryText);
     client.release()
+    console.log(JSON.stringify(res.rows));
     return res;
   }
 
@@ -164,4 +165,16 @@ export class DatabaseService {
     client.release()
     return res;
   }
+
+  public async filtrerPlante(partieNom: string): Promise<pg.QueryResult> {
+    const client = await this.pool.connect();
+    let queryText = "SELECT * FROM JARDINDB.PlanteInfo";
+    queryText += " WHERE "+  `nom LIKE '%${partieNom}%'` + ";";
+
+    const res = await client.query(queryText);
+    client.release()
+    return res;
+  }
+
+
 }

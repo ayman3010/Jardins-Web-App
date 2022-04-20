@@ -18,10 +18,6 @@ CREATE OR REPLACE TRIGGER historique_variete
 AFTER INSERT ON JARDINDB.RangVariete
 FOR EACH ROW EXECUTE PROCEDURE sauvegarder_historique_variete();
 
-INSERT INTO JARDINDB.RangVariete ( numero, coordonnees, jardinId, nomVariete, typeMiseEnplace )
-VALUES(0, (0,1),'JD05','boskoop','');
-
-SELECT * FROM HistoriqueVariete;
 
 
-
+select * from jardin;

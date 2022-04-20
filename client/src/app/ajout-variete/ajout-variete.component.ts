@@ -15,7 +15,7 @@ export class AjoutVarieteComponent {
   varieteFormulaire: Variete = new Variete();
   nomPlante: string;
   semenciers: Semencier[];
-  nomPlantes: string[];
+  typeSols: string[];
   nomSemencier: string;
   isModified: boolean;
   duplicateError: boolean = false;
@@ -26,8 +26,7 @@ export class AjoutVarieteComponent {
       this.getVariete(data.nomvariete);
       this.action = "Modifier"
     }
-    this.getSemenciers();
-    this.getNomPlantes();
+    this.getTypeSol();
    }
 
    annuler(): void {
@@ -40,15 +39,9 @@ export class AjoutVarieteComponent {
     this.nameInputDialog.close();
   }
 
-   getSemenciers(){
-    this.communicationService.getSemenciers().subscribe((semenciers: Semencier[]) => {
-      this.semenciers = semenciers;
-    });
-   }
-
-   getNomPlantes(){
-    this.communicationService.getNomPlantes().subscribe((noms: string[]) => {
-      this.nomPlantes = noms;
+   getTypeSol(){
+    this.communicationService.getTypeSols().subscribe((noms: string[]) => {
+      this.typeSols = noms;
     });
    }
 
