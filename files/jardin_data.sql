@@ -10,8 +10,8 @@ VALUES ('JD02', 'Jardin Principal', 2500.00, true, false, false, 'Argileux');
 INSERT INTO JARDINDB.Jardin (jardinId, nom, surface, estPotager, estOrnement, estVerger, typeSol, hauteurMax) 
 VALUES ('JD03', 'Jardin des neiges', 1000.00, false,true, false, 'Sableux', 4 );
 
-INSERT INTO JARDINDB.Jardin (jardinId, nom, surface, estPotager, estOrnement, estVerger, typeSol, hauteurMax) 
-VALUES ('JD04', 'Jardin Polytechnique', 3000.00, false, false, true, 'Silicieux', 0);
+INSERT INTO JARDINDB.Jardin (jardinId, nom, surface, estPotager, estOrnement, estVerger, typeSol) 
+VALUES ('JD04', 'Jardin Polytechnique', 3000.00, false, false, true, 'Silicieux');
 
 INSERT INTO JARDINDB.Jardin (jardinId, nom, surface, estPotager, estOrnement, estVerger, typeSol, hauteurMax) 
 VALUES ('JD05', 'Jardin INF3710', 500.00, true, true, false, 'Tourbeux', 2 );

@@ -16,6 +16,7 @@
       <th class="contentCell">NOM</th>
       <th class="contentCell">SURFACE</th>
       <th class="contentCell">TYPE SOL</th>
+      <th class="contentCell">HAUTEUR MAX</th>
       <th class="contentCell">TYPE JARDIN</th>
     </thead>
     <tbody>
@@ -23,7 +24,8 @@
         <td class="contentCell" [routerLink]="['/parcelle', jardin.jardinid]" >{{ jardin.jardinid }}</td>
         <td class="contentCell"  [routerLink]="['/parcelle', jardin.jardinid]" >{{ jardin.nom}}</td>
         <td class="contentCell"  [routerLink]="['/parcelle', jardin.jardinid]" >{{ jardin.surface}}</td>
-        <td class="contentCell"  [routerLink]="['/parcelle', jardin.jardinid]" >{{jardin?.typesol}}</td>
+        <td class="contentCell"  [routerLink]="['/parcelle', jardin.jardinid]" >{{jardin?.typesol ? jardin?.typesol : 'Null'}}</td>
+        <td class="contentCell"   [routerLink]="['/parcelle', jardin.jardinid]" >{{ jardin?.hauteur ? jardin?.hauteur : 'Null'}}</td>
         <td class="contentCell"   [routerLink]="['/parcelle', jardin.jardinid]" >{{ getTypeJardin(jardin) }}</td>
       </tr>
     </tbody>
