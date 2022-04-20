@@ -7,7 +7,6 @@ import { inject, injectable } from "inversify";
 import * as pg from "pg";
 
 import { Hotel } from "../../../common/tables/Hotel";
-import { HotelPK } from "../../../common/tables/HotelPK";
 import { Parcelle } from "../../../common/tables/parcelle";
 
 import { Guest } from "../../../common/tables/Guest";
@@ -352,23 +351,7 @@ export class DatabaseController {
         });
       }
     );
-
-
-    // ======= GENERAL ROUTES =======
-    router.get(
-      "/tables/:tableName",
-      (req: Request, res: Response, next: NextFunction) => {
-        this.databaseService
-          .getAllFromTable(req.params.tableName)
-          .then((result: pg.QueryResult) => {
-            res.json(result.rows);
-          })
-          .catch((e: Error) => {
-            console.error(e.stack);
-          });
-      }
-    );
-
+    
     return router;
   }
 }
