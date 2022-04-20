@@ -4,7 +4,7 @@ DROP SCHEMA IF EXISTS JARDINDB CASCADE;
 CREATE SCHEMA JARDINDB;
 
 CREATE TYPE DIMENSIONS AS (largeur NUMERIC(10, 2), longueur NUMERIC(10,2));
-CREATE TYPE COORDONNEES AS (coordonneesX NUMERIC(4,0), coordonneesY NUMERIC(4,0));
+CREATE TYPE COORDONNEES AS (coordonneesX INTEGER, coordonneesY INTEGER);
 CREATE TYPE COORDONNEES_GEOGRAPHIQUE AS (longitude NUMERIC(9,6), latitude NUMERIC(9,6));
 
 -- maybe a constraint to say that at least one boolean value is true
@@ -29,12 +29,12 @@ CREATE TABLE IF NOT EXISTS JARDINDB.Parcelle(
 );
 
 CREATE TABLE IF NOT EXISTS JARDINDB.Rang(
-    numero         NUMERIC(4,0)             NOT NULL,
+    numero         Integer             NOT NULL,
     cordonnesGeo   COORDONNEES_GEOGRAPHIQUE NOT NULL,
     estJachere     Boolean                  NOT NULL,
     periodeJachere NUMERIC(3, 0)            CONSTRAINT max_periode_jachere CHECK (periodeJachere < 365),          
 	coordonnees    COORDONNEES              NOT NULL,
-	jardinId       VARCHAR(10)              NOT NULL),
+	jardinId       VARCHAR(10)              NOT NULL,
     FOREIGN KEY(jardinId, coordonnees) REFERENCES JARDINDB.Parcelle(jardinId, coordonnees) ON DELETE CASCADE ON UPDATE CASCADE,
 	PRIMARY KEY (jardinId, coordonnees,numero)
 );
@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS JARDINDB.Variete(
 	periodeMisePlace     VARCHAR(60)     ,
     periodeRecolte       VARCHAR(60)     ,
     commentaire          VARCHAR(60)     ,
-    typeSol              VARCHAR(60)     NOT NULL,
+    typeSol              VARCHAR(60)     ,
     estBiologique        Boolean         DEFAULT false,
 	PRIMARY KEY (nomVariete)
 );
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS JARDINDB.Variete(
 CREATE TABLE IF NOT EXISTS JARDINDB.Plante(
 	planteId       VARCHAR(10)    NOT NULL,
     nomLatin       VARCHAR(30)     NOT NULL,
-	jardinId       VARCHAR(10) CHECK (SELECT * FROM Jardin WHERE Jardin.jardinId == jardinId,
+	jardinId       VARCHAR(10),
     nomVariete     VARCHAR(60),
     FOREIGN KEY(nomLatin) REFERENCES JARDINDB.PlanteInfo(nomLatin) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY(jardinId) REFERENCES JARDINDB.Jardin(jardinId) ON DELETE SET NULL ,
@@ -126,7 +126,7 @@ CREATE TABLE IF NOT EXISTS JARDINDB.ProductionVariete(
 );
 
 CREATE TABLE IF NOT EXISTS JARDINDB.RangVariete(
-    numero         NUMERIC(4,0)     NOT NULL,
+    numero         Integer     NOT NULL,
 	coordonnees    COORDONNEES      NOT NULL,
 	jardinId       VARCHAR(10)      NOT NULL,
     nomVariete     VARCHAR(60)      NOT NULL,
