@@ -23,7 +23,6 @@ export class ParcelleComponent implements OnInit {
   getParcelles(){
     this.communicationService.getParcelles(this.jardinId).subscribe((parcelles: Parcelle[]) => {
       this.parcelles = parcelles;
-      console.log(JSON.stringify(parcelles));
     });
   }
 }

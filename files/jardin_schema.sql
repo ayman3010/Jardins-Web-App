@@ -4,7 +4,7 @@ DROP SCHEMA IF EXISTS JARDINDB CASCADE;
 CREATE SCHEMA JARDINDB;
 
 CREATE TYPE DIMENSIONS AS (largeur NUMERIC(10, 2), longueur NUMERIC(10,2));
-CREATE TYPE COORDONNEES AS (coordonneesX NUMERIC(4,0), coordonneesY NUMERIC(4,0));
+CREATE TYPE COORDONNEES AS (coordonneesX INTEGER, coordonneesY INTEGER);
 CREATE TYPE COORDONNEES_GEOGRAPHIQUE AS (longitude NUMERIC(9,6), latitude NUMERIC(9,6));
 
 -- maybe a constraint to say that at least one boolean value is true
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS JARDINDB.Parcelle(
 );
 
 CREATE TABLE IF NOT EXISTS JARDINDB.Rang(
-    numero         NUMERIC(4,0)             NOT NULL,
+    numero         Integer             NOT NULL,
     cordonnesGeo   COORDONNEES_GEOGRAPHIQUE NOT NULL,
     estJachere     Boolean                  NOT NULL,
     periodeJachere NUMERIC(3, 0)            CONSTRAINT max_periode_jachere CHECK (periodeJachere < 365),          
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS JARDINDB.PlanteInfo(
 );
 
 CREATE TABLE IF NOT EXISTS JARDINDB.Variete(
-    nomVariete           VARCHAR(60)     NOT NULL,
+   nomVariete           VARCHAR(60)     NOT NULL,
     anneeMiseMarche      NUMERIC(4,0)    NOT NULL,
     descriptionSemis     VARCHAR(120)    ,
 	plantation           VARCHAR(60)     ,
@@ -126,7 +126,7 @@ CREATE TABLE IF NOT EXISTS JARDINDB.ProductionVariete(
 );
 
 CREATE TABLE IF NOT EXISTS JARDINDB.RangVariete(
-    numero         NUMERIC(4,0)     NOT NULL,
+    numero         Integer     NOT NULL,
 	coordonnees    COORDONNEES      NOT NULL,
 	jardinId       VARCHAR(10)      NOT NULL,
     nomVariete     VARCHAR(60)      NOT NULL,

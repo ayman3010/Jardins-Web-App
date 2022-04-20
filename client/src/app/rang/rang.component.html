@@ -11,7 +11,6 @@
       <th class="contentCell">PERIODE JACHERE</th>
       <th class="contentCell">COORDONNEES GEOGRAPHIQUE</th>
       <th class="contentCell">VARIETES</th>
-      <th class="actionCell">ACTION</th>
     </thead>
     <tbody>
       <tr *ngFor="let rang of rangs; let i = index">
@@ -19,18 +18,9 @@
         <td class="contentCell">{{ rang?.periodeJachere}}</td>
         <td class="contentCell">{{ rang?.coordGeo }}</td>
         <td class="contentCell">{{ rang?.variete }}</td>
-
-        <td class="actionCell">
-          <button type="button" class="submitbtn" (click)="updateRoom(i)"> <i class="fa fa-edit"></i></button>
-          <button type="button" class="deletebtn" (click)="deleteRoom(room.hotelnb, room.roomnb)">
-            <i class="fa fa-trash-o"></i>
-          </button>
-        </td>
       </tr>
     </tbody>
   </table>
-
-  <button type="button" class="btn">+ rang</button>
 </div>
 
 
