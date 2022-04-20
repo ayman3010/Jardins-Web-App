@@ -3,7 +3,9 @@
     font-family: 'Roboto', sans-serif;
     text-align: center;
     padding: 3%;
+
 }
+
 
 #ht {
     background-color: white;
@@ -85,4 +87,10 @@
     margin-right: 10px;
     color: white;
     background-color: var(--theme-blue);
+}
+
+.parcelle-name {
+    margin-top: 20px;
+    color: black;
+    font-weight: 400px;
 }
