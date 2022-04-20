@@ -14,6 +14,7 @@ import { AjoutVarieteComponent } from "./ajout-variete/ajout-variete.component";
 import { AppMaterialModule } from '@app/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogRef } from '@angular/material/dialog';
+import { InfoPlanteComponent } from './info-plante/info-plante.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { MatDialogRef } from '@angular/material/dialog';
     RangComponent,
     VarieteComponent,
     AjoutVarieteComponent,
+    InfoPlanteComponent,
   ],
   imports: [
     AppRoutingModule,

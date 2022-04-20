@@ -1,3 +1,4 @@
+import { InfoPlanteComponent } from './info-plante/info-plante.component';
 import { RangComponent } from './rang/rang.component';
 import { JardinsComponent } from './jardins/jardins.component';
 import { NgModule } from "@angular/core";
@@ -14,6 +15,9 @@ const routes: Routes = [
   { path : "variete", component: VarieteComponent},
   { path : "ajoutvariete/:nomVariete", component: AjoutVarieteComponent},
   { path: "parcelle/:id", component: ParcelleComponent },
+  { path : "ajoutvariete/:nomVariete", component: AjoutVarieteComponent},
+  { path: "plante", component: InfoPlanteComponent },
+
 ];
 
 @NgModule({

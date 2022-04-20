@@ -3,11 +3,19 @@ SET search_path = jardindb;
 DROP SCHEMA IF EXISTS JARDINDB CASCADE;
 CREATE SCHEMA JARDINDB;
 
-CREATE TYPE DIMENSIONS AS (largeur NUMERIC(10, 2), longueur NUMERIC(10,2));
+CREATE TYPE DIMENSIONS AS (largeur Integer, longueur Integer);
 CREATE TYPE COORDONNEES AS (coordonneesX INTEGER, coordonneesY INTEGER);
 CREATE TYPE COORDONNEES_GEOGRAPHIQUE AS (longitude NUMERIC(9,6), latitude NUMERIC(9,6));
 
 -- maybe a constraint to say that at least one boolean value is true
+
+
+CREATE TABLE IF NOT EXISTS JARDINDB.typeSol (
+    nomTypeSol     VARCHAR(30)    NOT NULL,
+    PRIMARY KEY (nomTypeSol)
+);
+
+
 CREATE TABLE IF NOT EXISTS JARDINDB.Jardin (
     jardinId     VARCHAR(10)    NOT NULL,
     nom          VARCHAR(20)    NOT NULL,
@@ -17,6 +25,7 @@ CREATE TABLE IF NOT EXISTS JARDINDB.Jardin (
 	estVerger    Boolean        NOT NULL,
 	typeSol      VARCHAR(30),
 	hauteurMax   NUMERIC(6,2),
+    FOREIGN KEY(typeSol) REFERENCES JARDINDB.typeSol(nomTypeSol) ON DELETE RESTRICT ON UPDATE CASCADE,
     PRIMARY KEY (jardinId)
 );
 
@@ -60,6 +69,7 @@ CREATE TABLE IF NOT EXISTS JARDINDB.Variete(
     commentaire          VARCHAR(60)     ,
     typeSol              VARCHAR(60)     ,
     estBiologique        Boolean         DEFAULT false,
+    FOREIGN KEY(typeSol) REFERENCES JARDINDB.typeSol(nomTypeSol) ON DELETE RESTRICT ON UPDATE CASCADE,
 	PRIMARY KEY (nomVariete)
 );
 

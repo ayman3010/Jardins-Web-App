@@ -1,5 +1,29 @@
 SET search_path = jardindb;
 
+INSERT INTO JARDINDB.typeSol(nomTypeSol)
+VALUES ('Malus');
+
+INSERT INTO JARDINDB.typeSol (nomTypeSol)
+VALUES ('Solanum');
+
+INSERT INTO JARDINDB.typeSol(nomTypeSol)
+VALUES ('Argileux');
+
+INSERT INTO JARDINDB.typeSol(nomTypeSol)
+VALUES ('Sableux');
+
+INSERT INTO JARDINDB.typeSol(nomTypeSol)
+VALUES ('Silicieux');
+
+INSERT INTO JARDINDB.typeSol(nomTypeSol)
+VALUES ('Tourbeux');
+
+INSERT INTO JARDINDB.typeSol(nomTypeSol)
+VALUES ('Limoneux');
+
+INSERT INTO JARDINDB.typeSol(nomTypeSol)
+VALUES ('Humifère');
+
 -- Insertions des donnees Pour la Table Jardin
 INSERT INTO JARDINDB.Jardin (jardinId, nom, surface, estPotager, estOrnement, estVerger) 
 VALUES ('JD01', 'Jardin Lassonde', 2000.00, false, true, false);
@@ -319,52 +343,52 @@ VALUES (2, (454.234323, 645.123432), true, 75, (2, 1), 'JD05');
 
 -- Insertion des donnees pour la Table PlanteInfo
 INSERT INTO JARDINDB.PlanteInfo (nomLatin, nom, categorie, typePlante, sousType)
-VALUES ('Malus', 'Pommier', 'Arbre', 'Arbre-fruitier', 'fruit a pepin');
+VALUES ('Malus', 'pommier', 'Arbre', 'Arbre-fruitier', 'fruit a pepin');
 INSERT INTO JARDINDB.PlanteInfo (nomLatin, nom, categorie, typePlante, sousType)
-VALUES ('Rosaceae', 'Rossier', 'Arbre', 'Arbre a fleurs', 'fleur a petales');
+VALUES ('Rosaceae', 'rossier', 'Arbre', 'Arbre a fleurs', 'fleur a petales');
 INSERT INTO JARDINDB.PlanteInfo (nomLatin, nom, categorie, typePlante, sousType)
-VALUES ('Solanum', 'Pomme de terre', 'Légumes', 'Racine a legumes', 'legumineuse');
+VALUES ('Solanum', 'pomme de terre', 'Légumes', 'Racine a legumes', 'legumineuse');
 INSERT INTO JARDINDB.PlanteInfo (nomLatin, nom, categorie, typePlante, sousType)
-VALUES ('Musa', 'Bananier', 'Arbre', 'Arbre-fruitier', 'fruit a pepin');
+VALUES ('Musa', 'bananier', 'Arbre', 'Arbre-fruitier', 'fruit a pepin');
 INSERT INTO JARDINDB.PlanteInfo (nomLatin, nom, categorie, typePlante, sousType)
-VALUES ('Heliantus', 'Tournesol', 'Fleur', 'Fleur a petale', NULL);
+VALUES ('Heliantus', 'tournesol', 'Fleur', 'Fleur a petale', NULL);
 INSERT INTO JARDINDB.PlanteInfo (nomLatin, nom, categorie, typePlante, sousType)
-VALUES ('Filicophytes', 'Fougeres', 'Arbuste', 'Arbuste vasculaire', NULL);
+VALUES ('Filicophytes', 'fougeres', 'Arbuste', 'Arbuste vasculaire', NULL);
 INSERT INTO JARDINDB.PlanteInfo (nomLatin, nom, categorie, typePlante, sousType)
-VALUES ('Boletus', 'Cepe', 'Légumes', 'Champignon commestible', NULL);
+VALUES ('Boletus', 'cepe', 'Légumes', 'Champignon commestible', NULL);
 INSERT INTO JARDINDB.PlanteInfo (nomLatin, nom, categorie, typePlante, sousType)
-VALUES ('Cerasuc', 'Cerisier', 'Arbre', 'Arbre-fruitier', 'fruit a noyau');
+VALUES ('Cerasuc', 'cerisier', 'Arbre', 'Arbre-fruitier', 'fruit a noyau');
 INSERT INTO JARDINDB.PlanteInfo (nomLatin, nom, categorie, typePlante, sousType)
-VALUES ('Cactoceae', 'Cactus', 'Fleur', 'Arbre a fleurs', 'fleur a epine');
+VALUES ('Cactoceae', 'cactus', 'Fleur', 'Arbre a fleurs', 'fleur a epine');
 INSERT INTO JARDINDB.PlanteInfo (nomLatin, nom, categorie, typePlante, sousType)
-VALUES ('Trifolium', 'Trefle', 'Arbre', 'Legumineuse', NULL);
+VALUES ('Trifolium', 'trefle', 'Arbre', 'Legumineuse', NULL);
 INSERT INTO JARDINDB.PlanteInfo (nomLatin, nom, categorie, typePlante, sousType)
-VALUES ('Orchidaceae', 'Orchidée', 'Fleur', 'Arbre a fleurs', 'fleur a petal');
+VALUES ('Orchidaceae', 'orchidée', 'Fleur', 'Arbre a fleurs', 'fleur a petal');
 
 
 --Insertion de donnees pour la Table Variete
 INSERT INTO JARDINDB.Variete (nomVariete, anneeMiseMarche, descriptionSemis, plantation, entretien, recolte, periodeMisePlace, periodeRecolte, commentaire, typeSol, estBiologique)
-VALUES ('boskoop', 2002, 'projection des graines sur toute la surface à ensemencer avec un large geste circulaire', 'plantation en large rangée de plantes individuelles', 'entretien par arrosage automatique deux fois par jour' ,'recolte unitaire une fois les fruits mûres','Période hivernale', 'mai ou juin', 'variété assez sensible et rare', 'argileux', false);
+VALUES ('boskoop', 2002, 'projection des graines sur toute la surface à ensemencer avec un large geste circulaire', 'plantation en large rangée de plantes individuelles', 'entretien par arrosage automatique deux fois par jour' ,'recolte unitaire une fois les fruits mûres','Période hivernale', 'mai ou juin', 'variété assez sensible et rare', 'Argileux', false);
 INSERT INTO JARDINDB.Variete (nomVariete, anneeMiseMarche, descriptionSemis, plantation, entretien, recolte, periodeMisePlace, periodeRecolte, commentaire, typeSol, estBiologique)
-VALUES ('tuberosum', 2012, 'projection des graines sur toute la surface à ensemencer avec un large geste circulaire', 'plantation en quinconce : lignes parrallèles de végétaux', 'entretien par humidificateur dair tout au long de la journée','recolte unitaire une fois la plante arrivée à maturation','Période chaude', 'Saison printanière', 'variété commune et sans danger', 'limoneux', false);
+VALUES ('tuberosum', 2012, 'projection des graines sur toute la surface à ensemencer avec un large geste circulaire', 'plantation en quinconce : lignes parrallèles de végétaux', 'entretien par humidificateur dair tout au long de la journée','recolte unitaire une fois la plante arrivée à maturation','Période chaude', 'Saison printanière', 'variété commune et sans danger', 'Limoneux', false);
 INSERT INTO JARDINDB.Variete (nomVariete, anneeMiseMarche, descriptionSemis, plantation, entretien, recolte, periodeMisePlace, periodeRecolte, commentaire, typeSol, estBiologique)
-VALUES ('innocencia', 2022, 'semis mélanger avec le sable et une fine couche de substrat', 'plantation en large rangée de plantes individuelles', 'entretien par arrosage automatique deux fois par jour','recolte groupé par coupe','Période hivernale', 'Période chaude', 'variété commune et sans danger', 'humifère', true);
+VALUES ('innocencia', 2022, 'semis mélanger avec le sable et une fine couche de substrat', 'plantation en large rangée de plantes individuelles', 'entretien par arrosage automatique deux fois par jour','recolte groupé par coupe','Période hivernale', 'Période chaude', 'variété commune et sans danger', 'Humifère', true);
 INSERT INTO JARDINDB.Variete (nomVariete, anneeMiseMarche, descriptionSemis, plantation, entretien, recolte, periodeMisePlace, periodeRecolte, commentaire, typeSol, estBiologique)
-VALUES ('basjoo', 2020, 'projection des graines sur toute la surface à ensemencer avec un large geste circulaire', 'plantation en large rangée de plantes individuelles', 'entretien par humidificateur dair tout au long de la journée' ,'recolte unitaire une fois les fruits mûres','Période hivernale', 'janvier à mars','variété volumineuse et potentiellement dangereuse', 'argileux', false);
+VALUES ('basjoo', 2020, 'projection des graines sur toute la surface à ensemencer avec un large geste circulaire', 'plantation en large rangée de plantes individuelles', 'entretien par humidificateur dair tout au long de la journée' ,'recolte unitaire une fois les fruits mûres','Période hivernale', 'janvier à mars','variété volumineuse et potentiellement dangereuse', 'Argileux', false);
 INSERT INTO JARDINDB.Variete (nomVariete, anneeMiseMarche, descriptionSemis, plantation, entretien, recolte, periodeMisePlace, periodeRecolte, commentaire, typeSol, estBiologique)
-VALUES ('sunrich', 1990, 'semis à graine dans le sols', 'plantation en large rangée de plantes individuelles','entretien par arrosage automatique deux fois par jour', 'recolte unitaire une fois les fruits mûres','Période hivernale', 'Période chaude','variété commune et sans danger', 'argileux', true);
+VALUES ('sunrich', 1990, 'semis à graine dans le sols', 'plantation en large rangée de plantes individuelles','entretien par arrosage automatique deux fois par jour', 'recolte unitaire une fois les fruits mûres','Période hivernale', 'Période chaude','variété commune et sans danger', 'Argileux', true);
 INSERT INTO JARDINDB.Variete (nomVariete, anneeMiseMarche, descriptionSemis, plantation, entretien, recolte, periodeMisePlace, periodeRecolte, commentaire, typeSol, estBiologique)
-VALUES ('cyathea', 2004, 'projection des graines sur toute la surface à ensemencer avec un large geste circulaire', 'plantation en quinconce : lignes parrallèles de végétaux', 'entretien par repiquage toutes les deux semaines', 'recolte unitaire une fois les fruits mûres','Période hivernale', 'décembre à février', 'variété assez sensible et rare','argileux', false);
+VALUES ('cyathea', 2004, 'projection des graines sur toute la surface à ensemencer avec un large geste circulaire', 'plantation en quinconce : lignes parrallèles de végétaux', 'entretien par repiquage toutes les deux semaines', 'recolte unitaire une fois les fruits mûres','Période hivernale', 'décembre à février', 'variété assez sensible et rare','Argileux', false);
 INSERT INTO JARDINDB.Variete (nomVariete, anneeMiseMarche, descriptionSemis, plantation, entretien, recolte, periodeMisePlace, periodeRecolte, commentaire, typeSol, estBiologique)
-VALUES ('edulis', 2002, 'semis mélanger avec le sable et une fine couche de substrat', 'plantation en large rangée de plantes individuelles', 'entretien par repiquage toutes les deux semaines', 'recolte groupé par coupe','Période hivernale', 'janvier à mars','variété assez sensible et rare','limoneux', false);
+VALUES ('edulis', 2002, 'semis mélanger avec le sable et une fine couche de substrat', 'plantation en large rangée de plantes individuelles', 'entretien par repiquage toutes les deux semaines', 'recolte groupé par coupe','Période hivernale', 'janvier à mars','variété assez sensible et rare','Limoneux', false);
 INSERT INTO JARDINDB.Variete (nomVariete, anneeMiseMarche, descriptionSemis, plantation, entretien, recolte, periodeMisePlace, periodeRecolte, commentaire, typeSol, estBiologique)
-VALUES ('burlate', 2005, 'semis à graine dans le sols', 'plantation en quinconce : lignes parrallèles de végétaux','entretien par arrosage automatique deux fois par jour', 'recolte unitaire une fois la plante arrivée à maturation','Période chaude', 'Saison printanière', 'variété volumineuse et potentiellement dangereuse','limoneux', false);
+VALUES ('burlate', 2005, 'semis à graine dans le sols', 'plantation en quinconce : lignes parrallèles de végétaux','entretien par arrosage automatique deux fois par jour', 'recolte unitaire une fois la plante arrivée à maturation','Période chaude', 'Saison printanière', 'variété volumineuse et potentiellement dangereuse','Limoneux', false);
 INSERT INTO JARDINDB.Variete (nomVariete, anneeMiseMarche, descriptionSemis, plantation, entretien, recolte, periodeMisePlace, periodeRecolte, commentaire, typeSol, estBiologique)
-VALUES ('phalaenopsis', 2007, 'semis mélanger avec le sable et une fine couche de substrat', 'plantation en large rangée de plantes individuelles', 'entretien par repiquage toutes les deux semaines', 'recolte groupé par coupe', 'Période hivernale', 'mai ou juin','variété assez sensible et rare','humifère', true);
+VALUES ('phalaenopsis', 2007, 'semis mélanger avec le sable et une fine couche de substrat', 'plantation en large rangée de plantes individuelles', 'entretien par repiquage toutes les deux semaines', 'recolte groupé par coupe', 'Période hivernale', 'mai ou juin','variété assez sensible et rare','Humifère', true);
 INSERT INTO JARDINDB.Variete (nomVariete, anneeMiseMarche, descriptionSemis, plantation, entretien, recolte, periodeMisePlace, periodeRecolte, commentaire, typeSol, estBiologique)
-VALUES ('opuntia', 2007, 'semis à graine dans le sols', 'plantation en quinconce : lignes parrallèles de végétaux', 'entretien par repiquage toutes les deux semaines', 'recolte unitaire une fois les fruits mûres', 'Période hivernale', 'Saison printanière','variété volumineuse et potentiellement dangereuse','limoneux', true);
+VALUES ('opuntia', 2007, 'semis à graine dans le sols', 'plantation en quinconce : lignes parrallèles de végétaux', 'entretien par repiquage toutes les deux semaines', 'recolte unitaire une fois les fruits mûres', 'Période hivernale', 'Saison printanière','variété volumineuse et potentiellement dangereuse','Limoneux', true);
 INSERT INTO JARDINDB.Variete (nomVariete, anneeMiseMarche, descriptionSemis, plantation, entretien, recolte, periodeMisePlace, periodeRecolte, commentaire, typeSol, estBiologique)
-VALUES ('alexandrie', 2018, 'semis mélanger avec le sable et une fine couche de substrat', 'plantation en large rangée de plantes individuelles','entretien par arrosage automatique deux fois par jour','recolte groupé par coupe','Période hivernale', 'Période chaude', 'variété commune et sans danger','limoneux', true);
+VALUES ('alexandrie', 2018, 'semis mélanger avec le sable et une fine couche de substrat', 'plantation en large rangée de plantes individuelles','entretien par arrosage automatique deux fois par jour','recolte groupé par coupe','Période hivernale', 'Période chaude', 'variété commune et sans danger','Limoneux', true);
 
 -- Insertion des donnees pour la Table Plante
 -- Jardin Lassonde
