@@ -5,14 +5,14 @@ import { RouterModule, Routes } from "@angular/router";
 import { AppComponent } from "./app.component";
 import { ParcelleComponent } from './parcelle/parcelle.component';
 import { VarieteComponent } from './varietes/variete.component';
-import { AjoutVariete } from './ajout-variete/ajout-variete.component';
+import { AjoutVarieteComponent} from './ajout-variete/ajout-variete.component';
 
 const routes: Routes = [
   { path: "app", component: AppComponent },
   { path: "jardins", component: JardinsComponent },
   { path: "rang", component: RangComponent },
   { path : "variete", component: VarieteComponent},
-  { path : "ajoutvariete/:nomVariete", component: AjoutVariete},
+  { path : "ajoutvariete/:nomVariete", component: AjoutVarieteComponent},
   { path: "parcelle/:id", component: ParcelleComponent },
 ];
 

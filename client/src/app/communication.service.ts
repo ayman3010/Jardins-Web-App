@@ -1,3 +1,4 @@
+import { Semencier } from './../../../common/tables/Semencier';
 import { Rang } from './../../../common/tables/Rang';
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
@@ -30,6 +31,18 @@ export class CommunicationService {
       .pipe(catchError(this.handleError<Parcelle[]>("getParcelles")));
   }
 
+  public getSemenciers(): Observable<Semencier[]> {
+    return this.http
+      .get<Semencier[]>(this.BASE_URL + `/semenciers`)
+      .pipe(catchError(this.handleError<Semencier[]>("getSemenciers")));
+  }
+
+  getNomPlantes():  Observable<string[]> {
+    return this.http
+    .get<string[]>(this.BASE_URL + `/nomplantes`)
+    .pipe(catchError(this.handleError<string[]>("getNomPlantes")));
+  }
+
   public getRangs(jardinId: string, coordonnees: string): Observable<Rang[]> {
     return this.http
       .get<Rang[]>(this.BASE_URL + `/parcelles/${jardinId}/${coordonnees}`)
@@ -54,6 +67,7 @@ export class CommunicationService {
           .pipe(catchError(this.handleError<Variete[]>("getVariete")))
   }
 
+
   public getVariete(nomVariete: string): Observable<Variete[]> {
     return this.http
           .get<Variete[]>(this.BASE_URL + `/variete/:${nomVariete}`)
@@ -70,6 +84,12 @@ export class CommunicationService {
     return this.http
     .post<number>(this.BASE_URL + "/variete/delete/" + nomVariete, {})
     .pipe(catchError(this.handleError<number>("deleteVariete")));
+  }
+
+  public modifierVariete(variete: Variete, nomVariete: string): Observable<number> {
+    return this.http
+    .post<number>(this.BASE_URL + "/variete/modifier/" + nomVariete, variete)
+    .pipe(catchError(this.handleError<number>("modifierVariete")));
   }
 
   private handleError<T>(

@@ -1,85 +1,72 @@
-<h1>Ajouter une variété</h1>
+<h1 mat-dialog-title>{{action}} une variété</h1>
 <div class="divider"></div>
 <div class = "formulaire">
-    <label>
-        Nom de la variété : 
-        <input type="text" [(ngModel)]="varieteFormulaire.nomvariete">
-    </label>
-    <label>
-        Année de mise en marche :
-        <input type="text" [(ngModel)]="varieteFormulaire.anneemisemarche">
-    </label>
-    <label>
-        Description pour le semis :
-        <textarea rows="4" cols="50" [(ngModel)]="varieteFormulaire.descriptionsemis"></textarea>
-    </label>
-    <label>
-        Description de la plantation :
-        <textarea rows="4" cols="50" [(ngModel)]="varieteFormulaire.plantation"></textarea>
-    </label>
-    <label>
-        Description sur la récolte :
-        <textarea rows="4" cols="50" [(ngModel)]="varieteFormulaire.recolte"></textarea>
-    </label>
-    <label>
-        Description sur l'entretien :
-        <textarea rows="4" cols="50" [(ngModel)]="varieteFormulaire.entretien"></textarea>
-    </label>
-    <label>
-        Période de mise de en place :
-        <input type="text" [(ngModel)]="varieteFormulaire.periodemiseplace">
-    </label>
-    <label>
-        Période de récolte :
-        <input type="text" [(ngModel)]="varieteFormulaire.perioderecolte">
-    </label>
-    <label>
-        Commentaire sur la variété :
-        <textarea rows="4" cols="50" [(ngModel)]="varieteFormulaire.commentaire"></textarea>
-    </label>
-        <label>Type de sol :
-        <select [(ngModel)]="varieteFormulaire.typesol"> 
-            <option> Argileux </option>
-            <option> Limoneux </option>
-            <option> Humifère </option>
-        </select>
-    </label>
-        <label> Nom semancier :
-        <select [(ngModel)]="nomsemancier"> 
-            <option> LASSONDE</option>
-            <option> MICHEL </option>
-            <option> PATRICK </option>
-            <option> PAUL </option>
-            <option> JEAN </option>
-            <option> LILY </option>
-            <option> CATHERINE </option>
-            <option> JEREMY </option>
-            <option> MARIE </option>
-            <option> BENJAMIN </option>
-            <option> WILL </option>
-            <option> XAVIER </option>
-            <option> MANON </option>
-            <option> JORDAN </option>
-            <option> HANNA </option>
-        </select>
-    </label>
-    <label> Nom Plante :
-        <select [(ngModel)]="nomplante"> 
-            <option> Pommier </option>
-            <option> Rossier </option>
-            <option> Pomme de terre </option>
-            <option> Tournesol </option>
-            <option> Cepe </option>
-            <option> Cerisier </option>
-            <option> Cactus </option>
-            <option> Trefle </option>
-            <option> Orchidée </option>
-        </select>
-    </label>
-    <label>
-        La variété est-elle biologique ? 
+    <span>
+        <mat-form-field appearance="fill">
+            <mat-label>Nom de la variété</mat-label>
+                <input matInput type="text" [(ngModel)]="varieteFormulaire.nomvariete">
+        </mat-form-field>
+        <mat-label>La variété est-elle biologique ?  </mat-label>  
         <input type="checkbox" [(ngModel)]="varieteFormulaire.estbiologique">
-    </label>
+    </span>  
+    
 
-    <button (click)="submit()" id="submit-button"> Envoyer !</button>
-</div>
+    <mat-form-field appearance="fill">
+        <mat-label>Année de mise en marche :</mat-label>
+            <input matInput type="text" [(ngModel)]="varieteFormulaire.anneemisemarche">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Description pour le semis :</mat-label>
+            <textarea matInput rows="4" cols="50" matInput type="text" [(ngModel)]="varieteFormulaire.descriptionsemis"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Description de la plantation :</mat-label>
+            <textarea matInput rows="4" cols="50" type="text" [(ngModel)]="varieteFormulaire.plantation"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Description sur la récolte </mat-label>
+            <textarea matInput rows="4" cols="50" type="text" [(ngModel)]="varieteFormulaire.recolte"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Description sur l'entretien :</mat-label>
+            <textarea matInput rows="4" cols="50" type="text" [(ngModel)]="varieteFormulaire.entretien"></textarea>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="fill">
+        <mat-label>Période de mise de en place </mat-label>
+            <input matInput type="text" [(ngModel)]="varieteFormulaire.periodemiseplace">
+        </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Période de récolte </mat-label>
+        <input matInput type="text" [(ngModel)]="varieteFormulaire.perioderecolte">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Commentaire sur la variété </mat-label>
+        <input matInput type="text" [(ngModel)]="varieteFormulaire.commentaire">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Type de sol </mat-label>
+        <mat-select [(value)]="varieteFormulaire.typesol"> 
+            <mat-option> Argileux </mat-option>
+            <mat-option> Limoneux </mat-option>
+                <mat-option> Humifère </mat-option>
+        </mat-select>
+    </mat-form-field>
+   <span>
+    <div mat-dialog-actions>
+        <button type="button" class="btn" (click)="soumettre()" id="submit-button"> {{action}}</button>
+    </div>
+    <div mat-dialog-actions>
+        <button type="button" class="btn" (click)="annuler()" id="submit-button"> Annuller </button>
+    </div>
+   </span>
+    
+
+    <div class = "formulaire">

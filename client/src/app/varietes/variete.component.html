@@ -39,7 +39,7 @@
           <td class="contentCell">{{ variete.typesol }}</td>
           <td class="contentCell">{{ variete.estbiologique }}</td>
           <td class="actionCell" id="action-content">
-                <button type="button" class="submitbtn" [routerLink]="['/ajoutvariete', variete.nomvariete]" > <i class="fa fa-edit"></i></button>
+                <button type="button" class="submitbtn" (click) ="openDialog(variete)" > <i class="fa fa-edit"></i></button>
                 <button type="button" class="deletebtn" (click)="deleteVariete(variete.nomvariete)">
                 <i class="fa fa-trash-o"></i>
                 </button>
@@ -47,7 +47,7 @@
         </tr>
       </tbody>
     </table>
+    <button type="button" class="btn" (click)="openDialog()">+ Ajouter une variete</button>
   </div>
 </div>
-  
   

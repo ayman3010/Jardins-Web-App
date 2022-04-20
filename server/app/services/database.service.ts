@@ -10,7 +10,7 @@ export class DatabaseService {
   public connectionConfig: pg.ConnectionConfig = {
     user: "postgres",
     database: "Jardins",
-    password: "postgres",
+    password: "jardins",
     port: 5432,
     host: "127.0.0.1",
     keepAlive: true
@@ -18,18 +18,59 @@ export class DatabaseService {
 
   public pool: pg.Pool = new pg.Pool(this.connectionConfig);
 
-  // Varietes 
-
-  public async createVariete(variete: Variete): Promise<pg.QueryResult> {
+  public async creerVariete(variete: Variete): Promise<pg.QueryResult> {
     const client = await this.pool.connect();
 
-    if (!variete.nomvariete || !variete.anneemisemarche || !variete.descriptionsemis || !variete.plantation || !variete.entretien || !variete.recolte || !variete.typesol || !variete.estbiologique)
-      throw new Error("Invalid create hotel values");
+    if (!variete.nomvariete || !variete.anneemisemarche )
+      throw new Error("Argument manquants");
 
     const values: any[] = [variete.nomvariete, variete.anneemisemarche, variete.descriptionsemis, variete.plantation, variete.entretien, variete.recolte, variete.periodemiseplace, variete.perioderecolte, variete.commentaire, variete.typesol, variete.estbiologique];
     const queryText: string = `INSERT INTO JARDINDB.Variete VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11);`;
 
     const res = await client.query(queryText, values);
+    client.release()
+    return res;
+  }
+
+  public async modifierVariete(variete: Variete, nomVariete: string): Promise<pg.QueryResult> {
+    const client = await this.pool.connect();
+    console.log(nomVariete);
+    if (!variete.nomvariete || !variete.anneemisemarche )
+      throw new Error("Invalid create hotel values");
+
+    const values: any[] = [variete.nomvariete, variete.anneemisemarche, variete.descriptionsemis, variete.plantation, variete.entretien, variete.recolte, variete.periodemiseplace, variete.perioderecolte, variete.commentaire, variete.typesol, variete.estbiologique];
+    const queryText: string = `UPDATE JARDINDB.Variete SET 
+    nomvariete         = $1,
+    anneemisemarche    = $2,
+    descriptionsemis   = $3,
+    plantation          = $4,
+    entretien           = $5,
+    recolte             = $6,
+    periodemiseplace    = $7,
+    perioderecolte      = $8,
+    commentaire        = $9,
+    typesol            = $10,
+    estbiologique       = $11
+    WHERE nomvariete = '${nomVariete}'`;
+
+    const res = await client.query(queryText, values);
+    client.release()
+    return res;
+  }
+
+
+  public async filtrerSemenciers(): Promise<pg.QueryResult> {
+    const client = await this.pool.connect();
+    let queryText = "SELECT semencierID, nom FROM JARDINDB.Semencier";
+    const res = await client.query(queryText);
+    client.release()
+    return res;
+  }
+
+  public async filtrerPlantes(): Promise<pg.QueryResult> {
+    const client = await this.pool.connect();
+    let queryText = "SELECT nomLatin, nom FROM JARDINDB.PlanteInfo";
+    const res = await client.query(queryText);
     client.release()
     return res;
   }
@@ -62,7 +103,7 @@ export class DatabaseService {
 
   public async filterVarietes(): Promise<pg.QueryResult> {
     const client = await this.pool.connect();
-    let queryText = "SELECT * FROM JARDINDB.Variete";
+    let queryText = "SELECT * FROM JARDINDB.Variete ORDER BY nomvariete";
     queryText += ";";
 
     const res = await client.query(queryText);

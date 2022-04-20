@@ -1,3 +1,4 @@
+import { Semencier } from './../../../common/tables/Semencier';
 import { Rang } from './../../../common/tables/Rang';
 import { Jardin } from "../../../common/tables/Jardins";
 import { Variete } from "../../../common/tables/Variete";
@@ -17,6 +18,36 @@ export class DatabaseController {
   public get router(): Router {
     const router: Router = Router();
 
+
+    router.get("/nomplantes", (req: Request, res: Response, _: NextFunction) => {
+      this.databaseService
+        .filtrerPlantes()
+        .then((result: pg.QueryResult) => {
+          const nomPlantes: string[] = result.rows.map((plante: any) => (
+             plante.nom
+          ));
+          res.json(nomPlantes);
+        })
+        .catch((e: Error) => {
+          console.error(e.stack);
+        });
+    });
+
+
+    router.get("/semenciers", (req: Request, res: Response, _: NextFunction) => {
+      this.databaseService
+        .filtrerSemenciers()
+        .then((result: pg.QueryResult) => {
+          const semenciers: Semencier[] = result.rows.map((semencier: any) => ({
+            id: semencier.semencierid,
+            nom: semencier.nom,
+          }));
+          res.json(semenciers);
+        })
+        .catch((e: Error) => {
+          console.error(e.stack);
+        });
+    });
 
     router.get("/jardins", (req: Request, res: Response, _: NextFunction) => {
       this.databaseService
@@ -156,6 +187,34 @@ export class DatabaseController {
       }
     );
 
+    router.post(
+      "/variete/modifier/:nomVariete",
+      (req: Request, res: Response, _: NextFunction) => {
+        const nomVariete: string = req.params.nomVariete;
+        const variete: Variete = {
+          nomvariete         : req.body.nomvariete,
+          anneemisemarche    : req.body.anneemisemarche,
+          descriptionsemis   : req.body.descriptionsemis,
+	        plantation         : req.body.plantation,
+          entretien          : req.body.entretien,
+          recolte            : req.body.recolte,
+	        periodemiseplace   : req.body.periodemiseplace,
+          perioderecolte     : req.body.perioderecolte,
+          commentaire        : req.body.commentaire,
+          typesol            : req.body.typesol,
+          estbiologique      : req.body.estbiologique,
+        };
+        this.databaseService
+          .modifierVariete(variete, nomVariete)
+          .then((result: pg.QueryResult) => {
+            res.json(result.rowCount);
+          })
+          .catch((e: Error) => {
+            console.error(e.stack);
+            res.json(-1);
+          });
+      }
+    );
 
     router.post(
       "/variete/insert",
@@ -174,7 +233,7 @@ export class DatabaseController {
           estbiologique      : req.body.estbiologique,
         };
         this.databaseService
-          .createVariete(variete)
+          .creerVariete(variete)
           .then((result: pg.QueryResult) => {
             res.json(result.rowCount);
           })
