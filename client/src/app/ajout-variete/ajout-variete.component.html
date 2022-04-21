@@ -53,8 +53,8 @@
 
 
     <mat-form-field appearance="fill">
-        <mat-label>Nom Plante </mat-label>
-        <mat-select [(value)]="varieteFormulaire.typesol"> 
+        <mat-label>Type Sol </mat-label>
+        <mat-select [(value)]="varieteFormulaire.typesol" > 
             <mat-option *ngFor="let typeSol of typeSols" [value]="typeSol"> {{typeSol}}</mat-option>            
         </mat-select>
     </mat-form-field>
