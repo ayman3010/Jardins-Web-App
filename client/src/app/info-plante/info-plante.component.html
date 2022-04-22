@@ -6,12 +6,13 @@
         <input matInput
             id="message"
             [(ngModel)]="partieNom"
+            (ngModelChange)="getPlantes()"
             (keydown.enter)="getPlantes()"
             maxLength="512"
             placeholder="plante"
         />
     </mat-form-field>
-    <button mat-button class="send" (click)="getPlantes()">Envoyer</button>
+    <button mat-button class="send" (click)="getPlantes()">Rechercher</button>
     
       <div class="divider"></div>
       
