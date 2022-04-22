@@ -10,7 +10,7 @@ export class DatabaseService {
   public connectionConfig: pg.ConnectionConfig = {
     user: "postgres",
     database: "Jardins",
-    password: "postgres",
+    password: "jardins",
     port: 5432,
     host: "127.0.0.1",
     keepAlive: true
@@ -88,6 +88,7 @@ export class DatabaseService {
     queryText += ";";
     const res = await client.query(queryText);
     client.release()
+    console.log(JSON.stringify(res.rows));
     return res;
   }
 

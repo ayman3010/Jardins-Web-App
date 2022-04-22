@@ -1,7 +1,7 @@
+import { Variete } from './../../../../common/tables/Variete';
 import { Semencier } from './../../../../common/tables/Semencier';
 import { Component, Inject} from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Variete } from '../../../../common/tables/Variete';
 
 import { CommunicationService } from '../communication.service';
 
@@ -21,41 +21,43 @@ export class AjoutVarieteComponent {
   duplicateError: boolean = false;
   action : string = "Ajouter";
   estValide : boolean = true;
+  existe: boolean = false;
 
-  constructor( private communicationService: CommunicationService, public nameInputDialog: MatDialogRef<AjoutVarieteComponent>, @Inject(MAT_DIALOG_DATA) public data: Variete) {
-    if (data) {
-      this.getVariete(data.nomvariete);
+  constructor( private communicationService: CommunicationService, public nameInputDialog: MatDialogRef<AjoutVarieteComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
+    if (data.variete) {
+      this.getVariete(data.variete.nomvariete);
       this.action = "Modifier"
     }
-    this.getTypeSol();
    }
 
    annuler(): void {
     this.nameInputDialog.close();
    }
 
-   formulaireEstValide(){
-     return (this.varieteFormulaire.nomvariete && this.varieteFormulaire.anneemisemarche);
+   formulaireEstValide(): boolean{
+     if  (this.varieteFormulaire.nomvariete && this.varieteFormulaire.anneemisemarche) return true;
+     return false;
+   }
+
+   variteExiste(nomVariete: string): boolean {
+     for ( const variete of this.data.liste ){
+       if (variete.nomvariete === nomVariete) return true;
+     }
+     return false;
+
    }
 
    soumettre() {  
-    if (!this.varieteFormulaire.nomvariete || !this.varieteFormulaire.anneemisemarche){
+    if (!this.formulaireEstValide || this.varieteFormulaire.anneemisemarche > 9999){
       this.estValide = false;
       return;
     }
-    this.insertVariete();
-    console.log(this.duplicateError);
-    if (!this.duplicateError){
-      this.varieteFormulaire = new Variete();
-      this.nameInputDialog.close();
+    if (this.variteExiste(this.varieteFormulaire.nomvariete) && this.action === 'Ajouter'){
+      this.existe = true;
+      return;
     }
+    this.insertVariete();
   }
-
-   getTypeSol(){
-    this.communicationService.getTypeSols().subscribe((noms: string[]) => {
-      this.typeSols = noms;
-    });
-   }
 
   getVariete(nomVariete: string){
     this.communicationService.getVariete(nomVariete).subscribe((variete: Variete[]) => {
@@ -72,20 +74,27 @@ export class AjoutVarieteComponent {
         if (res > 0) {
           this.duplicateError = false;
           this.communicationService.filter("update");
+          this.varieteFormulaire = new Variete();
+          this.nameInputDialog.close();
         }
         if(res === -1){
-           this.duplicateError = true;
+          this.duplicateError = true;
         }
       });
       return;
     }
-    this.communicationService.modifierVariete(variete, this.data.nomvariete).subscribe((res: number) => {
+    this.updateVariete();
+  }
+  updateVariete(){
+    const variete: Variete = { ... this.varieteFormulaire };
+
+    this.communicationService.modifierVariete(variete, this.data.variete.nomvariete).subscribe((res: number) => {
       if (res > 0) {
         this.communicationService.filter("update");
+                  this.varieteFormulaire = new Variete();
+          this.nameInputDialog.close();
       }
     });
-    
   }
-
 
 }

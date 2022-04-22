@@ -1,29 +1,5 @@
 SET search_path = jardindb;
 
-INSERT INTO JARDINDB.typeSol(nomTypeSol)
-VALUES ('Malus');
-
-INSERT INTO JARDINDB.typeSol (nomTypeSol)
-VALUES ('Solanum');
-
-INSERT INTO JARDINDB.typeSol(nomTypeSol)
-VALUES ('Argileux');
-
-INSERT INTO JARDINDB.typeSol(nomTypeSol)
-VALUES ('Sableux');
-
-INSERT INTO JARDINDB.typeSol(nomTypeSol)
-VALUES ('Silicieux');
-
-INSERT INTO JARDINDB.typeSol(nomTypeSol)
-VALUES ('Tourbeux');
-
-INSERT INTO JARDINDB.typeSol(nomTypeSol)
-VALUES ('Limoneux');
-
-INSERT INTO JARDINDB.typeSol(nomTypeSol)
-VALUES ('Humifère');
-
 -- Insertions des donnees Pour la Table Jardin
 INSERT INTO JARDINDB.Jardin (jardinId, nom, surface, estPotager, estOrnement, estVerger) 
 VALUES ('JD01', 'Jardin Lassonde', 2000.00, false, true, false);

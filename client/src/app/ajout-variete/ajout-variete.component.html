@@ -13,7 +13,7 @@
 
     <mat-form-field appearance="fill">
         <mat-label>Année de mise en marche :</mat-label>
-            <input matInput type="text" [(ngModel)]="varieteFormulaire.anneemisemarche">
+            <input matInput type="number" [(ngModel)]="varieteFormulaire.anneemisemarche" required>
     </mat-form-field>
     <mat-form-field appearance="fill">
         <mat-label>Description pour le semis :</mat-label>
@@ -54,17 +54,16 @@
 
     <mat-form-field appearance="fill">
         <mat-label>Type Sol </mat-label>
-        <mat-select [(value)]="varieteFormulaire.typesol" > 
-            <mat-option [value]="">Aucun</mat-option>            
-            <mat-option *ngFor="let typeSol of typeSols" [value]="typeSol"> {{typeSol}}</mat-option>            
-        </mat-select>
+        <input matInput type="text" [(ngModel)]="varieteFormulaire.typesol">
     </mat-form-field>
-
+    <div *ngIf="existe" style="color:red">
+        Cette Variete existe deja
+    </div>
     <div *ngIf="!estValide" style="color:red">
         Certaines données sont invalides
     </div>
     <div *ngIf="duplicateError" style="color:red">
-        cette varieté existe déja
+        Cette varieté existe déja
     </div>
    <span >
     <div mat-dialog-actions>
