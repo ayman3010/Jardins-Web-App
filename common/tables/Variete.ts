@@ -20,7 +20,7 @@ export class Variete {
         this.periodemiseplace   = "En saison froide";
         this.perioderecolte     = "De janvier à mars";
         this.commentaire        = "Sensible aux changements de température, prendre soin";
-        this.typesol            = "";
+        this.typesol            = "Argileux";
         this.estbiologique      = false;
     }
 }

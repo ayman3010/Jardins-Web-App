@@ -20,6 +20,7 @@ export class AjoutVarieteComponent {
   isModified: boolean;
   duplicateError: boolean = false;
   action : string = "Ajouter";
+  estValide : boolean = true;
 
   constructor( private communicationService: CommunicationService, public nameInputDialog: MatDialogRef<AjoutVarieteComponent>, @Inject(MAT_DIALOG_DATA) public data: Variete) {
     if (data) {
@@ -33,10 +34,21 @@ export class AjoutVarieteComponent {
     this.nameInputDialog.close();
    }
 
+   formulaireEstValide(){
+     return (this.varieteFormulaire.nomvariete && this.varieteFormulaire.anneemisemarche);
+   }
+
    soumettre() {  
+    if (!this.varieteFormulaire.nomvariete || !this.varieteFormulaire.anneemisemarche){
+      this.estValide = false;
+      return;
+    }
     this.insertVariete();
-    this.varieteFormulaire = new Variete();
-    this.nameInputDialog.close();
+    console.log(this.duplicateError);
+    if (!this.duplicateError){
+      this.varieteFormulaire = new Variete();
+      this.nameInputDialog.close();
+    }
   }
 
    getTypeSol(){
@@ -50,14 +62,20 @@ export class AjoutVarieteComponent {
       this.varieteFormulaire = {...variete[0]}
     });
   }
-  public insertVariete(): void {
-    const variete: Variete = { ... this.varieteFormulaire };
+
+
+ insertVariete(): void {
+   this.estValide = true;
+   const variete: Variete = { ... this.varieteFormulaire };
     if (this.action === 'Ajouter'){
       this.communicationService.insertVariete(variete).subscribe((res: number) => {
         if (res > 0) {
+          this.duplicateError = false;
           this.communicationService.filter("update");
         }
-        this.duplicateError = res === -1;
+        if(res === -1){
+           this.duplicateError = true;
+        }
       });
       return;
     }
@@ -65,8 +83,8 @@ export class AjoutVarieteComponent {
       if (res > 0) {
         this.communicationService.filter("update");
       }
-      this.duplicateError = res === -1;
     });
+    
   }
 
 

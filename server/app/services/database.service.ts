@@ -23,8 +23,10 @@ export class DatabaseService {
 
     if (!variete.nomvariete || !variete.anneemisemarche )
       throw new Error("Argument manquants");
+    
 
-    const values: any[] = [variete.nomvariete, variete.anneemisemarche, variete.descriptionsemis, variete.plantation, variete.entretien, variete.recolte, variete.periodemiseplace, variete.perioderecolte, variete.commentaire, variete.typesol, variete.estbiologique];
+    const values: any[] = [variete.nomvariete, variete.anneemisemarche, variete.descriptionsemis, variete.plantation, variete.entretien, 
+       variete.recolte, variete.periodemiseplace, variete.perioderecolte, variete.commentaire, variete.typesol, variete.estbiologique];
     const queryText: string = `INSERT INTO JARDINDB.Variete VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11);`;
 
     const res = await client.query(queryText, values);
