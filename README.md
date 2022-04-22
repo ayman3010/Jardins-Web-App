@@ -1,27 +1,8 @@
-# INF3710_TutorielApp
+# Guide d'installation : 
 
-Tutoriel du projet d'INF3710
+1) Assurer vous que Postgres roule sur votre machine
+2) Verifier que node est bien installé en effectuant : -node v 
 
-## Avant de lancer le projet
-- Assurez-vous que Postgres roule sur vos machines 
+Client : aller dans le repertoire client (cd client) et : a) lancer 'npm install', b) lancer 'npm start'
 
-- Vérifiez que vous avez NodeJs installé avec `node –v`, si vous ne l'avez pas fait, veuillez suivre les étapes dans les dispos du labo
-
-- Allez dans `/client`  et lancez `npm install`
-
-- Allez dans `/server` et lancez `npm install​`
-
-- Allez dans `/server/app/services/database.service.ts` et modifiez `connectionConfig` avec les bons paramètres de votre BD​
-
-## Pour lancer le projet
-
-- Allez dans `/server` et faites `npm start`​
-
-- Allez dans `/client` et faites `npm start`​
-
-## Demo Screenshots (remove for actual readme)
-
-![Main Page](./imgs/mainpage.PNG "Welcome Page")
-![Hotels Page](./imgs/hotels.PNG "Hotels Page")
-![Rooms Page](./imgs/rooms.PNG "Rooms Page")
-![Guests Page](./imgs/guests.PNG "Guests Page")
+Serveur : aller dans le repertoire serveur (cd serveur) et : a) lancer 'npm install' b) Assurez vous d'avoir les bonnes information pour votre base de donnée (server/app/services/database.service.ts) c) lancer 'npm start"
