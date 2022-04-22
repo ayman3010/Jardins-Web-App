@@ -4,7 +4,7 @@
     <span>
         <mat-form-field appearance="fill">
             <mat-label>Nom de la variété</mat-label>
-                <input matInput type="text" [(ngModel)]="varieteFormulaire.nomvariete">
+                <input matInput type="text" [(ngModel)]="varieteFormulaire.nomvariete" required>
         </mat-form-field>
         <mat-label>La variété est-elle biologique ?  </mat-label>  
         <input type="checkbox" [(ngModel)]="varieteFormulaire.estbiologique">
@@ -55,17 +55,21 @@
     <mat-form-field appearance="fill">
         <mat-label>Type Sol </mat-label>
         <mat-select [(value)]="varieteFormulaire.typesol" > 
+            <mat-option [value]="">Aucun</mat-option>            
             <mat-option *ngFor="let typeSol of typeSols" [value]="typeSol"> {{typeSol}}</mat-option>            
         </mat-select>
     </mat-form-field>
-   <span>
+
+    <div *ngIf="!estValide" style="color:red">
+        Certaines données sont invalides
+    </div>
+    <div *ngIf="duplicateError" style="color:red">
+        cette varieté existe déja
+    </div>
+   <span >
     <div mat-dialog-actions>
         <button type="button" class="btn" (click)="soumettre()" id="submit-button"> {{action}}</button>
-    </div>
-    <div mat-dialog-actions>
-        <button type="button" class="btn" (click)="annuler()" id="submit-button"> Annuller </button>
+        <button type="button" class="btn" (click)="annuler()" id="submit-button"> Annuler </button>
     </div>
    </span>
-    
-
     <div class = "formulaire">
