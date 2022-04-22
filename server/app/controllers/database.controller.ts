@@ -20,22 +20,6 @@ export class DatabaseController {
   public get router(): Router {
     const router: Router = Router();
 
-
-    router.get("/typesols", (req: Request, res: Response, _: NextFunction) => {
-      this.databaseService
-        .filtrerTypeSols()
-        .then((result: pg.QueryResult) => {
-          const typeSols: string[] = result.rows.map((typesol: any) => (
-             typesol.nomtypesol
-          ));
-          res.json(typeSols);
-        })
-        .catch((e: Error) => {
-          console.error(e.stack);
-        });
-    });
-
-
     router.get("/semenciers", (req: Request, res: Response, _: NextFunction) => {
       this.databaseService
         .filtrerSemenciers()

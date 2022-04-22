@@ -38,12 +38,6 @@ export class CommunicationService {
       .pipe(catchError(this.handleError<Semencier[]>("getSemenciers")));
   }
 
-  getTypeSols():  Observable<string[]> {
-    return this.http
-    .get<string[]>(this.BASE_URL + `/typesols`)
-    .pipe(catchError(this.handleError<string[]>("getTypeSols")));
-  }
-
   public getRangs(jardinId: string, coordonnees: string): Observable<Rang[]> {
     return this.http
       .get<Rang[]>(this.BASE_URL + `/parcelles/${jardinId}/${coordonnees}`)

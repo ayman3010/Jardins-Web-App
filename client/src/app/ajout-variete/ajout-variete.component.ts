@@ -83,9 +83,9 @@ export class AjoutVarieteComponent {
       });
       return;
     }
-    this.updateVariete();
+    this.modifierVariete();
   }
-  updateVariete(){
+  modifierVariete(){
     const variete: Variete = { ... this.varieteFormulaire };
 
     this.communicationService.modifierVariete(variete, this.data.variete.nomvariete).subscribe((res: number) => {
