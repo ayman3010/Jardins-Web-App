@@ -24,8 +24,8 @@ export class JardinsComponent implements OnInit {
 
   getTypeJardin(jardin: Jardin): string {
     let typeJardin: string = '';
-    if (jardin.ornement) typeJardin +="ornement ";
-    if (jardin.verger)  typeJardin +="verger ";
+    if (jardin.ornement) typeJardin +="ornement, ";
+    if (jardin.verger)  typeJardin +="verger, ";
     if (jardin.potager) typeJardin +="potager ";
     return typeJardin;
   }

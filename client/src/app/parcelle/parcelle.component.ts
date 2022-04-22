@@ -16,7 +16,7 @@ export class ParcelleComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.jardinId = params.id;
     });
-   }
+  }
   ngOnInit() {
     this.getParcelles();
   }

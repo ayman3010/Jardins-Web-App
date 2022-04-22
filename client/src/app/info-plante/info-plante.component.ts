@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { CommunicationService } from '@app/communication.service';
 import { Plante } from '@common/tables/Plante';
 
@@ -7,16 +7,12 @@ import { Plante } from '@common/tables/Plante';
   templateUrl: './info-plante.component.html',
   styleUrls: ['./info-plante.component.css']
 })
-export class InfoPlanteComponent implements OnInit {
+export class InfoPlanteComponent {
 
   plantes: Plante[] = [];
   partieNom: string;
 
   constructor(private communicationService: CommunicationService) { }
-
-
-  ngOnInit() {
-  }
 
   getPlantes(){
     this.plantes = [];
