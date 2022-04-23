@@ -944,16 +944,16 @@ VALUES (2, (2, 1), 'JD04', 'phalaenopsis', 'plant');
 INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
 VALUES (0, (0, 0), 'JD05', 'alexandrie', 'semis');
 INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
-VALUES (1, (0, 0), 'JD05', 'boskoop', 'plant');
+VALUES (1, (0, 0), 'JD05', 'sunrich', 'plant');
 
 INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
 VALUES (0, (1, 0), 'JD05', 'sunrich', 'greffe');
 
 
 INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
-VALUES (0, (2, 0), 'JD05', 'boskoop', 'plant');
+VALUES (0, (2, 0), 'JD05', 'sunrich', 'plant');
 INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
-VALUES (2, (2, 0), 'JD05', 'boskoop', 'graines');
+VALUES (2, (2, 0), 'JD05', 'sunrich', 'graines');
 
 INSERT INTO JARDINDB.RangVariete (numero, coordonnees, jardinId, nomVariete, typeMiseEnplace)
 VALUES (2, (0, 1), 'JD05', 'sunrich', 'greffe');
