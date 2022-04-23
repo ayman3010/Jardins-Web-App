@@ -15,7 +15,7 @@ export class AjoutVarieteComponent {
   varieteFormulaire: Variete = new Variete();
   nomPlante: string;
   semenciers: Semencier[];
-  typeSols: string[];
+  typeSols: string[] = ["Argileux", "Limoneux", "Silicieux", "Tourbeux", "Sableux"];
   nomSemencier: string;
   isModified: boolean;
   duplicateError: boolean = false;
